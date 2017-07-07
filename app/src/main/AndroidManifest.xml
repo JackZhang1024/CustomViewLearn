@@ -12,10 +12,16 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ScrollerLearnActivity"/>
+        <activity android:name=".PieViewLearnActivity"/>
+        <activity android:name=".CheckMarkActivity"/>
+        <activity android:name=".CustomCircleActivity"/>
+        <activity android:name=".PathViewActivity"/>
+        <activity android:name=".HeartBezierActivity"/>
+        <activity android:name=".EventDispatchActivity"/>
     </application>
 
 </manifest>

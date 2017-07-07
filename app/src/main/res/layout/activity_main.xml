@@ -4,34 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     tools:context="com.lucky.customviewlearn.MainActivity">
 
-    <!--<com.lucky.customviewlearn.simpleview.CustomCircle-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:paddingLeft="20dp"-->
-        <!--android:paddingTop="20dp"-->
-        <!--app:custom_color="@color/colorAccent"-->
-        <!--android:background="@android:color/black"-->
-        <!--/>-->
+    <Button
+        android:id="@+id/btn_checkmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CheckMark"
+        />
 
-    <!--<com.lucky.customviewlearn.scroller.ScrollerLinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@android:color/white"-->
-        <!--android:gravity="center"-->
-        <!--&gt;-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:text="向左滑动"-->
-            <!--/>-->
-    <!--</com.lucky.customviewlearn.scroller.ScrollerLinearLayout>-->
+    <Button
+        android:id="@+id/btn_customcircle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CustomCircle"
+        />
 
-    <com.lucky.customviewlearn.simpleview.PieView
-        android:id="@+id/pie_view"
-        android:layout_width="300dp"
-        android:layout_height="300dp" />
+    <Button
+        android:id="@+id/btn_pieview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PieView"
+        />
+
+    <Button
+        android:id="@+id/btn_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scroller"
+        />
+
+    <Button
+        android:id="@+id/btn_pathview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PathView"
+        />
+
+    <Button
+        android:id="@+id/btn_heart_bezier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HeartBezier"
+        />
+
+    <Button
+        android:id="@+id/btn_event_dispatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EventDispatch"
+        />
 
 </LinearLayout>
