@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.crashlytics.android.Crashlytics;
 import com.lucky.customviewlearn.canvas.CheckView;
 import com.lucky.customviewlearn.simpleview.PieData;
 import com.lucky.customviewlearn.simpleview.PieView;
 
+import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_checkmark).setOnClickListener(this);
         findViewById(R.id.btn_scroller).setOnClickListener(this);
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_pathview).setOnClickListener(this);
         findViewById(R.id.btn_heart_bezier).setOnClickListener(this);
         findViewById(R.id.btn_event_dispatch).setOnClickListener(this);
+        findViewById(R.id.btn_taichi).setOnClickListener(this);
+        findViewById(R.id.btn_crash).setOnClickListener(this);
     }
 
 
@@ -54,6 +59,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_event_dispatch:
                 intent.setClass(this, EventDispatchActivity.class);
+                break;
+            case R.id.btn_taichi:
+                intent.setClass(this, TaiChiActivity.class);
+                break;
+            case R.id.btn_crash:
+                Crashlytics.setUserEmail("1120335370@qq.com");
+                Crashlytics.setUserName("fengchou");
+                Crashlytics.setUserIdentifier("1234567890xsed");
+                int a = 2/0;
+                break;
         }
         startActivity(intent);
     }

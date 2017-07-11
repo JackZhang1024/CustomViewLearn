@@ -58,4 +58,20 @@
         android:text="EventDispatch"
         />
 
+    <Button
+        android:id="@+id/btn_taichi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TaiChi"
+        />
+
+    <Button
+        android:id="@+id/btn_crash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TestCrash"
+        android:visibility="gone"
+        />
+
+
 </LinearLayout>

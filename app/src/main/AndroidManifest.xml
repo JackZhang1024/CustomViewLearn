@@ -3,6 +3,7 @@
     package="com.lucky.customviewlearn">
 
     <application
+        android:name=".CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,13 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScrollerLearnActivity"/>
-        <activity android:name=".PieViewLearnActivity"/>
-        <activity android:name=".CheckMarkActivity"/>
-        <activity android:name=".CustomCircleActivity"/>
-        <activity android:name=".PathViewActivity"/>
-        <activity android:name=".HeartBezierActivity"/>
-        <activity android:name=".EventDispatchActivity"/>
+        <activity android:name=".ScrollerLearnActivity" />
+        <activity android:name=".PieViewLearnActivity" />
+        <activity android:name=".CheckMarkActivity" />
+        <activity android:name=".CustomCircleActivity" />
+        <activity android:name=".PathViewActivity" />
+        <activity android:name=".HeartBezierActivity" />
+        <activity android:name=".EventDispatchActivity" />
+        <activity android:name=".TaiChiActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="0fc13e70413cbeeb842b7c7e7fddeeae7012f5fa" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
