@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,69 +9,103 @@
     android:layout_marginRight="20dp"
     tools:context="com.lucky.customviewlearn.MainActivity">
 
-    <Button
-        android:id="@+id/btn_checkmark"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CheckMark"
-        />
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/btn_checkmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CheckMark"
+            />
 
-    <Button
-        android:id="@+id/btn_customcircle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CustomCircle"
-        />
+        <Button
+            android:id="@+id/btn_customcircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CustomCircle"
+            />
 
-    <Button
-        android:id="@+id/btn_pieview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PieView"
-        />
+        <Button
+            android:id="@+id/btn_pieview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PieView"
+            />
 
-    <Button
-        android:id="@+id/btn_scroller"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Scroller"
-        />
+        <Button
+            android:id="@+id/btn_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scroller"
+            />
 
-    <Button
-        android:id="@+id/btn_pathview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PathView"
-        />
+        <Button
+            android:id="@+id/btn_scroller_extend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ExtendScroller"
+            />
 
-    <Button
-        android:id="@+id/btn_heart_bezier"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HeartBezier"
-        />
+        <Button
+            android:id="@+id/btn_scroller_advanced"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AdvancedScroller"
+            />
 
-    <Button
-        android:id="@+id/btn_event_dispatch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EventDispatch"
-        />
+        <Button
+            android:id="@+id/btn_pathview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PathView"
+            />
 
-    <Button
-        android:id="@+id/btn_taichi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TaiChi"
-        />
+        <Button
+            android:id="@+id/btn_heart_bezier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HeartBezier"
+            />
 
-    <Button
-        android:id="@+id/btn_crash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TestCrash"
-        android:visibility="gone"
-        />
+        <Button
+            android:id="@+id/btn_event_dispatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EventDispatch"
+            />
 
+        <Button
+            android:id="@+id/btn_taichi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TaiChi"
+            />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_crash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TestCrash"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/btn_resources"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resources"
+            />
+
+        <Button
+            android:id="@+id/btn_material_design"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MaterialDesign"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -7,14 +7,13 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
-import android.widget.OverScroller;
 import android.widget.Scroller;
 
 /**
  * 向左滑动 是指的从右向左滑动 箭头朝左
  * 向右滑动 是指的从左向右滑动 箭头向右
  * */
-public class ScrollerLinearLayout extends LinearLayout {
+public class ExtScrollerLinearLayout extends LinearLayout {
 
     private Scroller mScroller;
     private VelocityTracker mVelocityTracker;
@@ -22,17 +21,17 @@ public class ScrollerLinearLayout extends LinearLayout {
     private static int SNAP_VELOCITY = 600;
     private float lastX, lastY, downX, downY;
 
-    public ScrollerLinearLayout(Context context) {
+    public ExtScrollerLinearLayout(Context context) {
         super(context);
     }
 
-    public ScrollerLinearLayout(Context context, @Nullable AttributeSet attrs) {
+    public ExtScrollerLinearLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mScroller = new Scroller(context);
         mMaxFlingVelocity = ViewConfiguration.get(context).getScaledMaximumFlingVelocity();
     }
 
-    public ScrollerLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ExtScrollerLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -83,7 +82,14 @@ public class ScrollerLinearLayout extends LinearLayout {
                 break;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                scrollTo((int)downX, (int)downY);
+                // XY从滑动的距离返回到初始位置
+                // getScrollX()返回的是当前content相对于初始位置的在X轴上的位移
+                // getScrollY()返回的是当前content相对于初始位置的在Y轴上的位移
+                // -getScrollX(),-getScrollY() 是当前content返回到初始位置的所要进行的位移
+                // 1000是整个内容滚动动画所经历的时间 默认250ms
+                mScroller.startScroll(getScrollX(), getScrollY(), -getScrollX(), -getScrollY(), 1000);
+                // invalidate()方法调用computeScroll()方法
+                invalidate();
                 getVelocityTracker();
                 mVelocityTracker.computeCurrentVelocity(1000, mMaxFlingVelocity);
                 float vX = mVelocityTracker.getXVelocity(pointerId);
@@ -139,8 +145,13 @@ public class ScrollerLinearLayout extends LinearLayout {
 
     @Override
     public void computeScroll() {
+        // scroller.computeScrollOffset() 判断滚动是否已经完成
+        // true表示动画仍在继续 false表示动画结束
         if (mScroller.computeScrollOffset()) {
+            // scroller.getCurrX(), scroller.getCurrY() 分别获取的是当前content滚动到的位置
+            // scrollTo()方法将content滚动到指定的位置
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            // invalidate() 方法调用computeScroll()方法 呈现出动画效果
             invalidate();
         }
         super.computeScroll();

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   <group android:checkableBehavior="single">
+       <item
+           android:id="@+id/primary_page"
+           android:title="@string/primary_page"
+           android:icon="@drawable/profile"
+           />
+       <item
+           android:id="@+id/blog"
+           android:title="@string/blog"
+           android:icon="@drawable/blog"
+           />
+       <item
+           android:id="@+id/about"
+           android:title="@string/about"
+           android:icon="@drawable/about"
+           />
+   </group>
+</menu>

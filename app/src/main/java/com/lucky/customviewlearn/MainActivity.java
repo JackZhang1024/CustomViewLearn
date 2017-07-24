@@ -16,15 +16,16 @@ import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_checkmark).setOnClickListener(this);
         findViewById(R.id.btn_scroller).setOnClickListener(this);
+        findViewById(R.id.btn_scroller_extend).setOnClickListener(this);
+        findViewById(R.id.btn_scroller_advanced).setOnClickListener(this);
         findViewById(R.id.btn_pieview).setOnClickListener(this);
         findViewById(R.id.btn_customcircle).setOnClickListener(this);
         findViewById(R.id.btn_pathview).setOnClickListener(this);
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_event_dispatch).setOnClickListener(this);
         findViewById(R.id.btn_taichi).setOnClickListener(this);
         findViewById(R.id.btn_crash).setOnClickListener(this);
+        findViewById(R.id.btn_resources).setOnClickListener(this);
+        findViewById(R.id.btn_material_design).setOnClickListener(this);
     }
 
 
@@ -44,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_scroller:
                 intent.setClass(this, ScrollerLearnActivity.class);
+                break;
+            case R.id.btn_scroller_extend:
+                intent.setClass(this, ExtScrollerLearnActivity.class);
+                break;
+            case R.id.btn_scroller_advanced:
+                intent.setClass(this, AdvancedScrollerActivity.class);
                 break;
             case R.id.btn_pieview:
                 intent.setClass(this, PieViewLearnActivity.class);
@@ -67,7 +76,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Crashlytics.setUserEmail("1120335370@qq.com");
                 Crashlytics.setUserName("fengchou");
                 Crashlytics.setUserIdentifier("1234567890xsed");
-                int a = 2/0;
+                break;
+            case R.id.btn_resources:
+                intent.setClass(this, ResourcesActivity.class);
+                break;
+            case R.id.btn_material_design:
+                intent.setClass(this, MaterialDesignActivity.class);
                 break;
         }
         startActivity(intent);

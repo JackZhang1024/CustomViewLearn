@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ScrollerLearnActivity" />
+        <activity android:name=".ExtScrollerLearnActivity" />
+        <activity android:name=".AdvancedScrollerActivity" />
         <activity android:name=".PieViewLearnActivity" />
         <activity android:name=".CheckMarkActivity" />
         <activity android:name=".CustomCircleActivity" />
@@ -24,6 +26,57 @@
         <activity android:name=".HeartBezierActivity" />
         <activity android:name=".EventDispatchActivity" />
         <activity android:name=".TaiChiActivity" />
+        <activity
+            android:name=".ResourcesActivity"
+            android:theme="@style/AppTheme.Resource" />
+        <activity
+            android:name=".MaterialDesignActivity"
+            android:label="@string/material_design" />
+        <activity
+            android:name=".materialdesign.SimpleMaterialDesignActivity"
+            android:label="@string/simple_material_design"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".materialdesign.NavigationViewActivity"
+            android:label="@string/navigation_view"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".materialdesign.CoordinatorViewActivity"
+            android:label="@string/coordinator_view"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".materialdesign.CollapsingLayoutActivity"
+            android:label="@string/collapsing_view"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity
+            android:name=".materialdesign.behavior.BottomSheetBehaviorActivity"
+            android:label="@string/bottom_sheet_behaviors"
+            />
+
+        <activity
+            android:name=".materialdesign.BehaviorsActivity"
+            android:label="@string/behaviors"
+            />
+
+        <activity
+            android:name=".materialdesign.behavior.BackTopActivity"
+            android:label="@string/back_top"
+            />
+
+        <activity
+            android:name=".materialdesign.behavior.SwipeDismissBehaviorActivity"
+            android:label="@string/swipe_dismiss"
+            />
+
+        <activity
+            android:name=".materialdesign.behavior.ZhihuActivity"
+            android:label="@string/zhi_hu"
+            />
 
         <meta-data
             android:name="io.fabric.ApiKey"

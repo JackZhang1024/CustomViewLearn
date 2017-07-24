@@ -4,16 +4,5 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lucky.customviewlearn.scroller.ScrollerLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="向左滑动"
-            android:textColor="@android:color/black" />
-    </com.lucky.customviewlearn.scroller.ScrollerLinearLayout>
 
 </LinearLayout>

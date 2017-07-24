@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_scroll_method"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <Button
+            android:id="@+id/btn_scroll_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ScrollTo(int, int)"
+            />
+
+        <Button
+            android:id="@+id/btn_scroll_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ScrollBy(int, int)"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <com.lucky.customviewlearn.scroller.ScrollerLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="按住我拖动试试"
+                android:textColor="@android:color/black" />
+        </com.lucky.customviewlearn.scroller.ScrollerLinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
