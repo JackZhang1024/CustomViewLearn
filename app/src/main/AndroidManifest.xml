@@ -78,6 +78,21 @@
             android:label="@string/zhi_hu"
             />
 
+        <activity
+            android:name=".CanvasSaveRestoreActivity"
+            android:label="@string/canvas_save_restore"
+            />
+
+        <activity
+            android:name=".CanvasLayerActivity"
+            android:label="@string/canvas_layer"
+            />
+
+        <activity
+            android:name=".RuleViewActivity"
+            android:label="@string/rule_view"
+            />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="0fc13e70413cbeeb842b7c7e7fddeeae7012f5fa" />

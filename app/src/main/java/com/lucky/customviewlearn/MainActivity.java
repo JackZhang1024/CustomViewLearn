@@ -35,6 +35,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_crash).setOnClickListener(this);
         findViewById(R.id.btn_resources).setOnClickListener(this);
         findViewById(R.id.btn_material_design).setOnClickListener(this);
+        findViewById(R.id.btn_canvas_save_restore).setOnClickListener(this);
+        findViewById(R.id.btn_canvas_layer).setOnClickListener(this);
+        findViewById(R.id.btn_rule_view).setOnClickListener(this);
     }
 
 
@@ -82,6 +85,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_material_design:
                 intent.setClass(this, MaterialDesignActivity.class);
+                break;
+            case R.id.btn_canvas_save_restore:
+                intent.setClass(this, CanvasSaveRestoreActivity.class);
+                break;
+            case R.id.btn_canvas_layer:
+                intent.setClass(this, CanvasLayerActivity.class);
+                break;
+            case R.id.btn_rule_view:
+                intent.setClass(this, RuleViewActivity.class);
                 break;
         }
         startActivity(intent);

@@ -16,6 +16,9 @@
     <string name="back_top">BackTop</string>
     <string name="swipe_dismiss">SwipeDismiss</string>
     <string name="zhi_hu">ZhiHu</string>
+    <string name="canvas_save_restore">CanvasSaveRestore</string>
+    <string name="canvas_layer">CanvasLayer</string>
+    <string name="rule_view">RuleView</string>
     <string name="content">内容区域</string>
     <string name="primary_page">首页</string>
     <string name="blog">我的博客</string>
