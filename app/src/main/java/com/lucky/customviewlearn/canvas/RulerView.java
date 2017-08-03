@@ -14,6 +14,8 @@ import android.view.View;
 /**
  * Created by zfz on 2017/8/2.
  * 自定义尺子View
+ * 注意精度问题 该用float的时候千万不要用int
+ * 否则会发生精度误差 出现一些奇葩的问题
  */
 
 public class RulerView extends View {
@@ -28,21 +30,24 @@ public class RulerView extends View {
     private static final int RULE_MAX_LENGTH = 10;
     private static final int DIVIDER_TEXT_MARGIN = 4;
 
-    private int divideRuleHeight, halfDivideRuleHeight;
-    private int mTotalWidth, mTotalHeight;
-    private int mHalfWidth, mHalfHeight;
+    private float divideRuleHeight, halfDivideRuleHeight;
+    private float mTotalWidth, mTotalHeight;
+    private float mHalfWidth, mHalfHeight;
     private Rect outRect;
-    private int ruleBottom;
-    private int leftRightMargin;
-    private int firstLastLineMargin;
+    private float ruleBottom;
+    private float leftRightMargin;
+    private float firstLastLineMargin;
     private int topBottomPadding;
-    private int intervalWidth;
-    private int startLineX;
-    private int maxLineTop;
-    private int middleLineTop;
-    private int normalLineTop;
-    private int numberTextTop;
-
+    private float intervalWidth;
+    private float startLineX;
+    private float maxLineTop;
+    private float middleLineTop;
+    private float normalLineTop;
+    private float numberTextTop;
+    // 打算绘制的厘米数
+    private static final int DEFAULT_COUNT = 10;
+    // 每条竖线所占的像素
+    private static final int LINE_SP = 3;
 
     public RulerView(Context context) {
         this(context, null);
@@ -58,23 +63,23 @@ public class RulerView extends View {
     }
 
     private void init(Context context){
-        mPaint = new Paint();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(3);
+        mPaint.setStrokeWidth(LINE_SP);
         mPaint.setColor(Color.BLACK);
 
         mNumberPaint = new Paint();
         mNumberPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mNumberPaint.setTextSize(10);
+        mNumberPaint.setTextSize(20);
         mNumberPaint.setColor(Color.BLACK);
         mNumberPaint.setAntiAlias(true);
-        mNumberPaint.setStrokeWidth(1);
+        mNumberPaint.setStrokeWidth(3);
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        divideRuleHeight = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, RULE_HEIGHT, displayMetrics);
+        divideRuleHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, RULE_HEIGHT, displayMetrics);
         halfDivideRuleHeight = divideRuleHeight/2;
-        leftRightMargin  = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, RULE_LEFT_RIGHT_MARGIN, displayMetrics);
-        firstLastLineMargin = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, RULE_LEFT_RIGHT_PADDING, displayMetrics);
+        leftRightMargin  = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, RULE_LEFT_RIGHT_MARGIN, displayMetrics);
+        firstLastLineMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, RULE_LEFT_RIGHT_PADDING, displayMetrics);
     }
 
 
@@ -82,14 +87,14 @@ public class RulerView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mTotalWidth = w;
-        mTotalHeight = h;
-        mHalfWidth = w/2;
+        mTotalHeight= h;
+        mHalfWidth  = w/2;
         mHalfHeight = h/2;
 
-        int top = mHalfHeight - halfDivideRuleHeight;
+        float top = mHalfHeight - halfDivideRuleHeight;
         ruleBottom = top + divideRuleHeight;
-        outRect = new Rect(leftRightMargin, top, mTotalWidth -leftRightMargin, ruleBottom);
-        intervalWidth = (mTotalWidth - 2*leftRightMargin -2*firstLastLineMargin)/99;
+        outRect = new Rect((int)leftRightMargin, (int)top, (int)(mTotalWidth -leftRightMargin), (int)ruleBottom);
+        intervalWidth = (mTotalWidth - 2*leftRightMargin -2*firstLastLineMargin)/(DEFAULT_COUNT*10);
         startLineX = leftRightMargin + firstLastLineMargin;
         maxLineTop = ruleBottom - divideRuleHeight/2;
         middleLineTop = ruleBottom - divideRuleHeight/3;
@@ -113,9 +118,10 @@ public class RulerView extends View {
 
     private void drawLines(Canvas canvas){
         canvas.save();
+        // 将divider移动到第一个
         canvas.translate(startLineX, 0);
-        int top = maxLineTop;
-        for (int i =0 ; i <= 100; i++){
+        float top = maxLineTop;
+        for (int i =0 ; i <= DEFAULT_COUNT*10; i++){
              if (i%10 ==0){
                  top = maxLineTop;
                  canvas.drawText(String.valueOf(i), 0, numberTextTop, mNumberPaint);
@@ -125,7 +131,7 @@ public class RulerView extends View {
                  top = normalLineTop;
              }
             canvas.drawLine(0, ruleBottom, 0, top, mPaint);
-            canvas.translate(intervalWidth,0);
+            canvas.translate(intervalWidth, 0);
         }
         canvas.restore();
     }
