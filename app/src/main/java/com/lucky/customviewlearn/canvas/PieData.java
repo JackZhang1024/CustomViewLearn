@@ -1,4 +1,4 @@
-package com.lucky.customviewlearn.simpleview;
+package com.lucky.customviewlearn.canvas;
 
 /**
  * 饼状图数据

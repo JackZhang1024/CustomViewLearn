@@ -1,4 +1,4 @@
-package com.lucky.customviewlearn.simpleview;
+package com.lucky.customviewlearn.canvas;
 
 import android.content.Context;
 import android.content.res.TypedArray;

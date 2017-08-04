@@ -16,21 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScrollerLearnActivity" />
-        <activity android:name=".ExtScrollerLearnActivity" />
-        <activity android:name=".AdvancedScrollerActivity" />
-        <activity android:name=".PieViewLearnActivity" />
-        <activity android:name=".CheckMarkActivity" />
-        <activity android:name=".CustomCircleActivity" />
-        <activity android:name=".PathViewActivity" />
-        <activity android:name=".HeartBezierActivity" />
-        <activity android:name=".EventDispatchActivity" />
-        <activity android:name=".TaiChiActivity" />
+        <activity android:name=".scroller.ui.ScrollerLearnActivity" />
+        <activity android:name=".scroller.ui.ExtScrollerLearnActivity" />
+        <activity android:name=".scroller.ui.AdvancedScrollerActivity" />
+        <activity android:name=".canvas.ui.PieViewLearnActivity" />
+        <activity android:name=".canvas.ui.CheckMarkActivity" />
+        <activity android:name=".canvas.ui.CustomCircleActivity" />
+        <activity android:name=".path.ui.PathViewActivity" />
+        <activity android:name=".path.ui.HeartBezierActivity" />
+        <activity android:name=".eventdispatch.ui.EventDispatchActivity" />
+        <activity android:name=".canvas.ui.TaiChiActivity" />
         <activity
-            android:name=".ResourcesActivity"
+            android:name=".resource.ResourcesActivity"
             android:theme="@style/AppTheme.Resource" />
         <activity
-            android:name=".MaterialDesignActivity"
+            android:name=".materialdesign.ui.MaterialDesignActivity"
             android:label="@string/material_design" />
         <activity
             android:name=".materialdesign.SimpleMaterialDesignActivity"
@@ -79,18 +79,41 @@
             />
 
         <activity
-            android:name=".CanvasSaveRestoreActivity"
+            android:name=".canvas.ui.CanvasSaveRestoreActivity"
             android:label="@string/canvas_save_restore"
             />
 
         <activity
-            android:name=".CanvasLayerActivity"
+            android:name=".canvas.ui.CanvasLayerActivity"
             android:label="@string/canvas_layer"
             />
 
         <activity
-            android:name=".RuleViewActivity"
+            android:name=".canvas.ui.RuleViewActivity"
             android:label="@string/rule_view"
+            />
+
+        <activity
+            android:name=".canvas.ui.CanvasActivity"
+            android:label="@string/canvas"
+            />
+
+        <activity
+            android:name=".scroller.ui.ScrollerActivity"
+            android:label="@string/scroller"
+            />
+
+        <activity
+            android:name=".canvas.ui.RecursiveActivity"
+            android:label="@string/recursive_view"
+            />
+
+        <activity android:name=".canvas.ui.RotateClockViewActivity"
+            android:label="@string/rotate_clock"
+            />
+
+        <activity android:name=".canvas.ui.CanvasSkewActivity"
+            android:label="@string/canvas_skew"
             />
 
         <meta-data

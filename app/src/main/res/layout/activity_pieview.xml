@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lucky.customviewlearn.simpleview.PieView
+    <com.lucky.customviewlearn.canvas.PieView
         android:id="@+id/pie_view"
         android:layout_width="300dp"
         android:layout_height="300dp" />

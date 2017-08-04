@@ -1,4 +1,4 @@
-package com.lucky.customviewlearn;
+package com.lucky.customviewlearn.canvas.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,13 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.lucky.customviewlearn.BaseActivity;
+import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.canvas.CheckView;
 
 /**
  * Created by zfz on 2017/7/5.
  */
 
-public class CheckMarkActivity extends AppCompatActivity {
+public class CheckMarkActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

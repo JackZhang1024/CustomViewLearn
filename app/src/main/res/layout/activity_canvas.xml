@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_checkmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CheckMark" />
+
+    <Button
+        android:id="@+id/btn_customcircle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CustomCircle" />
+
+    <Button
+        android:id="@+id/btn_pieview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PieView" />
+
+    <Button
+        android:id="@+id/btn_taichi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TaiChi" />
+
+    <Button
+        android:id="@+id/btn_canvas_save_restore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/canvas_save_restore" />
+
+    <Button
+        android:id="@+id/btn_canvas_layer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/canvas_layer" />
+
+    <Button
+        android:id="@+id/btn_rule_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rule_view" />
+
+    <Button
+        android:id="@+id/btn_recursive_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recursive_view" />
+
+    <Button
+        android:id="@+id/btn_clock_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rotate_clock" />
+
+    <Button
+        android:id="@+id/btn_canvas_skew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/canvas_skew" />
+
+</LinearLayout>

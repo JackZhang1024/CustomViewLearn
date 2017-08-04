@@ -130,6 +130,8 @@ public class RulerView extends View {
              }else{
                  top = normalLineTop;
              }
+            //在上一个直线所存在的位置绘制一条直线 然后向右移动一个intervalWidth
+            //记住：所有类似的操作都是 先做scale rotate translate skew 然后才去绘制
             canvas.drawLine(0, ruleBottom, 0, top, mPaint);
             canvas.translate(intervalWidth, 0);
         }

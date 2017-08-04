@@ -1,4 +1,4 @@
-package com.lucky.customviewlearn;
+package com.lucky.customviewlearn.path.ui;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
+import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.path.BezierCubicVIew;
 import com.lucky.customviewlearn.path.BezierPathView;
 

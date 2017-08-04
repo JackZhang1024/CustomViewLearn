@@ -5,4 +5,23 @@
     android:orientation="vertical">
 
 
+    <Button
+        android:id="@+id/btn_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scroller" />
+
+    <Button
+        android:id="@+id/btn_scroller_extend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ExtendScroller" />
+
+    <Button
+        android:id="@+id/btn_scroller_advanced"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AdvancedScroller" />
+
+
 </LinearLayout>

@@ -18,7 +18,13 @@
     <string name="zhi_hu">ZhiHu</string>
     <string name="canvas_save_restore">CanvasSaveRestore</string>
     <string name="canvas_layer">CanvasLayer</string>
+    <string name="canvas">Canvas</string>
+    <string name="path">Path</string>
+    <string name="scroller">Scroller</string>
     <string name="rule_view">RuleView</string>
+    <string name="recursive_view">RecursiveView</string>
+    <string name="rotate_clock">RotateClockView</string>
+    <string name="canvas_skew">CanvasSkew</string>
     <string name="content">内容区域</string>
     <string name="primary_page">首页</string>
     <string name="blog">我的博客</string>

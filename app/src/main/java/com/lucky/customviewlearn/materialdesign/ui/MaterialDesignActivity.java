@@ -1,9 +1,12 @@
-package com.lucky.customviewlearn;
+package com.lucky.customviewlearn.materialdesign.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+
+import com.lucky.customviewlearn.BaseActivity;
+import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.materialdesign.BehaviorsActivity;
 import com.lucky.customviewlearn.materialdesign.CollapsingLayoutActivity;
 import com.lucky.customviewlearn.materialdesign.CoordinatorViewActivity;
