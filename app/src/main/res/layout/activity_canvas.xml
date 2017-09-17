@@ -64,4 +64,10 @@
         android:layout_height="wrap_content"
         android:text="@string/canvas_skew" />
 
+    <Button
+        android:id="@+id/btn_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/seek_bar" />
+
 </LinearLayout>

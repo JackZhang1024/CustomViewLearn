@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lucky.customviewlearn">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".CustomApplication"
         android:allowBackup="true"
@@ -35,91 +36,76 @@
         <activity
             android:name=".materialdesign.SimpleMaterialDesignActivity"
             android:label="@string/simple_material_design"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".materialdesign.NavigationViewActivity"
             android:label="@string/navigation_view"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".materialdesign.CoordinatorViewActivity"
             android:label="@string/coordinator_view"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".materialdesign.CollapsingLayoutActivity"
             android:label="@string/collapsing_view"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
 
         <activity
             android:name=".materialdesign.behavior.BottomSheetBehaviorActivity"
-            android:label="@string/bottom_sheet_behaviors"
-            />
+            android:label="@string/bottom_sheet_behaviors" />
 
         <activity
             android:name=".materialdesign.BehaviorsActivity"
-            android:label="@string/behaviors"
-            />
+            android:label="@string/behaviors" />
 
         <activity
             android:name=".materialdesign.behavior.BackTopActivity"
-            android:label="@string/back_top"
-            />
+            android:label="@string/back_top" />
 
         <activity
             android:name=".materialdesign.behavior.SwipeDismissBehaviorActivity"
-            android:label="@string/swipe_dismiss"
-            />
+            android:label="@string/swipe_dismiss" />
 
         <activity
             android:name=".materialdesign.behavior.ZhihuActivity"
-            android:label="@string/zhi_hu"
-            />
+            android:label="@string/zhi_hu" />
 
         <activity
             android:name=".canvas.ui.CanvasSaveRestoreActivity"
-            android:label="@string/canvas_save_restore"
-            />
+            android:label="@string/canvas_save_restore" />
 
         <activity
             android:name=".canvas.ui.CanvasLayerActivity"
-            android:label="@string/canvas_layer"
-            />
+            android:label="@string/canvas_layer" />
 
         <activity
             android:name=".canvas.ui.RuleViewActivity"
-            android:label="@string/rule_view"
-            />
+            android:label="@string/rule_view" />
 
         <activity
             android:name=".canvas.ui.CanvasActivity"
-            android:label="@string/canvas"
-            />
+            android:label="@string/canvas" />
 
         <activity
             android:name=".scroller.ui.ScrollerActivity"
-            android:label="@string/scroller"
-            />
+            android:label="@string/scroller" />
 
         <activity
             android:name=".canvas.ui.RecursiveActivity"
-            android:label="@string/recursive_view"
-            />
+            android:label="@string/recursive_view" />
 
-        <activity android:name=".canvas.ui.RotateClockViewActivity"
-            android:label="@string/rotate_clock"
-            />
+        <activity
+            android:name=".canvas.ui.RotateClockViewActivity"
+            android:label="@string/rotate_clock" />
 
-        <activity android:name=".canvas.ui.CanvasSkewActivity"
-            android:label="@string/canvas_skew"
-            />
+        <activity
+            android:name=".canvas.ui.CanvasSkewActivity"
+            android:label="@string/canvas_skew" />
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="0fc13e70413cbeeb842b7c7e7fddeeae7012f5fa" />
+        <activity
+            android:name=".canvas.ui.SeekBarActivity"
+            android:label="@string/seek_bar" />
+
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

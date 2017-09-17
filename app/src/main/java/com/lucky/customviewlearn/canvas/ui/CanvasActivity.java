@@ -28,6 +28,7 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_recursive_view).setOnClickListener(this);
         findViewById(R.id.btn_clock_view).setOnClickListener(this);
         findViewById(R.id.btn_canvas_skew).setOnClickListener(this);
+        findViewById(R.id.btn_seek_bar).setOnClickListener(this);
     }
 
 
@@ -64,6 +65,9 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_canvas_skew:
                 intent.setClass(this, CanvasSkewActivity.class);
+                break;
+            case R.id.btn_seek_bar:
+                intent.setClass(this, SeekBarActivity.class);
                 break;
         }
         startActivity(intent);
