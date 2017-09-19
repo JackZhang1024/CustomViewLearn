@@ -5,16 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lucky.customviewlearn.canvas.GameRangeSeekBar
+    <com.lucky.customviewlearn.canvas.TimeLineView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:seek_bar_bg="@color/blue"
-        app:seek_bar_gap="4dp"
-        app:mark_text_size="20sp"
-        app:seek_bar_height="10dp"
-        app:seek_bar_text_normal_color="@color/black"
-        app:seek_bar_text_selected_color="@color/yellow"
-        app:mark_text_array="@array/game_money_range"
+        android:layout_marginTop="10dp"
         />
-
 </LinearLayout>
