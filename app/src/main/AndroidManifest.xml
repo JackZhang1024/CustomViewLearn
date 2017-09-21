@@ -103,6 +103,10 @@
             android:label="@string/canvas_skew" />
 
         <activity
+            android:name=".canvas.ui.TexasSwitchButtonActivity"
+            android:label="@string/canvas_skew" />
+
+        <activity
             android:name=".canvas.ui.SeekBarActivity"
             android:label="@string/seek_bar" />
 

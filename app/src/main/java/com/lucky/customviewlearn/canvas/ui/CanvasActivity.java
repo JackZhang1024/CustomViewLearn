@@ -29,6 +29,7 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_clock_view).setOnClickListener(this);
         findViewById(R.id.btn_canvas_skew).setOnClickListener(this);
         findViewById(R.id.btn_seek_bar).setOnClickListener(this);
+        findViewById(R.id.btn_switch_button).setOnClickListener(this);
     }
 
 
@@ -68,6 +69,9 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_seek_bar:
                 intent.setClass(this, SeekBarActivity.class);
+                break;
+            case R.id.btn_switch_button:
+                intent.setClass(this, TexasSwitchButtonActivity.class);
                 break;
         }
         startActivity(intent);

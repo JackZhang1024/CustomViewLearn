@@ -70,4 +70,11 @@
         android:layout_height="wrap_content"
         android:text="@string/seek_bar" />
 
+    <Button
+        android:id="@+id/btn_switch_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/switch_button" />
+
+
 </LinearLayout>
