@@ -31,43 +31,43 @@
             android:name=".resource.ResourcesActivity"
             android:theme="@style/AppTheme.Resource" />
         <activity
-            android:name=".materialdesign.ui.MaterialDesignActivity"
+            android:name=".material.ui.MaterialDesignActivity"
             android:label="@string/material_design" />
         <activity
-            android:name=".materialdesign.SimpleMaterialDesignActivity"
+            android:name=".material.SimpleMaterialDesignActivity"
             android:label="@string/simple_material_design"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".materialdesign.NavigationViewActivity"
+            android:name=".material.NavigationViewActivity"
             android:label="@string/navigation_view"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".materialdesign.CoordinatorViewActivity"
+            android:name=".material.CoordinatorViewActivity"
             android:label="@string/coordinator_view"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".materialdesign.CollapsingLayoutActivity"
+            android:name=".material.CollapsingLayoutActivity"
             android:label="@string/collapsing_view"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/CollapsingTheme" />
 
         <activity
-            android:name=".materialdesign.behavior.BottomSheetBehaviorActivity"
+            android:name=".material.behavior.BottomSheetBehaviorActivity"
             android:label="@string/bottom_sheet_behaviors" />
 
         <activity
-            android:name=".materialdesign.BehaviorsActivity"
+            android:name=".material.BehaviorsActivity"
             android:label="@string/behaviors" />
 
         <activity
-            android:name=".materialdesign.behavior.BackTopActivity"
+            android:name=".material.behavior.BackTopActivity"
             android:label="@string/back_top" />
 
         <activity
-            android:name=".materialdesign.behavior.SwipeDismissBehaviorActivity"
+            android:name=".material.behavior.SwipeDismissBehaviorActivity"
             android:label="@string/swipe_dismiss" />
 
         <activity
-            android:name=".materialdesign.behavior.ZhihuActivity"
+            android:name=".material.behavior.ZhihuActivity"
             android:label="@string/zhi_hu" />
 
         <activity
@@ -110,6 +110,58 @@
             android:name=".canvas.ui.SeekBarActivity"
             android:label="@string/seek_bar" />
 
+        <activity
+            android:name=".material.MaterialThemeActivity"
+            android:label="@string/material_theme"
+            android:theme="@style/MaterialTheme" />
+
+        <activity
+            android:name=".material.ui.MaterialMainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@style/DefaultTheme"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".material.ui.taransitions.TransitionsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/DefaultTheme" />
+
+        <activity
+            android:name=".material.ui.taransitions.ExplodeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/DefaultTheme" />
+
+        <activity
+            android:name=".material.ui.taransitions.FadeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/DefaultTheme" />
+
+        <activity
+            android:name=".material.ui.taransitions.SlideActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/DefaultTheme" />
+        <activity
+            android:name=".material.ui.taransitions.ShareActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/DefaultTheme" />
+
+        <activity
+            android:name=".material.ui.widget.WidgetActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/WidgetTheme" />
+
+        <activity
+            android:name=".CustomViewActivity"
+            android:label="自定义View App">
+            <intent-filter>
+                <action android:name="com.aragoncs.launch" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="scan"
+                    android:scheme="aragoncs" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

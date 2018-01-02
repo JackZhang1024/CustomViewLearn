@@ -31,8 +31,9 @@
     <string name="primary_page">首页</string>
     <string name="blog">我的博客</string>
     <string name="about">关于</string>
-    <string name="scale_down_show_behavior">com.lucky.customviewlearn.materialdesign.behavior.ScaleDownShowBehavior</string>
-    <string name="scale_up_show_behavior">com.lucky.customviewlearn.materialdesign.behavior.ScaleUpShowBehavior</string>
+    <string name="material_theme">材料设计主题</string>
+    <string name="scale_down_show_behavior">com.lucky.customviewlearn.material.behavior.ScaleDownShowBehavior</string>
+    <string name="scale_up_show_behavior">com.lucky.customviewlearn.material.behavior.ScaleUpShowBehavior</string>
     <string name="swipe_dismiss_behavior">android.support.design.widget.SwipeDismissBehavior</string>
     <string-array name="game_money_range">
         <item>"0"</item>

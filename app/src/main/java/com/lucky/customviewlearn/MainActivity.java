@@ -2,12 +2,11 @@ package com.lucky.customviewlearn;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.lucky.customviewlearn.canvas.ui.CanvasActivity;
 import com.lucky.customviewlearn.eventdispatch.ui.EventDispatchActivity;
-import com.lucky.customviewlearn.materialdesign.ui.MaterialDesignActivity;
+import com.lucky.customviewlearn.material.ui.MaterialDesignActivity;
 import com.lucky.customviewlearn.path.ui.HeartBezierActivity;
 import com.lucky.customviewlearn.path.ui.PathViewActivity;
 import com.lucky.customviewlearn.resource.ResourcesActivity;
@@ -18,7 +17,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_learn_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         findViewById(R.id.btn_canvas).setOnClickListener(this);
         findViewById(R.id.btn_scroller).setOnClickListener(this);

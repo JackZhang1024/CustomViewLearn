@@ -2,13 +2,11 @@ package com.lucky.customviewlearn.canvas.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.lucky.customviewlearn.BaseActivity;
 import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.canvas.PieData;
 import com.lucky.customviewlearn.canvas.PieView;
-import com.lucky.customviewlearn.materialdesign.behavior.BackTopActivity;
 
 import java.util.ArrayList;
 import java.util.List;

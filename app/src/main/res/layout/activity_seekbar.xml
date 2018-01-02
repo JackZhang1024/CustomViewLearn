@@ -5,15 +5,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lucky.customviewlearn.canvas.TimeLineView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        />
-
-    <com.lucky.customviewlearn.canvas.GameSeekBar
+    <com.lucky.customviewlearn.canvas.TexasSeekBar
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
+        app:text_array="@array/game_money_range"
+        app:text_size="14sp"
         />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:maxHeight="3dp"
+        android:max="11"
+        android:progress="3"
+        android:progressDrawable="@drawable/game_money_seek_bar"
+        android:thumb="@drawable/money_seek_bar" />
+
 </LinearLayout>

@@ -152,4 +152,6 @@
     <color name="darkblue">#00008b</color> <!-- 暗蓝色 -->
     <color name="navy">#000080</color> <!-- 海军色 -->
     <color name="black">#000000</color> <!-- 黑色 -->
+    <color name="mttSeekBarLineColor">#2d3345</color>
+    <color name="mttBlindTimeColor">#64d0fa</color>
 </resources>

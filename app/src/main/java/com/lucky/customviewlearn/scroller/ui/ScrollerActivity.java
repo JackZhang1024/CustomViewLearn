@@ -12,18 +12,21 @@ import com.lucky.customviewlearn.R;
  * Created by zfz on 2017/8/3.
  */
 
-public class ScrollerActivity extends BaseActivity implements View.OnClickListener{
+public class ScrollerActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroller);
+        findViewById(R.id.btn_scroller).setOnClickListener(this);
+        findViewById(R.id.btn_scroller_extend).setOnClickListener(this);
+        findViewById(R.id.btn_scroller_advanced).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_scroller:
                 intent.setClass(this, ScrollerLearnActivity.class);
                 break;

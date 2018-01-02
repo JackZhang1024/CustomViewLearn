@@ -75,45 +75,51 @@
 
     </LinearLayout>
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/float_menu"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        app:menu_animationDelayPerItem="50"
-        app:menu_backgroundColor="#ccffffff"
-        app:menu_colorNormal="#FFB805"
-        app:menu_colorPressed="#F2AB00"
-        app:menu_colorRipple="#D99200"
-        app:menu_labels_style="@style/MenuButtonsLabel"
-        app:menu_shadowColor="#444">
+        android:layout_height="match_parent">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_info"
-            style="@style/MenuButtonsStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_help"
-            app:fab_label="@string/fab_btn_info" />
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/float_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            app:menu_animationDelayPerItem="50"
+            app:menu_backgroundColor="#ccffffff"
+            app:menu_colorNormal="#FFB805"
+            app:menu_colorPressed="#F2AB00"
+            app:menu_colorRipple="#D99200"
+            app:menu_labels_style="@style/MenuButtonsLabel"
+            app:menu_shadowColor="#444">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_address"
-            style="@style/MenuButtonsStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_agenda"
-            app:fab_label="@string/fab_btn_address" />
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_info"
+                style="@style/MenuButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_help"
+                app:fab_label="@string/fab_btn_info" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_contact"
-            style="@style/MenuButtonsStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_compass"
-            app:fab_label="@string/fab_btn_contact" />
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_address"
+                style="@style/MenuButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_agenda"
+                app:fab_label="@string/fab_btn_address" />
 
-    </com.github.clans.fab.FloatingActionMenu>
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_contact"
+                style="@style/MenuButtonsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_compass"
+                app:fab_label="@string/fab_btn_contact" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+    </android.support.design.widget.CoordinatorLayout>
+
 </RelativeLayout>
