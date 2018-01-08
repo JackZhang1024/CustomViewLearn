@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/btn_add_childView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加childView" />
+
+    <Button
+        android:id="@+id/btn_delete_childView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除childView" />
+
+
+    <!--最简单一种添加布局动画方式 animateLayoutChanges="true"-->
+    <com.lucky.customviewlearn.canvas.CustomGridView
+        android:id="@+id/custom_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:animateLayoutChanges="false"
+        app:childHorizontalSpace="10dp"
+        app:childVerticalSpace="10dp"
+        app:columnNum="3" />
+
+
+</LinearLayout>

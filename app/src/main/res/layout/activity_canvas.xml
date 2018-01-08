@@ -1,80 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_checkmark"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CheckMark" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_customcircle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CustomCircle" />
+        <Button
+            android:id="@+id/btn_simple_canvas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="简单的2D绘画基础" />
 
-    <Button
-        android:id="@+id/btn_pieview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PieView" />
+        <Button
+            android:id="@+id/btn_xml_paint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Android XML绘图" />
 
-    <Button
-        android:id="@+id/btn_taichi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TaiChi" />
+        <Button
+            android:id="@+id/btn_custom_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义GridView" />
 
-    <Button
-        android:id="@+id/btn_canvas_save_restore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/canvas_save_restore" />
+        <Button
+            android:id="@+id/btn_surfaceview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SurfaceView" />
 
-    <Button
-        android:id="@+id/btn_canvas_layer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/canvas_layer" />
+        <Button
+            android:id="@+id/btn_image_process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="图像处理" />
 
-    <Button
-        android:id="@+id/btn_rule_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/rule_view" />
+        <Button
+            android:id="@+id/btn_color_matrix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ColorMatrix" />
 
-    <Button
-        android:id="@+id/btn_recursive_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/recursive_view" />
+        <Button
+            android:id="@+id/btn_matrix_transform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="图像矩阵变换" />
 
-    <Button
-        android:id="@+id/btn_clock_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/rotate_clock" />
+        <Button
+            android:id="@+id/btn_matrix_simple_transform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="图像矩阵变换简化版" />
 
-    <Button
-        android:id="@+id/btn_canvas_skew"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/canvas_skew" />
+        <Button
+            android:id="@+id/btn_paint_effects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="画笔特效" />
 
-    <Button
-        android:id="@+id/btn_seek_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/seek_bar" />
+        <Button
+            android:id="@+id/btn_guagua_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="刮刮卡" />
 
-    <Button
-        android:id="@+id/btn_switch_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/switch_button" />
+        <Button
+            android:id="@+id/btn_bitmap_shader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="图片Shader" />
+
+        <Button
+            android:id="@+id/btn_reflectview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="倒影图片" />
+
+        <Button
+            android:id="@+id/btn_patheffect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PathEffect" />
+
+        <Button
+            android:id="@+id/btn_checkmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CheckMark" />
+
+        <Button
+            android:id="@+id/btn_customcircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CustomCircle" />
+
+        <Button
+            android:id="@+id/btn_pieview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PieView" />
+
+        <Button
+            android:id="@+id/btn_taichi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TaiChi" />
+
+        <Button
+            android:id="@+id/btn_canvas_save_restore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/canvas_save_restore" />
+
+        <Button
+            android:id="@+id/btn_canvas_layer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/canvas_layer" />
+
+        <Button
+            android:id="@+id/btn_rule_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rule_view" />
+
+        <Button
+            android:id="@+id/btn_recursive_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recursive_view" />
+
+        <Button
+            android:id="@+id/btn_clock_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rotate_clock" />
+
+        <Button
+            android:id="@+id/btn_canvas_skew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/canvas_skew" />
+
+        <Button
+            android:id="@+id/btn_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/seek_bar" />
+
+        <Button
+            android:id="@+id/btn_switch_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_button" />
+
+    </LinearLayout>
 
 
-</LinearLayout>
+</ScrollView>

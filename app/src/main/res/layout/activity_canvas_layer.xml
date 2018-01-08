@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lucky.customviewlearn.canvas.CanvasLayerView
+    <com.lucky.customviewlearn.canvas.layer.CanvasLayerView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

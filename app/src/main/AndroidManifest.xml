@@ -17,15 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".scroller.ui.ScrollerLearnActivity" />
-        <activity android:name=".scroller.ui.ExtScrollerLearnActivity" />
-        <activity android:name=".scroller.ui.AdvancedScrollerActivity" />
+        <activity android:name=".scroller.ScrollerLearnActivity" />
+        <activity android:name=".scroller.ExtScrollerLearnActivity" />
+        <activity android:name=".scroller.AdvancedScrollerActivity" />
         <activity android:name=".canvas.ui.PieViewLearnActivity" />
         <activity android:name=".canvas.ui.CheckMarkActivity" />
         <activity android:name=".canvas.ui.CustomCircleActivity" />
         <activity android:name=".path.ui.PathViewActivity" />
         <activity android:name=".path.ui.HeartBezierActivity" />
-        <activity android:name=".eventdispatch.ui.EventDispatchActivity" />
+        <activity android:name=".eventdispatch.EventDispatchActivity" />
         <activity android:name=".canvas.ui.TaiChiActivity" />
         <activity
             android:name=".resource.ResourcesActivity"
@@ -71,11 +71,11 @@
             android:label="@string/zhi_hu" />
 
         <activity
-            android:name=".canvas.ui.CanvasSaveRestoreActivity"
+            android:name=".canvas.saverestore.CanvasSaveRestoreActivity"
             android:label="@string/canvas_save_restore" />
 
         <activity
-            android:name=".canvas.ui.CanvasLayerActivity"
+            android:name=".canvas.layer.CanvasLayerActivity"
             android:label="@string/canvas_layer" />
 
         <activity
@@ -87,7 +87,7 @@
             android:label="@string/canvas" />
 
         <activity
-            android:name=".scroller.ui.ScrollerActivity"
+            android:name=".scroller.ScrollerMainActivity"
             android:label="@string/scroller" />
 
         <activity
@@ -150,6 +150,86 @@
             android:name=".material.ui.widget.WidgetActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/WidgetTheme" />
+
+        <activity
+            android:name=".scroller.DragViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="DragView" />
+
+        <activity
+            android:name=".scroller.ViewDragHelperActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="ViewDragHelper" />
+
+        <activity
+            android:name=".scroller.AdvancedDragViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="AdvancedDragView" />
+
+        <activity
+            android:name=".canvas.base.SimpleCanvasActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="SimpleCanvas" />
+
+        <activity
+            android:name=".canvas.ui.XmlPaintActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Android XML绘图" />
+
+        <activity
+            android:name=".canvas.ui.CustomGridViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Android XML绘图" />
+
+        <activity
+            android:name=".canvas.surfaceview.SurfaceViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="SurfaceView" />
+
+        <activity
+            android:name=".canvas.imageprocess.ImageProcessActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="图像处理" />
+
+        <activity
+            android:name=".canvas.imageprocess.ImageColorMatrixActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="ColorMatrix" />
+
+        <activity
+            android:name=".canvas.imageprocess.ImageMatrixActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="图像矩阵变换" />
+
+        <activity
+            android:name=".canvas.imageprocess.ImageMatrixSimpleActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="图像矩阵变换简化版" />
+
+        <activity
+            android:name=".canvas.specialeffects.PorterDuffXferModeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="图像画笔特效" />
+
+        <activity
+            android:name=".canvas.imageprocess.GuaGuaCardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="刮刮卡" />
+
+        <activity
+            android:name=".canvas.imageprocess.CircleBitmapShaderActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="图片Shader" />
+
+        <activity
+            android:name=".canvas.imageprocess.ReflectViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="倒影图片" />
+
+        <activity
+            android:name=".canvas.imageprocess.PathEffectViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="PathEffect" />
 
         <activity
             android:name=".CustomViewActivity"

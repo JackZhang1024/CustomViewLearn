@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <com.lucky.customviewlearn.scroller.ExtScrollerLinearLayout
+    <com.lucky.customviewlearn.scroller.widget.ExtScrollerLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
@@ -18,7 +18,7 @@
             android:text="按住我拖动试试"
             android:textColor="@android:color/black" />
 
-    </com.lucky.customviewlearn.scroller.ExtScrollerLinearLayout>
+    </com.lucky.customviewlearn.scroller.widget.ExtScrollerLinearLayout>
 
 
 </LinearLayout>

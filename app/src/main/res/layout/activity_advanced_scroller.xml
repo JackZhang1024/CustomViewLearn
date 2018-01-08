@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lucky.customviewlearn.scroller.ScrollerPager
+    <com.lucky.customviewlearn.scroller.widget.ScrollerPager
         android:id="@+id/scroll_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -54,6 +54,6 @@
         </LinearLayout>
 
 
-    </com.lucky.customviewlearn.scroller.ScrollerPager>
+    </com.lucky.customviewlearn.scroller.widget.ScrollerPager>
 
 </LinearLayout>

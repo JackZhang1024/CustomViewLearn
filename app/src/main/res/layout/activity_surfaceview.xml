@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 正弦波曲线-->
+    <com.lucky.customviewlearn.canvas.SerialCureLineSurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--绘画板-->
+    <!--<com.lucky.customviewlearn.canvas.SurfaceViewCanvasBoard-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+</LinearLayout>

@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.lucky.customviewlearn.canvas.ui.CanvasActivity;
-import com.lucky.customviewlearn.eventdispatch.ui.EventDispatchActivity;
+import com.lucky.customviewlearn.eventdispatch.EventDispatchActivity;
 import com.lucky.customviewlearn.material.ui.MaterialDesignActivity;
 import com.lucky.customviewlearn.path.ui.HeartBezierActivity;
 import com.lucky.customviewlearn.path.ui.PathViewActivity;
 import com.lucky.customviewlearn.resource.ResourcesActivity;
-import com.lucky.customviewlearn.scroller.ui.ScrollerActivity;
+import com.lucky.customviewlearn.scroller.ScrollerMainActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 intent.setClass(this, CanvasActivity.class);
                 break;
             case R.id.btn_scroller:
-                intent.setClass(this, ScrollerActivity.class);
+                intent.setClass(this, ScrollerMainActivity.class);
                 break;
             case R.id.btn_pathview:
                 intent.setClass(this, PathViewActivity.class);
