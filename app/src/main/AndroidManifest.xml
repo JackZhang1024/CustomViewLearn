@@ -232,6 +232,22 @@
             android:label="PathEffect" />
 
         <activity
+            android:name=".canvas.ui.ArcProgressActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="ArcProgress" />
+
+        <activity
+            android:name=".canvas.ui.NBScrollRulerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="NBScrollRuler" />
+
+        <activity
+            android:name="com.lucky.androidlearn.aidl.BookManagerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="BookManagerService" />
+
+        <!-- Scheme协议跳转 -->
+        <activity
             android:name=".CustomViewActivity"
             android:label="自定义View App">
             <intent-filter>

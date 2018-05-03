@@ -104,12 +104,12 @@ public class TexasSeekBar extends View {
         mOutLineRect.bottom = mOutLineRect.top + h;
         mSrcRect  = new Rect(0, 0, mDrawableBitmap.getWidth(), mDrawableBitmap.getHeight());
         mDestRect = new Rect();
-        mDestRect.left = mLeftMargin;
-        mDestRect.bottom = mOutLineRect.bottom - mRectBottomPadding;
+        mDestRect.left  = mLeftMargin;
+        mDestRect.bottom= mOutLineRect.bottom - mRectBottomPadding;
         mDestRect.right = mDestRect.left + mDrawableBitmap.getWidth();
-        mDestRect.top = mDestRect.bottom - mDrawableBitmap.getHeight();
-        mIntervalWidth = (mWidth - mLeftMargin - mDrawableBitmap.getWidth()*mTextCount)/(mTextCount-1);
-        mNormalSrcRect = new Rect(0, 0, mNormalSrcBitmap.getWidth(), mNormalSrcBitmap.getHeight());
+        mDestRect.top   = mDestRect.bottom - mDrawableBitmap.getHeight();
+        mIntervalWidth  = (mWidth - mLeftMargin - mDrawableBitmap.getWidth()*mTextCount)/(mTextCount-1);
+        mNormalSrcRect  = new Rect(0, 0, mNormalSrcBitmap.getWidth(), mNormalSrcBitmap.getHeight());
         mNormalDestRect = new Rect();
     }
 

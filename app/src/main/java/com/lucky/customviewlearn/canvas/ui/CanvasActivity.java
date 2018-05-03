@@ -56,6 +56,8 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_bitmap_shader).setOnClickListener(this);
         findViewById(R.id.btn_reflectview).setOnClickListener(this);
         findViewById(R.id.btn_patheffect).setOnClickListener(this);
+        findViewById(R.id.btn_arc_progress).setOnClickListener(this);
+        findViewById(R.id.btn_nb_scrollruler).setOnClickListener(this);
     }
 
 
@@ -137,6 +139,14 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_patheffect:
                 intent.setClass(this, PathEffectViewActivity.class);
+                break;
+            case R.id.btn_arc_progress:
+                intent.setClass(this, ArcProgressActivity.class);
+                break;
+            case R.id.btn_nb_scrollruler:
+                intent.setClass(this, NBScrollRulerActivity.class);
+                break;
+            default:
                 break;
         }
         startActivity(intent);

@@ -45,7 +45,7 @@ public class SimpleCanvasView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //drawPoint(canvas);
+        drawPoint(canvas);
         //drawRectangle(canvas);
         //drawLine(canvas);
         //drawLines(canvas);
@@ -55,7 +55,7 @@ public class SimpleCanvasView extends View {
         //drawArcFull(canvas);
         //drawOval(canvas);
         //drawPosText(canvas);
-        drawPath(canvas);
+        //drawPath(canvas);
     }
 
     private void drawPoint(Canvas canvas) {

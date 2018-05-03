@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.lucky.androidlearn.aidl.BookManagerActivity;
 import com.lucky.customviewlearn.canvas.ui.CanvasActivity;
 import com.lucky.customviewlearn.eventdispatch.EventDispatchActivity;
 import com.lucky.customviewlearn.material.ui.MaterialDesignActivity;
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         findViewById(R.id.btn_resources).setOnClickListener(this);
         findViewById(R.id.btn_material_design).setOnClickListener(this);
-
+        findViewById(R.id.btn_aidl_bms).setOnClickListener(this);
     }
 
 
@@ -56,6 +57,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_material_design:
                 intent.setClass(this, MaterialDesignActivity.class);
+                break;
+            case R.id.btn_aidl_bms:
+                intent.setClass(this, BookManagerActivity.class);
                 break;
         }
         startActivity(intent);

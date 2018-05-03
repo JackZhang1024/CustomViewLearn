@@ -27,6 +27,7 @@
     <string name="canvas_skew">CanvasSkew</string>
     <string name="seek_bar">SeekBar</string>
     <string name="switch_button">SwitchButton</string>
+    <string name="arcprogress">ArcProgress</string>
     <string name="content">内容区域</string>
     <string name="primary_page">首页</string>
     <string name="blog">我的博客</string>
@@ -42,4 +43,5 @@
         <item>"3"</item>
         <item>"4"</item>
     </string-array>
+    <string name="nb_scroll_ruler">ScrollRuler</string>
 </resources>

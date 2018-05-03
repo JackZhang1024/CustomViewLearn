@@ -159,6 +159,18 @@
             android:layout_height="wrap_content"
             android:text="@string/switch_button" />
 
+        <Button
+            android:id="@+id/btn_arc_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/arcprogress" />
+
+        <Button
+            android:id="@+id/btn_nb_scrollruler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nb_scroll_ruler" />
+
     </LinearLayout>
 
 
