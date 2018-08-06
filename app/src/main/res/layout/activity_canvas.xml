@@ -16,6 +16,12 @@
             android:text="@string/signature_view" />
 
         <Button
+            android:id="@+id/btn_signaturepad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signature_pad_view" />
+
+        <Button
             android:id="@+id/btn_simple_canvas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

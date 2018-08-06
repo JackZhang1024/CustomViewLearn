@@ -59,6 +59,7 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_arc_progress).setOnClickListener(this);
         findViewById(R.id.btn_nb_scrollruler).setOnClickListener(this);
         findViewById(R.id.btn_signature_view).setOnClickListener(this);
+        findViewById(R.id.btn_signaturepad_view).setOnClickListener(this);
     }
 
 
@@ -149,6 +150,9 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_signature_view:
                 intent.setClass(this, SignatureViewActivity.class);
+                break;
+            case R.id.btn_signaturepad_view:
+                intent.setClass(this, SignaturePadViewActivity.class);
                 break;
             default:
                 break;

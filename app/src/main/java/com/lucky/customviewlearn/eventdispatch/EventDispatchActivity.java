@@ -13,6 +13,9 @@ import com.lucky.customviewlearn.R;
 
 /**
  * Created by zfz on 2017/7/7.
+ *
+ * 滑动冲突 https://www.jianshu.com/p/8bc0765dffc9
+ *
  * @author zfz
  */
 

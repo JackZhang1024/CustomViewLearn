@@ -36,8 +36,8 @@ public class ChildViewC extends View implements View.OnTouchListener, View.OnCli
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setStrokeWidth(10);
         mPaint.setAntiAlias(true);
-        setOnClickListener(this);
-        setOnTouchListener(this);
+        //setOnClickListener(this);
+        //setOnTouchListener(this);
     }
 
     @Override
@@ -68,8 +68,9 @@ public class ChildViewC extends View implements View.OnTouchListener, View.OnCli
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.e(TAG, "dispatchTouchEvent: ");
         boolean result = super.dispatchTouchEvent(event);
-        Log.e(TAG, "dispatchTouchEvent: "+result);
+        Log.e(TAG, "dispatchTouchEvent: result "+result);
         return result;
     }
 
@@ -84,10 +85,11 @@ public class ChildViewC extends View implements View.OnTouchListener, View.OnCli
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent: ");
         boolean result = super.onTouchEvent(event);
-        Log.e(TAG, "onTouchEvent: " + result);
-        return result;
-        //return false;
+        Log.e(TAG, "onTouchEvent: result " + result);
+        //return result;
+        return false;
     }
 
     @Override

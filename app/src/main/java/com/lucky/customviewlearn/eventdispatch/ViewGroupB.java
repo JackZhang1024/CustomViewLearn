@@ -20,29 +20,32 @@ public class ViewGroupB extends LinearLayout implements View.OnTouchListener, Vi
 
     public ViewGroupB(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        setOnClickListener(this);
-        setOnTouchListener(this);
+        //setOnClickListener(this);
+        //setOnTouchListener(this);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "dispatchTouchEvent: ");
         boolean result = super.dispatchTouchEvent(ev);
-        Log.e(TAG, "dispatchTouchEvent: "+result);
+        Log.e(TAG, "dispatchTouchEvent: result "+result);
         return result;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onInterceptTouchEvent: ");
         boolean result = super.onInterceptTouchEvent(event);
-        Log.e(TAG, "onInterceptTouchEvent: "+result);
+        Log.e(TAG, "onInterceptTouchEvent: result"+result);
         return result;
         //return true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent: ");
         boolean result = super.onTouchEvent(event);
-        Log.e(TAG, "onTouchEvent: "+result);
+        Log.e(TAG, "onTouchEvent: result "+result);
         return result;
         //return true;
     }

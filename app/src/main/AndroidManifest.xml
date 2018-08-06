@@ -254,6 +254,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/signature_view" />
 
+        <activity
+            android:name=".canvas.ui.SignaturePadViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/signature_pad_view" />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"
