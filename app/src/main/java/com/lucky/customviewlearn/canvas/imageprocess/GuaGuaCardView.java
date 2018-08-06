@@ -46,7 +46,7 @@ public class GuaGuaCardView extends View {
         mPath = new Path();
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(20);
+        mPaint.setStrokeWidth(40);
         mPaint.setAlpha(0);
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         mPaint.setStrokeJoin(Paint.Join.ROUND);

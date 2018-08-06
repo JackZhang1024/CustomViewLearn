@@ -3,6 +3,9 @@
     package="com.lucky.customviewlearn">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".CustomApplication"
         android:allowBackup="true"
@@ -245,6 +248,11 @@
             android:name="com.lucky.androidlearn.aidl.BookManagerActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="BookManagerService" />
+
+        <activity
+            android:name=".canvas.ui.SignatureViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/signature_view" />
 
         <!-- Scheme协议跳转 -->
         <activity

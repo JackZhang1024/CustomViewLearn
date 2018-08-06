@@ -10,6 +10,12 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btn_signature_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signature_view" />
+
+        <Button
             android:id="@+id/btn_simple_canvas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -170,6 +176,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nb_scroll_ruler" />
+
+
+
 
     </LinearLayout>
 

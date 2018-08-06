@@ -58,6 +58,7 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_patheffect).setOnClickListener(this);
         findViewById(R.id.btn_arc_progress).setOnClickListener(this);
         findViewById(R.id.btn_nb_scrollruler).setOnClickListener(this);
+        findViewById(R.id.btn_signature_view).setOnClickListener(this);
     }
 
 
@@ -145,6 +146,9 @@ public class CanvasActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_nb_scrollruler:
                 intent.setClass(this, NBScrollRulerActivity.class);
+                break;
+            case R.id.btn_signature_view:
+                intent.setClass(this, SignatureViewActivity.class);
                 break;
             default:
                 break;
