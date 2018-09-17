@@ -12,6 +12,7 @@ import com.lucky.customviewlearn.path.ui.HeartBezierActivity;
 import com.lucky.customviewlearn.path.ui.PathViewActivity;
 import com.lucky.customviewlearn.resource.ResourcesActivity;
 import com.lucky.customviewlearn.scroller.ScrollerMainActivity;
+import com.lucky.customviewlearn.view.ZiRuLinearLayoutActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_resources).setOnClickListener(this);
         findViewById(R.id.btn_material_design).setOnClickListener(this);
         findViewById(R.id.btn_aidl_bms).setOnClickListener(this);
+        findViewById(R.id.btn_ziru_linearlayout).setOnClickListener(this);
     }
 
 
@@ -60,6 +62,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_aidl_bms:
                 intent.setClass(this, BookManagerActivity.class);
+                break;
+            case R.id.btn_ziru_linearlayout:
+                intent.setClass(this, ZiRuLinearLayoutActivity.class);
                 break;
         }
         startActivity(intent);

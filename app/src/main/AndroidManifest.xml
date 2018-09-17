@@ -259,6 +259,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/signature_pad_view" />
 
+        <activity android:name=".view.ZiRuLinearLayoutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/border_linearlayout"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"

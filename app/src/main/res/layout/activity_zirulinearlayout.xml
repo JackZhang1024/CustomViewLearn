@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.lucky.customviewlearn.view.ZiRuLinearLayout
+        android:id="@+id/ll_ziru"
+        android:layout_width="100dp"
+        android:layout_height="200dp" />
+
+    <com.lucky.customviewlearn.view.ZiRuLinearLayoutNew
+        android:id="@+id/ll_ziru_new_outter"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <com.lucky.customviewlearn.view.ZiRuLinearLayoutNew
+            android:id="@+id/ll_ziru_new_inner"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/pink"
+            />
+
+
+    </com.lucky.customviewlearn.view.ZiRuLinearLayoutNew>
+
+    <com.lucky.customviewlearn.view.ZiRuImageView
+        android:id="@+id/ziru_imageview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/left_arrow"
+        android:visibility="gone" />
+
+    <com.lucky.customviewlearn.view.ZiRuImageTextView
+        android:id="@+id/imagetextView"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+</LinearLayout>
