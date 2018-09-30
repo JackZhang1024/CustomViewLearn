@@ -264,6 +264,11 @@
             android:label="@string/border_linearlayout"
             />
 
+        <activity android:name=".securitycheck.SecurityCheckActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/security_check"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"
