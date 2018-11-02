@@ -64,7 +64,7 @@ public class ZiRuLinearLayout extends FrameLayout {
     }
 
     static class RectangleView extends View {
-        private static final String TAG = "RectangleView";
+        private static final String TAG = "RectangleView+++++++++++++";
         private Paint mPaint;
         private RectF mRectF;
         private int mWidth, mHeight;

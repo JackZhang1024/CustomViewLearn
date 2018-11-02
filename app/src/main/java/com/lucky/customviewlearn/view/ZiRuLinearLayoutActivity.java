@@ -1,6 +1,5 @@
 package com.lucky.customviewlearn.view;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lucky.customviewlearn.R;
@@ -19,6 +19,9 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     private ZiRuLinearLayoutNew mZiRuLinearLayoutInner;
     private ZiRuImageView mZiruImageView;
     private ZiRuImageTextView mZiruImageTextView;
+    private ZiRuRelativeLayout mZiRuRelativeLayout;
+    private ZiRuOuterRelativeLayout mZiRuRelativeParent;
+    private TextView mTvContent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +31,19 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         createZiRuImageView();
         createImageTextView();
         createZiRuEditTextView();
+        createZiRuRelativeLayout();
+        expandInnerView();
+    }
+
+    private void expandInnerView() {
+       // ziRuRelativeLayout.setLayoutParams();
     }
 
     private void createZiRuEditTextView() {
 
     }
 
-    private void createZiRuLinearLayout(){
+    private void createZiRuLinearLayout() {
         mZiRuLinearlayout = findViewById(R.id.ll_ziru);
         TextView textView = new TextView(this);
         textView.setText("Hello World!");
@@ -44,7 +53,7 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     }
 
 
-    private void createZiRuLinearLayoutNew(){
+    private void createZiRuLinearLayoutNew() {
         mZiRuLinearLayoutNewOutter = (ZiRuLinearLayoutNew) findViewById(R.id.ll_ziru_new_outter);
         mZiRuLinearLayoutNewOutter.setDrawSolidRoundCornerRect(true);
 
@@ -56,16 +65,46 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         mZiRuLinearLayoutInner.setBackground(colorDrawable);
     }
 
-    private void createZiRuImageView(){
+    private void createZiRuImageView() {
         mZiruImageView = findViewById(R.id.ziru_imageview);
         mZiruImageView.setBackgroundColor(Color.GREEN);
     }
 
 
-    private void createImageTextView(){
+    private void createImageTextView() {
         mZiruImageTextView = findViewById(R.id.imagetextView);
         mZiruImageTextView.setImageResource(R.drawable.left_arrow);
         mZiruImageTextView.setTextViewText("返回");
     }
+
+    ZiRuRelativeLayout ziRuRelativeLayout;
+
+    private void createZiRuRelativeLayout() {
+        mZiRuRelativeParent = (ZiRuOuterRelativeLayout) findViewById(R.id.ziru_relative_parent);
+        ziRuRelativeLayout = new ZiRuRelativeLayout(this);
+        //ziRuRelativeLayout.setDrawSolidRoundCornerRect(true);
+        //ziRuRelativeLayout.setDrawRoundCornerRect(true);
+        //ziRuRelativeLayout.setDrawRect(true);
+        ziRuRelativeLayout.setDrawTopSide(true);
+        ziRuRelativeLayout.setDrawBottomSide(true);
+        ziRuRelativeLayout.setDrawLeftOutSide(true);
+        ziRuRelativeLayout.setDrawRightSide(true);
+        ziRuRelativeLayout.setBackgroundResource(0);
+        //ziRuRelativeLayout.setInnerPadding(40, 120, 20, 20);
+        ziRuRelativeLayout.setOuterPadding(40, 20, 40, 20);
+        TextView textView = new TextView(this);
+        textView.setText("Hello ZiRuRelativeLayout");
+        textView.setTextSize(20);
+        RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        //ziRuRelativeLayout.addView(textView, rp);
+        //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,20);
+        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(50, 50);
+        rlParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        mZiRuRelativeParent.addView(ziRuRelativeLayout, rlParams);
+
+    }
+
 
 }
