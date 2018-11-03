@@ -15,7 +15,7 @@
         android:id="@+id/ll_ziru"
         android:layout_width="100dp"
         android:layout_height="200dp"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <com.lucky.customviewlearn.view.ZiRuLinearLayoutNew
         android:id="@+id/ll_ziru_new_outter"
@@ -75,8 +75,8 @@
 
     <com.lucky.customviewlearn.view.ZiRuOuterRelativeLayout
         android:id="@+id/ziru_relative_parent"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginLeft="30dp"
         android:background="@color/cadetblue"
         android:orientation="vertical">

@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -36,7 +37,16 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     }
 
     private void expandInnerView() {
-       // ziRuRelativeLayout.setLayoutParams();
+        findViewById(R.id.btn_expand).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RelativeLayout.LayoutParams rlParams = (RelativeLayout.LayoutParams) ziRuRelativeLayout.getLayoutParams();
+                rlParams.width = rlParams.width*2;
+                rlParams.height = rlParams.height*2;
+                ziRuRelativeLayout.setLayoutParams(rlParams);
+                //mZiRuRelativeParent.addView(ziRuRelativeLayout, rlParams);
+            }
+        });
     }
 
     private void createZiRuEditTextView() {
@@ -82,7 +92,7 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     private void createZiRuRelativeLayout() {
         mZiRuRelativeParent = (ZiRuOuterRelativeLayout) findViewById(R.id.ziru_relative_parent);
         ziRuRelativeLayout = new ZiRuRelativeLayout(this);
-        //ziRuRelativeLayout.setDrawSolidRoundCornerRect(true);
+        ziRuRelativeLayout.setDrawSolidRoundCornerRect(true);
         //ziRuRelativeLayout.setDrawRoundCornerRect(true);
         //ziRuRelativeLayout.setDrawRect(true);
         ziRuRelativeLayout.setDrawTopSide(true);
@@ -92,6 +102,7 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         ziRuRelativeLayout.setBackgroundResource(0);
         //ziRuRelativeLayout.setInnerPadding(40, 120, 20, 20);
         ziRuRelativeLayout.setOuterPadding(40, 20, 40, 20);
+        ziRuRelativeLayout.setBorder(10, "#FFF68F");
         TextView textView = new TextView(this);
         textView.setText("Hello ZiRuRelativeLayout");
         textView.setTextSize(20);
@@ -104,6 +115,11 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         rlParams.addRule(RelativeLayout.CENTER_VERTICAL);
         mZiRuRelativeParent.addView(ziRuRelativeLayout, rlParams);
 
+//        ZiRuRelativeLayout ziRuRelativeLayout2 = new ZiRuRelativeLayout(this);
+//        RelativeLayout.LayoutParams rlParams2 = new RelativeLayout.LayoutParams(200, 400);
+//        ziRuRelativeLayout2.setDrawSolidRoundCornerRect(true);
+//        rlParams2.addRule(RelativeLayout.ALIGN_TOP);
+//        mZiRuRelativeParent.addView(ziRuRelativeLayout2, rlParams2);
     }
 
 

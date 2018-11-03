@@ -71,7 +71,7 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         mRectF = new Rect();
         mBorderWidth = DisplayUtil.dp2px(getContext(), (int) mBorderWidth);
         mStrokeWidth = DisplayUtil.dp2px(getContext(), (int) mStrokeWidth);
-        mColor = Color.parseColor("#FFC0CB");
+        mColor = Color.parseColor("#FFA54F");
         setRoundCornerRadius(mRadius);
 
     }
@@ -162,7 +162,7 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
     protected void dispatchDraw(Canvas canvas) {
         //绘制一般的矩形
         //canvas.drawRect(mRectF, mPaint);
-        Log.e(TAG, "dispatchDraw: ");
+        // 绘制Border
         if (mDrawBorder) {
             if (mDrawLeftOutSide){
                 canvas.drawLines(getLeftLinePoints(mRectF), mPaint);
@@ -179,6 +179,7 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
             super.dispatchDraw(canvas);
             return;
         }
+        // 绘制圆角边框
         ShapeDrawable shapeDrawable = getShapeDrawable();
         if (shapeDrawable != null) {
             shapeDrawable.setBounds(mRectF);
@@ -277,19 +278,19 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
 
     public void setDrawRect(boolean drawRect) {
         this.mDrawRectangle = drawRect;
-        invalidate();
+        //invalidate();
     }
 
     // 实线边框
     public void setDrawRoundCornerRect(boolean drawRoundCornerRect) {
         this.mDrawRoundCornerRectangle = drawRoundCornerRect;
-        invalidate();
+        //invalidate();
     }
 
     // 实线填充布局
     public void setDrawSolidRoundCornerRect(boolean drawSolidRoundRect) {
         this.mDrawSolidRoundCornerRectangle = drawSolidRoundRect;
-        invalidate();
+        //invalidate();
     }
 
     public ShapeDrawable getShapeDrawable() {
@@ -318,14 +319,24 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
 
     public void setColor(String color) {
         mColor = Color.parseColor(color);
+        mPaint.setColor(mColor);
         mDrawRectangle = true;
-        invalidate();
+        //invalidate();
     }
 
     public void setBorderWidth(int borderWidth) {
-        mBorderWidth = borderWidth;
+        mBorderWidth = DisplayUtil.dp2px(getContext(), (int) borderWidth);
+        mPaint.setStrokeWidth(mBorderWidth);
         mDrawRectangle = true;
-        invalidate();
+        //invalidate();
+    }
+
+    public void setBorder(int borderWidth, String color){
+        mColor = Color.parseColor(color);
+        mStrokeWidth =  DisplayUtil.dp2px(getContext(), (int) borderWidth);
+        mPaint.setColor(mColor);
+        mDrawRectangle = true;
+        //invalidate();
     }
 
     // 内padding
