@@ -13,8 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.percent.PercentRelativeLayout;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
-import android.widget.RelativeLayout;
 
 import com.lucky.customviewlearn.core.DisplayUtil;
 
@@ -76,69 +74,78 @@ public class ZiRuOuterRelativeLayout extends PercentRelativeLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightSize= MeasureSpec.getSize(heightMeasureSpec);
         int heightMode= MeasureSpec.getMode(heightMeasureSpec);
+        int length = getChildCount();
+        int widthSpec = getMeasureSpec(widthSize+getOuterLeftPadding()+getOuterRightPadding(), widthMode);
+        int heightSpec = getMeasureSpec(heightSize+getOuterTopPadding()+getOuterBottomPadding(), heightMode);
+        super.onMeasure(widthSpec, heightSpec);
+
         int width  = 0;
         int height = 0;
-        int length = getChildCount();
-        Log.e(TAG, "onMeasure: widthSize " + widthSize + " heightSize " + heightSize);
-        switch (widthMode) {
-            case MeasureSpec.AT_MOST: // 最小宽度
-                int calculatedWidth = 0;
-                for (int i = 0; i < length; i++) {
-                    View child = getChildAt(i);
-                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
-                    calculatedWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
-                }
-                calculatedWidth = calculatedWidth +  getOuterLeftPadding() + getOuterRightPadding();
-                Log.e(TAG, "onMeasure: calculatedWidth "+calculatedWidth);
-                width = Math.min(widthSize, calculatedWidth);
-                break;
-            case MeasureSpec.UNSPECIFIED:
-            case MeasureSpec.EXACTLY:
-                width = widthSize + getOuterLeftPadding() + getOuterRightPadding();
-                break;
-        }
-        switch (heightMode) {
-            case MeasureSpec.AT_MOST: // 最小高度
-                int calculatedHeight = 0;
-                for (int i = 0; i < length; i++) {
-                    View child = getChildAt(i);
-                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
-                    Log.e(TAG, "onMeasure: rawHeight "+child.getMeasuredHeight()+" topMargin "+lp.topMargin+" bottomMargin "+lp.bottomMargin);
-                    calculatedHeight += child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
-                }
-                Log.e(TAG, "onMeasure: outerTop "+getOuterTopPadding()+" outerBottom "+getOuterBottomPadding());
-                calculatedHeight = calculatedHeight + getOuterTopPadding() + getOuterBottomPadding();
-                Log.e(TAG, "onMeasure: calculatedHeight "+calculatedHeight);
 
-                height = Math.min(heightSize, calculatedHeight);
-                break;
-            case MeasureSpec.UNSPECIFIED:
-                super.onMeasure( widthMeasureSpec,  heightMeasureSpec);
-                break;
-            case MeasureSpec.EXACTLY:
-                Log.e(TAG, "onMeasure: height Mode Exactly");
-                height = heightSize + getOuterTopPadding() + getOuterBottomPadding();
-
-                for (int i = 0; i < length; i++) {
-                    View child = getChildAt(i);
-                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
-                    Log.e(TAG, "外部 onMeasure: rawHeight "+child.getMeasuredHeight()+" topMargin "+lp.topMargin+" bottomMargin "+lp.bottomMargin);
-                }
-                // TODO: 2018/11/2 考虑是否进行对外部布局进行扩展
-                break;
-        }
-        Log.e(TAG, "onMeasure: width " + width + " height " + height);
-        setMeasuredDimension(width, height);
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+//        int heightSize= MeasureSpec.getSize(heightMeasureSpec);
+//        int heightMode= MeasureSpec.getMode(heightMeasureSpec);
+//        int width  = 0;
+//        int height = 0;
+//        int length = getChildCount();
+//
+//
+//
+//        switch (widthMode) {
+//            case MeasureSpec.AT_MOST: // 最小宽度
+//                int calculatedWidth = 0;
+//                for (int i = 0; i < length; i++) {
+//                    View child = getChildAt(i);
+//                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
+//                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+//                    calculatedWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+//                }
+//                calculatedWidth = calculatedWidth +  getOuterLeftPadding() + getOuterRightPadding();
+//                width = Math.min(widthSize, calculatedWidth);
+//                break;
+//            case MeasureSpec.UNSPECIFIED:
+//            case MeasureSpec.EXACTLY:
+//                width = widthSize + getOuterLeftPadding() + getOuterRightPadding();
+//                break;
+//        }
+//        switch (heightMode) {
+//            case MeasureSpec.AT_MOST: // 最小高度
+//                int calculatedHeight = 0;
+//                for (int i = 0; i < length; i++) {
+//                    View child = getChildAt(i);
+//                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
+//                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+//                    calculatedHeight += child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
+//                }
+//                calculatedHeight = calculatedHeight + getOuterTopPadding() + getOuterBottomPadding();
+//                height = Math.min(heightSize, calculatedHeight);
+//                break;
+//            case MeasureSpec.UNSPECIFIED:
+//                super.onMeasure( widthMeasureSpec,  heightMeasureSpec);
+//                break;
+//            case MeasureSpec.EXACTLY:
+//                height = heightSize + getOuterTopPadding() + getOuterBottomPadding();
+//
+//                for (int i = 0; i < length; i++) {
+//                    View child = getChildAt(i);
+//                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
+//                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+//                }
+//                break;
+//        }
+//        setMeasuredDimension(width, height);
     }
 
+    private int getMeasureSpec(int size, int mode){
+        return  MeasureSpec.makeMeasureSpec(size, mode);
+    }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {

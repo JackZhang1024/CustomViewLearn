@@ -13,14 +13,11 @@ import android.support.annotation.Nullable;
 import android.support.percent.PercentRelativeLayout;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.lucky.customviewlearn.core.DisplayUtil;
 
 
-public class ZiRuRelativeLayout extends PercentRelativeLayout {
+public class ZiRuRelativeLayout extends PercentRelativeLayout implements IZiRuViewExtend {
     private static final String TAG = "ZiRuRelativeLayout";
     private Paint mPaint;
     private Rect mRectF;
@@ -71,74 +68,81 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         mRectF = new Rect();
         mBorderWidth = DisplayUtil.dp2px(getContext(), (int) mBorderWidth);
         mStrokeWidth = DisplayUtil.dp2px(getContext(), (int) mStrokeWidth);
-        mColor = Color.parseColor("#FFA54F");
+        mColor = Color.parseColor("#00000000");
         setRoundCornerRadius(mRadius);
-
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        int width = 0;
-        int height = 0;
+        int heightSize= MeasureSpec.getSize(heightMeasureSpec);
+        int heightMode= MeasureSpec.getMode(heightMeasureSpec);
         int length = getChildCount();
-        Log.e(TAG, "onMeasure: widthSize " + widthSize + " heightSize " + heightSize);
-        switch (widthMode) {
-            case MeasureSpec.AT_MOST: // 最小宽度
-                int calculatedWidth = 0;
-                for (int i = 0; i < length; i++) {
-                    View child = getChildAt(i);
-                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
-                    calculatedWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
-                }
-                calculatedWidth = calculatedWidth + getOuterLeftPadding() + getOuterRightPadding();
-                Log.e(TAG, "onMeasure: calculatedWidth " + calculatedWidth);
-                width = Math.min(widthSize, calculatedWidth);
-                break;
-            case MeasureSpec.UNSPECIFIED:
-            case MeasureSpec.EXACTLY:
-                width = widthSize + getOuterLeftPadding() + getOuterRightPadding();
-                break;
-        }
-        switch (heightMode) {
-            case MeasureSpec.AT_MOST: // 最小高度
-                int calculatedHeight = 0;
-                for (int i = 0; i < length; i++) {
-                    View child = getChildAt(i);
-                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
-                    Log.e(TAG, "onMeasure: rawHeight " + child.getMeasuredHeight() + " topMargin " + lp.topMargin + " bottomMargin " + lp.bottomMargin);
-                    calculatedHeight += child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
-                }
-                Log.e(TAG, "onMeasure: outerTop " + getOuterTopPadding() + " outerBottom " + getOuterBottomPadding());
-                calculatedHeight = calculatedHeight + getOuterTopPadding() + getOuterBottomPadding();
-                Log.e(TAG, "onMeasure: calculatedHeight " + calculatedHeight);
 
-                height = Math.min(heightSize, calculatedHeight);
-                break;
-            case MeasureSpec.UNSPECIFIED:
-                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-                break;
-            case MeasureSpec.EXACTLY:
-                Log.e(TAG, "onMeasure: height Mode Exactly");
-                height = heightSize + getOuterTopPadding() + getOuterBottomPadding();
-                break;
-        }
-        Log.e(TAG, "onMeasure: 内部 width " + width + " height " + height);
-        setMeasuredDimension(width, height);
+        int width = widthSize + getOuterLeftPadding() + getOuterRightPadding();
+        int height = heightSize + getOuterTopPadding() + getOuterBottomPadding();
+        Log.e(TAG, "onMeasure: ZiRuItemView Width "+width+" Height "+height+" left "+getOuterLeftPadding()+" right "+getOuterRightPadding()+" top "+getOuterTopPadding()+" bottom "+getOuterBottomPadding());
+        Log.e(TAG, "onMeasure: width "+widthSize+" height "+heightSize);
+        int widthSpec = getMeasureSpec(width, widthMode);
+        int heightSpec = getMeasureSpec(height, heightMode);
+        super.onMeasure(widthSpec, heightSpec);
+
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+//        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+//        int width  = 0;
+//        int height = 0;
+//        int length = getChildCount();
+//        switch (widthMode) {
+//            case MeasureSpec.AT_MOST: // 最小宽度
+//                int calculatedWidth = 0;
+//                for (int i = 0; i < length; i++) {
+//                    View child = getChildAt(i);
+//                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
+//                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+//                    calculatedWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+//                }
+//                calculatedWidth = calculatedWidth + getOuterLeftPadding() + getOuterRightPadding();
+//                width = Math.min(widthSize, calculatedWidth);
+//                break;
+//            case MeasureSpec.UNSPECIFIED:
+//            case MeasureSpec.EXACTLY:
+//                width = widthSize + getOuterLeftPadding() + getOuterRightPadding();
+//                break;
+//        }
+//        switch (heightMode) {
+//            case MeasureSpec.AT_MOST: // 最小高度
+//                int calculatedHeight = 0;
+//                for (int i = 0; i < length; i++) {
+//                    View child = getChildAt(i);
+//                    measureChild(child, widthMeasureSpec, heightMeasureSpec);
+//                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+//                    calculatedHeight += child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
+//                }
+//                calculatedHeight = calculatedHeight + getOuterTopPadding() + getOuterBottomPadding();
+//                height = Math.min(heightSize, calculatedHeight);
+//                break;
+//            case MeasureSpec.UNSPECIFIED:
+//                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//                break;
+//            case MeasureSpec.EXACTLY:
+//                height = heightSize + getOuterTopPadding() + getOuterBottomPadding();
+//                break;
+//        }
+//        setMeasuredDimension(width, height);
     }
 
+
+    private int getMeasureSpec(int size, int mode){
+        return  MeasureSpec.makeMeasureSpec(size, mode);
+    }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        Log.e(TAG, "onLayout: 内部 width " + (right - left) + " height " + (bottom - top));
-
 
     }
 
@@ -151,7 +155,7 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         mRectF.top = 0;
         mRectF.right = mWidth;
         mRectF.bottom = mHeight;
-        Log.e(TAG, "onSizeChanged: mWidth " + mWidth + " mHeight " + mHeight);
+        Log.e(TAG, "onSizeChanged: width "+mWidth+" height "+mHeight+" id "+getId());
     }
 
 
@@ -231,6 +235,7 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         super.onDraw(canvas);
     }
 
+    @Override
     public float[] getOutRadius() {
         float[] outRadius = new float[]{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
         if (mLeftTopCorner) {
@@ -260,39 +265,44 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         setRightBottomCorner(true);
     }
 
+    @Override
     public void setLeftTopCorner(boolean leftTopCorner) {
         this.mLeftTopCorner = leftTopCorner;
     }
 
+    @Override
     public void setRightTopCorner(boolean rightTopCorner) {
         this.mRightTopCorner = rightTopCorner;
     }
 
+    @Override
     public void setLeftBottomCorner(boolean leftBottomCorner) {
         this.mLeftBottomCorner = leftBottomCorner;
     }
 
+    @Override
     public void setRightBottomCorner(boolean rightBottomCorner) {
         this.mRightBottomCorner = rightBottomCorner;
     }
 
+    @Override
     public void setDrawRect(boolean drawRect) {
         this.mDrawRectangle = drawRect;
-        //invalidate();
     }
 
     // 实线边框
+    @Override
     public void setDrawRoundCornerRect(boolean drawRoundCornerRect) {
         this.mDrawRoundCornerRectangle = drawRoundCornerRect;
-        //invalidate();
     }
 
     // 实线填充布局
+    @Override
     public void setDrawSolidRoundCornerRect(boolean drawSolidRoundRect) {
         this.mDrawSolidRoundCornerRectangle = drawSolidRoundRect;
-        //invalidate();
     }
 
+    @Override
     public ShapeDrawable getShapeDrawable() {
         ShapeDrawable shapeDrawable = null;
         Paint paint = null;
@@ -317,34 +327,36 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         return shapeDrawable;
     }
 
+    @Override
     public void setColor(String color) {
         mColor = Color.parseColor(color);
         mPaint.setColor(mColor);
         mDrawRectangle = true;
-        //invalidate();
     }
 
+    @Override
     public void setBorderWidth(int borderWidth) {
         mBorderWidth = DisplayUtil.dp2px(getContext(), (int) borderWidth);
         mPaint.setStrokeWidth(mBorderWidth);
         mDrawRectangle = true;
-        //invalidate();
     }
 
+    @Override
     public void setBorder(int borderWidth, String color){
         mColor = Color.parseColor(color);
         mStrokeWidth =  DisplayUtil.dp2px(getContext(), (int) borderWidth);
         mPaint.setColor(mColor);
         mDrawRectangle = true;
-        //invalidate();
     }
 
     // 内padding
+    @Override
     public void setInnerPadding(int leftPadding, int topPadding, int rightPadding, int bottomPadding) {
         setPadding(leftPadding, topPadding, rightPadding, bottomPadding);
     }
 
     // 外padding 需要扩展宽高
+    @Override
     public void setOuterPadding(int leftPadding, int topPadding, int rightPadding, int bottomPadding) {
         this.mOuterLeftPadding = leftPadding;
         this.mOuterTopPadding = topPadding;
@@ -352,38 +364,46 @@ public class ZiRuRelativeLayout extends PercentRelativeLayout {
         this.mOuterBottomPadding = bottomPadding;
     }
 
+    @Override
     public int getOuterBottomPadding() {
         return mOuterBottomPadding;
     }
 
+    @Override
     public int getOuterLeftPadding() {
         return mOuterLeftPadding;
     }
 
+    @Override
     public int getOuterRightPadding() {
         return mOuterRightPadding;
     }
 
+    @Override
     public int getOuterTopPadding() {
         return mOuterTopPadding;
     }
 
 
+    @Override
     public void setDrawTopSide(boolean mDrawTopSide) {
         this.mDrawTopSide = mDrawTopSide;
         this.mDrawBorder = true;
     }
 
+    @Override
     public void setDrawLeftOutSide(boolean mDrawLeftOutSide) {
         this.mDrawLeftOutSide = mDrawLeftOutSide;
         this.mDrawBorder = true;
     }
 
+    @Override
     public void setDrawRightSide(boolean mDrawRightSide) {
         this.mDrawRightSide = mDrawRightSide;
         this.mDrawBorder = true;
     }
 
+    @Override
     public void setDrawBottomSide(boolean mDrawBottomSide) {
         this.mDrawBottomSide = mDrawBottomSide;
         this.mDrawBorder = true;

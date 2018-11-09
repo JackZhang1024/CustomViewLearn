@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,10 +12,27 @@
         android:layout_height="wrap_content"
         android:text="扩大" />
 
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:background="@color/pink"
+        android:visibility="gone"
+        />
+
+    <!--<com.lucky.customviewlearn.view.ZiRuRecycleView-->
+        <!--android:id="@+id/ziru_recycleview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--/>-->
+
+
     <com.lucky.customviewlearn.view.ZiRuLinearLayout
         android:id="@+id/ll_ziru"
-        android:layout_width="100dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:visibility="visible" />
 
     <com.lucky.customviewlearn.view.ZiRuLinearLayoutNew
@@ -47,13 +65,13 @@
         android:id="@+id/imagetextView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <!-- <ImageView
                     app:layout_heightPercent="50%"
@@ -79,7 +97,8 @@
         android:layout_height="300dp"
         android:layout_marginLeft="30dp"
         android:background="@color/cadetblue"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 
     </com.lucky.customviewlearn.view.ZiRuOuterRelativeLayout>
 

@@ -24,7 +24,8 @@ import com.lucky.customviewlearn.core.DisplayUtil;
 // 1 圆角矩形
 // 2 圆角实心矩形
 // 3 矩形
-public class ZiRuLinearLayout extends LinearLayout {
+public class ZiRuLinearLayout extends LinearLayout implements IZiRuViewExtend{
+
     private static final String TAG = "ZiRuLinearLayoutNew";
     private Paint mPaint;
     private Rect mRectF;
@@ -74,7 +75,7 @@ public class ZiRuLinearLayout extends LinearLayout {
         mRectF = new Rect();
         mBorderWidth = DisplayUtil.dp2px(getContext(), (int) mBorderWidth);
         mStrokeWidth = DisplayUtil.dp2px(getContext(), (int) mStrokeWidth);
-        mColor = Color.parseColor("#ffcd48");
+        mColor = Color.parseColor("#FFC0CB");
         setRoundCornerRadius(mRadius);
 
     }
@@ -95,7 +96,7 @@ public class ZiRuLinearLayout extends LinearLayout {
                 for (int i = 0; i < length; i++) {
                     View child = getChildAt(i);
                     measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+                    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) child.getLayoutParams();
                     calculatedWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
                 }
                 calculatedWidth = calculatedWidth + getOuterLeftPadding() + getOuterRightPadding();
@@ -112,7 +113,7 @@ public class ZiRuLinearLayout extends LinearLayout {
                 for (int i = 0; i < length; i++) {
                     View child = getChildAt(i);
                     measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+                    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) child.getLayoutParams();
                     calculatedHeight += child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
                 }
                 calculatedHeight = calculatedHeight + getOuterTopPadding() + getOuterBottomPadding();
@@ -147,6 +148,22 @@ public class ZiRuLinearLayout extends LinearLayout {
     protected void dispatchDraw(Canvas canvas) {
         //绘制一般的矩形
         //canvas.drawRect(mRectF, mPaint);
+        if (mDrawBorder) {
+            if (mDrawLeftOutSide){
+                canvas.drawLines(getLeftLinePoints(mRectF), mPaint);
+            }
+            if (mDrawRightSide){
+                canvas.drawLines(getRightLinePoints(mRectF), mPaint);
+            }
+            if (mDrawTopSide){
+                canvas.drawLines(getTopLinePoints(mRectF), mPaint);
+            }
+            if (mDrawBottomSide){
+                canvas.drawLines(getBottomLinePoints(mRectF), mPaint);
+            }
+            super.dispatchDraw(canvas);
+            return;
+        }
         ShapeDrawable shapeDrawable = getShapeDrawable();
         if (shapeDrawable != null) {
             shapeDrawable.setBounds(mRectF);
@@ -156,11 +173,49 @@ public class ZiRuLinearLayout extends LinearLayout {
     }
 
 
+    private float[] getTopLinePoints(Rect rect) {
+        float[] points = new float[4];
+        points[0] = rect.left;
+        points[1] = rect.top;
+        points[2] = rect.right;
+        points[3] = rect.top;
+        return points;
+    }
+
+    private float[] getBottomLinePoints(Rect rect) {
+        float[] points = new float[4];
+        points[0] = rect.left;
+        points[1] = rect.bottom;
+        points[2] = rect.right;
+        points[3] = rect.bottom;
+        return points;
+    }
+
+    private float[] getLeftLinePoints(Rect rect) {
+        float[] points = new float[4];
+        points[0] = rect.left;
+        points[1] = rect.top;
+        points[2] = rect.left;
+        points[3] = rect.bottom;
+        return points;
+    }
+
+    private float[] getRightLinePoints(Rect rect) {
+        float[] points = new float[4];
+        points[0] = rect.right;
+        points[1] = rect.top;
+        points[2] = rect.right;
+        points[3] = rect.bottom;
+        return points;
+    }
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
     }
 
+    @Override
     public float[] getOutRadius() {
         float[] outRadius = new float[]{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
         if (mLeftTopCorner) {
@@ -190,37 +245,44 @@ public class ZiRuLinearLayout extends LinearLayout {
         setRightBottomCorner(true);
     }
 
+    @Override
     public void setLeftTopCorner(boolean leftTopCorner) {
         this.mLeftTopCorner = leftTopCorner;
     }
 
+    @Override
     public void setRightTopCorner(boolean rightTopCorner) {
         this.mRightTopCorner = rightTopCorner;
     }
 
+    @Override
     public void setLeftBottomCorner(boolean leftBottomCorner) {
         this.mLeftBottomCorner = leftBottomCorner;
     }
 
+    @Override
     public void setRightBottomCorner(boolean rightBottomCorner) {
         this.mRightBottomCorner = rightBottomCorner;
     }
 
+    @Override
     public void setDrawRect(boolean drawRect) {
         this.mDrawRectangle = drawRect;
-        invalidate();
     }
 
+    // 实线边框
+    @Override
     public void setDrawRoundCornerRect(boolean drawRoundCornerRect) {
         this.mDrawRoundCornerRectangle = drawRoundCornerRect;
-        invalidate();
     }
 
+    // 实线填充布局
+    @Override
     public void setDrawSolidRoundCornerRect(boolean drawSolidRoundRect) {
         this.mDrawSolidRoundCornerRectangle = drawSolidRoundRect;
-        invalidate();
     }
 
+    @Override
     public ShapeDrawable getShapeDrawable() {
         ShapeDrawable shapeDrawable = null;
         Paint paint = null;
@@ -235,34 +297,46 @@ public class ZiRuLinearLayout extends LinearLayout {
             RectF rectF = new RectF(mBorderWidth, mBorderWidth, mBorderWidth, mBorderWidth);
             shapeDrawable = new ShapeDrawable(new RoundRectShape(ffVar, rectF, ffVar));
             paint = shapeDrawable.getPaint();
-            paint.setColor(Color.WHITE);
+            paint.setColor(mColor);
         } else if (mDrawSolidRoundCornerRectangle) {
             float[] ffVar = getOutRadius();
             shapeDrawable = new ShapeDrawable(new RoundRectShape(ffVar, null, null));
             paint = shapeDrawable.getPaint();
-            paint.setColor(Color.WHITE);
+            paint.setColor(mColor);
         }
         return shapeDrawable;
     }
 
+    @Override
     public void setColor(String color) {
         mColor = Color.parseColor(color);
+        mPaint.setColor(mColor);
         mDrawRectangle = true;
-        invalidate();
     }
 
+    @Override
     public void setBorderWidth(int borderWidth) {
-        mBorderWidth = borderWidth;
+        mBorderWidth = DisplayUtil.dp2px(getContext(), (int) borderWidth);
+        mPaint.setStrokeWidth(mBorderWidth);
         mDrawRectangle = true;
-        invalidate();
     }
 
-    public boolean isDrawSolidRoundCornerRectangle() {
-        return mDrawSolidRoundCornerRectangle;
+    @Override
+    public void setBorder(int borderWidth, String color){
+        mColor = Color.parseColor(color);
+        mStrokeWidth =  DisplayUtil.dp2px(getContext(), (int) borderWidth);
+        mPaint.setColor(mColor);
+        mDrawRectangle = true;
     }
 
+    // 内padding
+    @Override
+    public void setInnerPadding(int leftPadding, int topPadding, int rightPadding, int bottomPadding) {
+        setPadding(leftPadding, topPadding, rightPadding, bottomPadding);
+    }
 
     // 外padding 需要扩展宽高
+    @Override
     public void setOuterPadding(int leftPadding, int topPadding, int rightPadding, int bottomPadding) {
         this.mOuterLeftPadding = leftPadding;
         this.mOuterTopPadding = topPadding;
@@ -270,42 +344,48 @@ public class ZiRuLinearLayout extends LinearLayout {
         this.mOuterBottomPadding = bottomPadding;
     }
 
+    @Override
     public int getOuterBottomPadding() {
         return mOuterBottomPadding;
     }
 
+    @Override
     public int getOuterLeftPadding() {
         return mOuterLeftPadding;
     }
 
+    @Override
     public int getOuterRightPadding() {
         return mOuterRightPadding;
     }
 
+    @Override
     public int getOuterTopPadding() {
         return mOuterTopPadding;
     }
 
 
+    @Override
     public void setDrawTopSide(boolean mDrawTopSide) {
         this.mDrawTopSide = mDrawTopSide;
         this.mDrawBorder = true;
     }
 
+    @Override
     public void setDrawLeftOutSide(boolean mDrawLeftOutSide) {
         this.mDrawLeftOutSide = mDrawLeftOutSide;
         this.mDrawBorder = true;
     }
 
+    @Override
     public void setDrawRightSide(boolean mDrawRightSide) {
         this.mDrawRightSide = mDrawRightSide;
         this.mDrawBorder = true;
     }
 
+    @Override
     public void setDrawBottomSide(boolean mDrawBottomSide) {
         this.mDrawBottomSide = mDrawBottomSide;
         this.mDrawBorder = true;
     }
-
-
 }
