@@ -13,6 +13,7 @@ import com.lucky.customviewlearn.path.ui.PathViewActivity;
 import com.lucky.customviewlearn.resource.ResourcesActivity;
 import com.lucky.customviewlearn.scroller.ScrollerMainActivity;
 import com.lucky.customviewlearn.securitycheck.SecurityCheckActivity;
+import com.lucky.customviewlearn.view.FlexLayoutActivity;
 import com.lucky.customviewlearn.view.ZiRuLinearLayoutActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_aidl_bms).setOnClickListener(this);
         findViewById(R.id.btn_ziru_linearlayout).setOnClickListener(this);
         findViewById(R.id.btn_security_check).setOnClickListener(this);
+        findViewById(R.id.btn_ziru_flexbox_layotu).setOnClickListener(this);
     }
 
 
@@ -70,6 +72,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_security_check:
                 intent.setClass(this, SecurityCheckActivity.class);
+                break;
+            case R.id.btn_ziru_flexbox_layotu:
+                intent.setClass(this, FlexLayoutActivity.class);
                 break;
         }
         startActivity(intent);

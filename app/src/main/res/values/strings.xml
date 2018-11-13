@@ -48,5 +48,5 @@
     <string name="signature_pad_view">Pad自定义手写签名</string>
     <string name="border_linearlayout">边框有颜色的线性布局</string>
     <string name="security_check">安全信息检查</string>
-
+    <string name="flexbox_layout">FlexBoxLayout</string>
 </resources>

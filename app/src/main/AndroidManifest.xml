@@ -269,6 +269,12 @@
             android:label="@string/security_check"
             />
 
+        <activity android:name=".view.FlexLayoutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/flexbox_layout"
+            />
+
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"

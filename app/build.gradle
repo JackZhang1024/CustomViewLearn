@@ -46,4 +46,6 @@ dependencies {
     // 相对布局
     compile 'com.android.support:percent:26.1.0'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
+    // 类似CSStan
+    implementation 'com.google.android:flexbox:1.0.0'
 }

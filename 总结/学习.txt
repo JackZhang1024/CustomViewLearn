@@ -3,3 +3,16 @@ http://www.cnblogs.com/whoislcj/p/5802899.html
 
 音视频学习
 https://segmentfault.com/a/1190000013145638
+
+FlexBoxLayout
+https://www.cnblogs.com/lynnmn/p/6262941.html
+https://www.jianshu.com/p/5ec4350d2258
+https://www.jianshu.com/p/b3a9c4a99053
+https://github.com/google/flexbox-layout
+https://yogalayout.com/docs
+
+布局ZIndex
+https://blog.csdn.net/y874961524/article/details/77918116
+
+https://blog.csdn.net/dongbaoming/article/details/54287129
+
