@@ -77,6 +77,11 @@ public class FlexLayoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        LinearLayout linearLayout = new LinearLayout(this);
+//        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
+//        linearLayout.setBackgroundColor(Color.RED);
+//        setContentView(linearLayout);
+
         setContentView(R.layout.activity_flexlayout_ziru);
         mRootView = (LinearLayout) findViewById(R.id.root_content);
         Button btnAddMenu = (Button) mRootView.findViewById(R.id.btn_add_menu);
@@ -191,21 +196,26 @@ public class FlexLayoutActivity extends AppCompatActivity {
     private void createNavigation() {
         mFlexboxLayoutNavigation = new FlexboxLayout(this);
         // 从左向右排列
-        mFlexboxLayoutNavigation.setFlexDirection(FlexDirection.ROW);
-        mFlexboxLayoutNavigation.setJustifyContent(JustifyContent.CENTER);
-        mFlexboxLayoutNavigation.setAlignItems(AlignItems.CENTER);
+//        mFlexboxLayoutNavigation.setFlexDirection(FlexDirection.ROW);
+        mFlexboxLayoutNavigation.setFlexDirection(FlexDirection.COLUMN);
+//        mFlexboxLayoutNavigation.setFlexWrap(FlexWrap.WRAP);
+//        mFlexboxLayoutNavigation.setJustifyContent(JustifyContent.CENTER);
+        mFlexboxLayoutNavigation.setAlignItems(AlignItems.STRETCH);
+//        mFlexboxLayoutNavigation.setAlignContent(AlignContent.STRETCH);
 
         TextView tvBack = new TextView(this);
         tvBack.setText("音乐");
         tvBack.setGravity(Gravity.CENTER);
         tvBack.setTextSize(16);
         tvBack.setBackgroundColor(Color.RED);
-        FlexboxLayout.LayoutParams layoutParamsBack = new FlexboxLayout.LayoutParams(100, 160);
+        FlexboxLayout.LayoutParams layoutParamsBack = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
         // flex:1 == flex-grow:1.0 flex-shrink:1.0 flex-bais:0.0
         layoutParamsBack.setOrder(1);
-        layoutParamsBack.setFlexGrow(1.0f);
+        // 如果是具体的值 拉伸问题stretch  根据FlexDirection来设置maxHeight或者maxWidth
+        layoutParamsBack.setMaxHeight(200);
+//        layoutParamsBack.setFlexGrow(1.0f);
 //        layoutParamsBack.setFlexShrink(1.0f);
-//        layoutParamsBack.setFlexBasisPercent(0.0f);
+        layoutParamsBack.setFlexBasisPercent(0.1f);
         mFlexboxLayoutNavigation.addView(tvBack, layoutParamsBack);
 
         TextView tvTitle = new TextView(this);
@@ -213,29 +223,48 @@ public class FlexLayoutActivity extends AppCompatActivity {
         tvTitle.setBackgroundColor(Color.YELLOW);
         tvTitle.setGravity(Gravity.CENTER);
         tvTitle.setTextSize(16);
-        FlexboxLayout.LayoutParams layoutParamsTitle = new FlexboxLayout.LayoutParams(120, 160);
-        layoutParamsTitle.setFlexGrow(1.0f);
+        FlexboxLayout.LayoutParams layoutParamsTitle = new FlexboxLayout.LayoutParams(0, 0);
+        layoutParamsTitle.setMaxHeight(400);
+        layoutParamsTitle.width = 100;
+        layoutParamsTitle.height = 400;
+//        layoutParamsTitle.setFlexGrow(1.0f);
 //        layoutParamsTitle.setFlexShrink(1.0f);
 //        layoutParamsTitle.setFlexBasisPercent(0.0f);
+
         layoutParamsTitle.setOrder(2);
         mFlexboxLayoutNavigation.addView(tvTitle, layoutParamsTitle);
+//
+//
+//        TextView tvMenu = new TextView(this);
+//        tvMenu.setText("旅游");
+//        tvMenu.setTextSize(16);
+//        tvMenu.setBackgroundColor(Color.BLUE);
+//        tvMenu.setGravity(Gravity.CENTER);
+//        FlexboxLayout.LayoutParams layoutParamsMenu = new FlexboxLayout.LayoutParams(200, 100);
+//        layoutParamsMenu.setOrder(3);
+////        layoutParamsMenu.setMaxHeight(50);
+////        layoutParamsMenu.setFlexGrow(1.0f);
+////        layoutParamsMenu.setFlexShrink(1.0f);
+////        layoutParamsMenu.setFlexBasisPercent(0.0f);
+//        mFlexboxLayoutNavigation.addView(tvMenu, layoutParamsMenu);
 
+//        for (int index=0; index< 3; index++){
+//            TextView tvOrange = new TextView(this);
+//            tvOrange.setText("旅游"+index);
+//            tvOrange.setTextSize(16);
+//            tvOrange.setBackgroundColor(Color.BLUE);
+//            tvOrange.setGravity(Gravity.CENTER);
+//            FlexboxLayout.LayoutParams layoutParamsOrange = new FlexboxLayout.LayoutParams(400, 100);
+//            layoutParamsOrange.setOrder(3);
+//            //        layoutParamsMenu.setMaxHeight(50);
+//            //        layoutParamsMenu.setFlexGrow(1.0f);
+//            //        layoutParamsMenu.setFlexShrink(1.0f);
+//            //        layoutParamsMenu.setFlexBasisPercent(0.0f);
+//            mFlexboxLayoutNavigation.addView(tvOrange, layoutParamsOrange);
+//        }
 
-        TextView tvMenu = new TextView(this);
-        tvMenu.setText("旅游");
-        tvMenu.setTextSize(16);
-        tvMenu.setBackgroundColor(Color.BLUE);
-        tvMenu.setGravity(Gravity.CENTER);
-        FlexboxLayout.LayoutParams layoutParamsMenu = new FlexboxLayout.LayoutParams(160, 160);
-        layoutParamsMenu.setOrder(3);
-        layoutParamsMenu.setFlexGrow(1.0f);
-//        layoutParamsMenu.setFlexShrink(1.0f);
-//        layoutParamsMenu.setFlexBasisPercent(0.0f);
-        mFlexboxLayoutNavigation.addView(tvMenu, layoutParamsMenu);
-
-        // TODO: 2018/11/13 平分布局 如果FlexBoxLayout的布局参数是MATCH_PARENT或者固定值 设置flex参数之后
-        // 子控件之前设置的布局参数失效 只有相应的FlexBoxLayout布局参数生效
-        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(800, 300);
+        // TODO: 2018/11/13 平分布局 如果FlexBoxLayout的布局参数是MATCH_PARENT或者固定值 设置flex参数之后 子控件之前设置的布局参数失效 只有相应的FlexBoxLayout布局参数生效
+        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 1000);
         mFlexboxLayoutNavigation.setBackgroundColor(Color.GREEN);
         llParams.topMargin = 20;
         mRootView.addView(mFlexboxLayoutNavigation, llParams);
