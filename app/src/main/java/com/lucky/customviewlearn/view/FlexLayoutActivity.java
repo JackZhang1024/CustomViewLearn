@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.flexbox.AlignContent;
 import com.google.android.flexbox.AlignItems;
+import com.google.android.flexbox.AlignSelf;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayout;
@@ -197,42 +198,44 @@ public class FlexLayoutActivity extends AppCompatActivity {
         mFlexboxLayoutNavigation = new FlexboxLayout(this);
         // 从左向右排列
 //        mFlexboxLayoutNavigation.setFlexDirection(FlexDirection.ROW);
-        mFlexboxLayoutNavigation.setFlexDirection(FlexDirection.COLUMN);
+        mFlexboxLayoutNavigation.setFlexDirection(FlexDirection.ROW);
 //        mFlexboxLayoutNavigation.setFlexWrap(FlexWrap.WRAP);
 //        mFlexboxLayoutNavigation.setJustifyContent(JustifyContent.CENTER);
-        mFlexboxLayoutNavigation.setAlignItems(AlignItems.STRETCH);
+//        mFlexboxLayoutNavigation.setAlignItems(AlignItems.STRETCH);
 //        mFlexboxLayoutNavigation.setAlignContent(AlignContent.STRETCH);
 
-        TextView tvBack = new TextView(this);
-        tvBack.setText("音乐");
-        tvBack.setGravity(Gravity.CENTER);
-        tvBack.setTextSize(16);
-        tvBack.setBackgroundColor(Color.RED);
-        FlexboxLayout.LayoutParams layoutParamsBack = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
+        TextView tvMusic = new TextView(this);
+        tvMusic.setText("音乐");
+        tvMusic.setGravity(Gravity.CENTER);
+        tvMusic.setTextSize(16);
+        tvMusic.setBackgroundColor(Color.RED);
+        FlexboxLayout.LayoutParams layoutParamsMusic = new FlexboxLayout.LayoutParams(600, 200);
         // flex:1 == flex-grow:1.0 flex-shrink:1.0 flex-bais:0.0
-        layoutParamsBack.setOrder(1);
+        layoutParamsMusic.setOrder(1);
         // 如果是具体的值 拉伸问题stretch  根据FlexDirection来设置maxHeight或者maxWidth
-        layoutParamsBack.setMaxHeight(200);
+        layoutParamsMusic.setMaxHeight(200);
 //        layoutParamsBack.setFlexGrow(1.0f);
 //        layoutParamsBack.setFlexShrink(1.0f);
-        layoutParamsBack.setFlexBasisPercent(0.1f);
-        mFlexboxLayoutNavigation.addView(tvBack, layoutParamsBack);
+//        layoutParamsBack.setFlexBasisPercent(0.1f);
+        layoutParamsMusic.setAlignSelf(AlignSelf.FLEX_START);
+        mFlexboxLayoutNavigation.addView(tvMusic, layoutParamsMusic);
 
-        TextView tvTitle = new TextView(this);
-        tvTitle.setText("影视");
-        tvTitle.setBackgroundColor(Color.YELLOW);
-        tvTitle.setGravity(Gravity.CENTER);
-        tvTitle.setTextSize(16);
-        FlexboxLayout.LayoutParams layoutParamsTitle = new FlexboxLayout.LayoutParams(0, 0);
-        layoutParamsTitle.setMaxHeight(400);
-        layoutParamsTitle.width = 100;
-        layoutParamsTitle.height = 400;
+        TextView tvMovie = new TextView(this);
+        tvMovie.setText("影视");
+        tvMovie.setBackgroundColor(Color.YELLOW);
+        tvMovie.setGravity(Gravity.CENTER);
+        tvMovie.setTextSize(16);
+        FlexboxLayout.LayoutParams layoutParamsMovie = new FlexboxLayout.LayoutParams(0, 0);
+        layoutParamsMovie.setMaxHeight(400);
+        layoutParamsMovie.width = 600;
+        layoutParamsMovie.height = 400;
+        layoutParamsMovie.setAlignSelf(AlignSelf.FLEX_START);
 //        layoutParamsTitle.setFlexGrow(1.0f);
 //        layoutParamsTitle.setFlexShrink(1.0f);
 //        layoutParamsTitle.setFlexBasisPercent(0.0f);
 
-        layoutParamsTitle.setOrder(2);
-        mFlexboxLayoutNavigation.addView(tvTitle, layoutParamsTitle);
+        layoutParamsMovie.setOrder(2);
+        mFlexboxLayoutNavigation.addView(tvMovie, layoutParamsMovie);
 //
 //
 //        TextView tvMenu = new TextView(this);
@@ -264,7 +267,7 @@ public class FlexLayoutActivity extends AppCompatActivity {
 //        }
 
         // TODO: 2018/11/13 平分布局 如果FlexBoxLayout的布局参数是MATCH_PARENT或者固定值 设置flex参数之后 子控件之前设置的布局参数失效 只有相应的FlexBoxLayout布局参数生效
-        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 1000);
+        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1000);
         mFlexboxLayoutNavigation.setBackgroundColor(Color.GREEN);
         llParams.topMargin = 20;
         mRootView.addView(mFlexboxLayoutNavigation, llParams);

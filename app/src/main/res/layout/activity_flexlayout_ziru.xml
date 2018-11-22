@@ -11,17 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:showDividers="beginning"
-        >
+        android:showDividers="beginning">
 
         <Button
             android:id="@+id/btn_add_menu"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:text="添加菜单"
-            />
-
+            android:textSize="16sp" />
 
     </LinearLayout>
 

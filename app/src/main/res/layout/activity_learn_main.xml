@@ -85,11 +85,16 @@
             android:text="@string/border_linearlayout" />
 
         <Button
-            android:id="@+id/btn_ziru_flexbox_layotu"
+            android:id="@+id/btn_ziru_flexbox_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/flexbox_layout" />
 
+        <Button
+            android:id="@+id/btn_ziru_yoga_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yoga_layout" />
 
     </LinearLayout>
 

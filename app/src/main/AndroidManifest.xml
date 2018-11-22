@@ -274,6 +274,10 @@
             android:label="@string/flexbox_layout"
             />
 
+        <activity android:name=".YogaLayoutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/yoga_layout"
+            />
 
         <!-- Scheme协议跳转 -->
         <activity
