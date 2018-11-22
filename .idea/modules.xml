@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CustomViewLearn.iml" filepath="$PROJECT_DIR$/CustomViewLearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repository/repository.iml" filepath="$PROJECT_DIR$/repository/repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repository/yoga/yoga.iml" filepath="$PROJECT_DIR$/repository/yoga/yoga.iml" />
     </modules>
   </component>
 </project>

@@ -154,4 +154,6 @@
     <color name="black">#000000</color> <!-- 黑色 -->
     <color name="mttSeekBarLineColor">#2d3345</color>
     <color name="mttBlindTimeColor">#64d0fa</color>
+    <color name="colorGrey">@color/gray</color>
+    <color name="colorBlack">@color/black</color>
 </resources>

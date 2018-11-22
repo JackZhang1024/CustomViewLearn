@@ -48,6 +48,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     // 类似CSStan
     implementation 'com.google.android:flexbox:1.0.0'
-    implementation 'com.facebook.soloader:soloader:0.3.0'
-    compile 'com.facebook.yoga.android:yoga-layout:1.2.0'
+//    implementation 'com.facebook.soloader:soloader:0.3.0'
+//    compile 'com.facebook.yoga.android:yoga-layout:1.2.0'
+    implementation project(':repository:yoga')
 }
