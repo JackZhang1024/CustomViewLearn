@@ -3,6 +3,7 @@ package com.lucky.customviewlearn.view;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.flexbox.AlignContent;
@@ -120,7 +122,7 @@ public class FlexLayoutActivity extends AppCompatActivity {
         createBottomFixedLayout();
         createFiveFlowLayout();
         createSevenFlowLayout();
-
+        createComplexFlexBoxLayout();
     }
 
     private void addViewInFlexBoxLayout(FlexboxLayout flexboxLayout) {
@@ -869,7 +871,42 @@ public class FlexLayoutActivity extends AppCompatActivity {
         LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         llParams.topMargin = 20;
         mRootView.addView(flowFlexBoxLayout, llParams);
+    }
 
+    private void createComplexFlexBoxLayout() {
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+
+        //添加按钮
+        ImageView imagAdd = new ImageView(this);
+        imagAdd.setBackgroundColor(Color.GRAY);
+        imagAdd.setImageResource(R.drawable.ic_launcher);
+        RelativeLayout.LayoutParams imageLayoutParamsItem = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        imageLayoutParamsItem.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        imageLayoutParamsItem.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        ViewCompat.setZ(imagAdd, 99.0f);
+        relativeLayout.addView(imagAdd, imageLayoutParamsItem);
+
+        FlexboxLayout flexBoxLayout = new FlexboxLayout(this);
+        // 从左向右排列
+        flexBoxLayout.setFlexDirection(FlexDirection.COLUMN);
+        flexBoxLayout.setBackgroundColor(Color.YELLOW);
+        TextView tvContent = new TextView(this);
+        tvContent.setText("Hello World!");
+        FlexboxLayout.LayoutParams layoutParamsItem = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
+        flexBoxLayout.addView(tvContent, layoutParamsItem);
+
+        RelativeLayout innerRelativeLayout = new RelativeLayout(this);
+        innerRelativeLayout.setBackgroundColor(Color.GRAY);
+        FlexboxLayout.LayoutParams innerLayoutParamsItem = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
+        flexBoxLayout.addView(innerRelativeLayout, innerLayoutParamsItem);
+
+        RelativeLayout.LayoutParams flexParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        relativeLayout.addView(flexBoxLayout, flexParams);
+
+
+
+        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 800);
+        mRootView.addView(relativeLayout, llParams);
     }
 
 }

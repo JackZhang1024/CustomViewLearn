@@ -5,15 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.soloader.SoLoader;
 import com.facebook.yoga.YogaAlign;
-import com.facebook.yoga.YogaDirection;
 import com.facebook.yoga.YogaEdge;
 import com.facebook.yoga.YogaFlexDirection;
 import com.facebook.yoga.YogaJustify;
@@ -32,7 +29,8 @@ public class YogaLayoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initYoga2();
+        //initYoga2();
+        createLogin();
         //setContentView(R.layout.activity_yoga_love);
         setContentView(layout);
         //layout = (RelativeLayout) findViewById(R.id.ll_root);
@@ -224,19 +222,23 @@ public class YogaLayoutActivity extends AppCompatActivity {
         //layout = (RelativeLayout) findViewById(R.id.ll_root);
         layout = new RelativeLayout(this);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(-2, -2);
+        layout.setBackgroundColor(Color.YELLOW);
         layout.setLayoutParams(params);
 
         YogaNode root = new YogaNode();
         // root的width和layout的width宽度一样才能表现出预期的结果
-        root.setWidth(getWindowManager().getDefaultDisplay().getWidth() );
-        root.setHeight(getWindowManager().getDefaultDisplay().getWidth() / 2);
+//        root.setWidth(getWindowManager().getDefaultDisplay().getWidth() );
+        root.setWidth(-2);
+        root.setHeight(-2);
         root.setFlexDirection(YogaFlexDirection.ROW);
-        //root.setJustifyContent(YogaJustify.CENTER);
 
         // MATCH_PARENT支持 WRAP_CONTENT不支持
-        layout.getLayoutParams().width = getWindowManager().getDefaultDisplay().getWidth();
-        layout.getLayoutParams().height = getWindowManager().getDefaultDisplay().getWidth() / 2;
-        layout.requestLayout();
+        //layout.getLayoutParams().width = getWindowManager().getDefaultDisplay().getWidth();
+        //layout.getLayoutParams().width = -1;
+        //layout.getLayoutParams().height = getWindowManager().getDefaultDisplay().getWidth() / 2;
+        //layout.getLayoutParams().height = getWindowManager().getDefaultDisplay().getWidth() / 2;
+        //layout.requestLayout();
+        //root.setJustifyContent(YogaJustify.CENTER);
 
         YogaNode image1 = new YogaNode();
         image1.setHeight(60 * getResources().getDisplayMetrics().density);
@@ -256,21 +258,125 @@ public class YogaLayoutActivity extends AppCompatActivity {
 
         root.calculateLayout();
 
-        ImageView imageView1 = new ImageView(this);
-        imageView1.setImageResource(R.drawable.little_point);
-        imageView1.setX(image1.getLayoutX());
-        imageView1.setY(image1.getLayoutY());
-        layout.addView(imageView1);
-
         ImageView imageView2 = new ImageView(this);
         imageView2.setImageResource(R.drawable.little_point);
         imageView2.setX(image2.getLayoutX());
         imageView2.setY(image2.getLayoutY());
+        //imageView2.setZ(99.0f);
+//        imageView2.setTranslationZ(99.0f);
+        //ViewCompat.setZ(imageView2, 99.0f);
         layout.addView(imageView2);
 
+        ImageView imageView1 = new ImageView(this);
+        imageView1.setImageResource(R.drawable.little_point);
+        imageView1.setX(image1.getLayoutX());
+        imageView1.setY(image1.getLayoutY());
+        imageView1.setBackgroundColor(Color.RED);
+        layout.addView(imageView1);
+
+        Log.e(TAG, "initYoga2: rootWidth "+root.getWidth()+"  "+root.getHeight()+"  "+root.getLayoutWidth()+" "+root.getLayoutHeight());
+        Log.e(TAG, "initYoga2: rootView "+layout.getWidth()+" "+layout.getHeight());
+
+        layout.getLayoutParams().width = (int)root.getLayoutWidth();
+        layout.getLayoutParams().height = (int)root.getLayoutHeight();
+        layout.requestLayout();
+        Log.e(TAG, "initYoga2: rootView "+layout.getWidth()+" "+layout.getHeight());
 //        image.setPositionType(YogaPositionType.ABSOLUTE);
 //        image.setPosition(YogaEdge.END, 20);
 //        image.setPosition(YogaEdge.TOP, 20);
+
+
+    }
+
+    private void createLogin(){
+        SoLoader.init(this, false);
+        int width = getWindowManager().getDefaultDisplay().getWidth();
+        int height = getWindowManager().getDefaultDisplay().getHeight();
+
+        layout = new RelativeLayout(this);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(-1, -2);
+        layout.setBackgroundColor(Color.YELLOW);
+        layout.setLayoutParams(params);
+
+        YogaNode root = new YogaNode();
+        root.setWidth(width);
+        root.setHeight(height);
+        root.setFlexDirection(YogaFlexDirection.COLUMN);
+        root.setAlignItems(YogaAlign.CENTER);
+        root.setJustifyContent(YogaJustify.SPACE_BETWEEN);
+
+        //登录节点
+        YogaNode loginNode = new YogaNode();
+        loginNode.setWidth(-2);
+        loginNode.setHeight(-2);
+        root.addChildAt(loginNode, 0);
+
+        //用户名节点
+        YogaNode userNameNode = new YogaNode();
+        userNameNode.setWidth(-2);
+        userNameNode.setHeight(-2);
+        root.addChildAt(userNameNode, 1);
+
+        //用户密码节点
+        YogaNode userPassWdNode = new YogaNode();
+        userPassWdNode.setWidth(-2);
+        userPassWdNode.setHeight(-2);
+        root.addChildAt(userPassWdNode, 2);
+
+        //登录按钮
+        YogaNode userLoginButton = new YogaNode();
+        userLoginButton.setWidth(-2);
+        userLoginButton.setHeight(-2);
+        root.addChildAt(userLoginButton, 3);
+
+        //注册按钮
+        YogaNode userRegisterButton = new YogaNode();
+        userRegisterButton.setWidth(-2);
+        userRegisterButton.setHeight(-2);
+        root.addChildAt(userRegisterButton, 4);
+
+        root.calculateLayout();
+
+        //添加childView
+        TextView tvLogin = new TextView(this);
+        tvLogin.setText("登录页面");
+        tvLogin.setTextSize(20);
+        tvLogin.setX(loginNode.getLayoutX());
+        tvLogin.setY(loginNode.getLayoutY());
+        layout.addView(tvLogin);
+
+        TextView tvUserName = new TextView(this);
+        tvUserName.setText("输入用户名");
+        tvUserName.setTextSize(20);
+        tvUserName.setX(userNameNode.getLayoutX());
+        tvUserName.setY(userNameNode.getLayoutY());
+        layout.addView(tvUserName);
+
+        TextView tvUserPasswd = new TextView(this);
+        tvUserPasswd.setText("输入用户密码");
+        tvUserPasswd.setTextSize(20);
+        tvUserPasswd.setX(userPassWdNode.getLayoutX());
+        tvUserPasswd.setY(userPassWdNode.getLayoutY());
+        layout.addView(tvUserPasswd);
+
+        TextView tvLoginButton = new TextView(this);
+        tvLoginButton.setText("登录");
+        tvLoginButton.setTextSize(20);
+        tvLoginButton.setX(userLoginButton.getLayoutX());
+        tvLoginButton.setY(userLoginButton.getLayoutY());
+        layout.addView(tvLoginButton);
+
+        TextView tvRegisterButton = new TextView(this);
+        tvRegisterButton.setText("没账号去注册");
+        tvRegisterButton.setTextSize(20);
+        tvRegisterButton.setX(userRegisterButton.getLayoutX());
+        tvRegisterButton.setY(userRegisterButton.getLayoutY());
+        layout.addView(tvRegisterButton);
+
+        //layout.getLayoutParams().width = (int)root.getLayoutWidth();
+        //layout.getLayoutParams().height = (int)root.getLayoutHeight();
+        Log.e(TAG, "createLogin: width "+root.getLayoutWidth()+" height "+root.getLayoutHeight());
+        layout.requestLayout();
 
     }
 
