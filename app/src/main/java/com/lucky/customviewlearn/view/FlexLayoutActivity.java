@@ -900,7 +900,15 @@ public class FlexLayoutActivity extends AppCompatActivity {
         FlexboxLayout.LayoutParams innerLayoutParamsItem = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
         flexBoxLayout.addView(innerRelativeLayout, innerLayoutParamsItem);
 
-        RelativeLayout.LayoutParams flexParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+
+
+//        RelativeLayout.LayoutParams flexParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+//                RelativeLayout.LayoutParams.MATCH_PARENT);
+//        flexParams.topMargin = 100;
+
+        FlexboxLayout.LayoutParams flexParams = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        flexParams.topMargin = 100;
+
         relativeLayout.addView(flexBoxLayout, flexParams);
 
 
