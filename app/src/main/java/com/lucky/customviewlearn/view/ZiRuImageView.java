@@ -4,55 +4,79 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.ImageView;
 
-// 带有文字的ImageView
-public class ZiRuImageView extends ImageView {
+import com.lucky.customviewlearn.R;
+import com.lucky.customviewlearn.utils.PicassoUtils;
+
+public class ZiRuImageView extends AppCompatImageView {
     private static final String TAG = "ZiRuImageView";
     private Paint mPaint;
     private int mWidth, mHeight;
-    private int mLeft , mBottom;
+    private int mLeft, mBottom;
+    private float mRadius = 137;
+    private boolean mSetRadius;
+    private float[] radiis = new float[8];
+
     public ZiRuImageView(Context context) {
         this(context, null);
     }
 
     public ZiRuImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        initPaint();
     }
 
-
-    private void init() {
+    private void initPaint() {
         mPaint = new Paint();
-        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setAntiAlias(true);
-        mPaint.setColor(Color.RED);
-        mPaint.setTextSize(60);
-        mPaint.setStrokeWidth(2);
+        mPaint.setStrokeWidth(10);
+        mPaint.setStyle(Paint.Style.STROKE);
+    }
+
+    public void setImageResource(String url) {
+        PicassoUtils.getinstance().LoadImage(getContext(), url, this, R.drawable.img_loading, R.drawable.img_load_error,
+                PicassoUtils.PICASSO_BITMAP_SHOW_NORMAL_TYPE, 20);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mWidth = w;
-        mHeight = h;
-        mLeft = 10;
-        mBottom = mHeight-10;
-        Log.e(TAG, "onSizeChanged: w "+w+"  h "+h);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (mSetRadius) {
+            int width = getWidth();
+            int height = getHeight();
+            Path path = new Path();
+            RectF rectF = new RectF(0, 0, width, height);
+            mRadius = Math.min(width, height) / 2;
+            setAllRadius();
+            path.addRoundRect(rectF, radiis, Path.Direction.CW);
+            canvas.clipPath(path);
+        }
         super.onDraw(canvas);
-        Drawable drawable = getDrawable();
-        int intrinsicWidth  = drawable.getIntrinsicWidth();
-        int intrinsicHeight = drawable.getIntrinsicHeight();
-        Log.e(TAG, "onDraw: intrinsicWidth "+intrinsicWidth+" "+intrinsicHeight);
-        canvas.drawText("返回", mLeft, mBottom, mPaint);
     }
+
+    private void setBorderColor(int borderColor) {
+        mPaint.setColor(borderColor);
+    }
+
+    public void setRadius(boolean setRadius, float radius) {
+        this.mSetRadius = setRadius;
+        this.mRadius = radius;
+    }
+
+    private void setAllRadius() {
+        for (int index = 0; index < radiis.length; index++) {
+            radiis[index] = mRadius;
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,95 +11,18 @@
         android:layout_height="wrap_content"
         android:text="扩大" />
 
+    <com.lucky.customviewlearn.view.ZiRuImageView
+        android:id="@+id/img_ziru"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        />
+
     <LinearLayout
         android:id="@+id/ll_content"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:orientation="vertical"
-        android:background="@color/pink"
-        android:visibility="gone"
-        />
-
-    <!--<com.lucky.customviewlearn.view.ZiRuRecycleView-->
-        <!--android:id="@+id/ziru_recycleview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--/>-->
-
-
-    <com.lucky.customviewlearn.view.ZiRuLinearLayout
-        android:id="@+id/ll_ziru"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:visibility="visible" />
-
-    <com.lucky.customviewlearn.view.ZiRuLinearLayoutNew
-        android:id="@+id/ll_ziru_new_outter"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:visibility="gone">
-
-        <com.lucky.customviewlearn.view.ZiRuLinearLayoutNew
-            android:id="@+id/ll_ziru_new_inner"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/pink"
-            android:visibility="gone" />
-
-
-    </com.lucky.customviewlearn.view.ZiRuLinearLayoutNew>
-
-    <com.lucky.customviewlearn.view.ZiRuImageView
-        android:id="@+id/ziru_imageview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/left_arrow"
-        android:visibility="gone" />
-
-    <com.lucky.customviewlearn.view.ZiRuImageTextView
-        android:id="@+id/imagetextView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:visibility="gone" />
-
-
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-        <!-- <ImageView
-                    app:layout_heightPercent="50%"
-                    app:layout_marginLeftPercent="25%"
-                    app:layout_marginTopPercent="25%"
-                    app:layout_widthPercent="50%" />
-        -->
-
-    </android.support.percent.PercentRelativeLayout>
-
-    <!--    <com.lucky.customviewlearn.view.ZiRuRelativeLayoutOld
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />-->
-
-    <!--    <com.lucky.customviewlearn.view.ZiRuRelativeLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@color/cadetblue" />-->
-
-    <com.lucky.customviewlearn.view.ZiRuOuterRelativeLayout
-        android:id="@+id/ziru_relative_parent"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginLeft="30dp"
-        android:background="@color/cadetblue"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-    </com.lucky.customviewlearn.view.ZiRuOuterRelativeLayout>
-
+        android:orientation="vertical" />
 
 </LinearLayout>

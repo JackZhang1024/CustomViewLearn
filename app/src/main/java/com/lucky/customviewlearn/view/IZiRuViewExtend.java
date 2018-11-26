@@ -2,7 +2,7 @@ package com.lucky.customviewlearn.view;
 
 import android.graphics.drawable.ShapeDrawable;
 
-interface IZiRuViewExtend {
+public interface IZiRuViewExtend {
 
     float[] getOutRadius();
 
@@ -30,20 +30,6 @@ interface IZiRuViewExtend {
     void setBorderWidth(int borderWidth);
 
     void setBorder(int borderWidth, String color);
-
-    // 内padding
-    void setInnerPadding(int leftPadding, int topPadding, int rightPadding, int bottomPadding);
-
-    // 外padding 需要扩展宽高
-    void setOuterPadding(int leftPadding, int topPadding, int rightPadding, int bottomPadding);
-
-    int getOuterBottomPadding();
-
-    int getOuterLeftPadding();
-
-    int getOuterRightPadding();
-
-    int getOuterTopPadding();
 
     void setDrawTopSide(boolean mDrawTopSide);
 
