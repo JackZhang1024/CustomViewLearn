@@ -20,3 +20,23 @@ logonSquare json解析快到爆炸
 // https://blog.csdn.net/chaoshenzhaoxichao/article/details/79249286
 // LoganSquare https://blog.csdn.net/u2014_lyy/article/details/51130546
 // https://www.jianshu.com/p/055839b1566a
+
+
+Drawable drawable = getDrawable();
+if(drawable==null || getWidth()==0 || getHeight()==0) {			return;		}
+Bitmap b = ((BitmapDrawable)drawable).getBitmap();		canvas.drawBitmap(getRoundedBitmap(b), 0, 0, null);	}
+ public static Bitmap getRoundedBitmap(Bitmap bitmap){
+ Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
+  Canvas canvas = new Canvas(output);	   final Paint paint = new Paint();
+  paint.setAntiAlias(true);
+   paint.setFilterBitmap(true);
+    paint.setDither(true);
+    final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+    canvas.drawARGB(0, 0, 0, 0);	   canvas.drawCircle(bitmap.getWidth()/2, bitmap.getHeight()/2, bitmap.getHeight()/2, paint);
+    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));	   canvas.drawBitmap(bitmap, rect, rect, paint);
+    return output;   }
+---------------------
+作者：浪人风子
+来源：CSDN
+原文：https://blog.csdn.net/langrenfengzi/article/details/32324569
+版权声明：本文为博主原创文章，转载请附上博文链接！

@@ -1,11 +1,21 @@
 package com.lucky.customviewlearn.view;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -64,7 +74,7 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         imageView.setImageResource(url);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         FlexboxLayout.LayoutParams imageParams = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
-        flexBoxLayout.addView(imageView, imageParams);
+        //flexBoxLayout.addView(imageView, imageParams);
 
         LinearLayout llRootView = (LinearLayout) findViewById(R.id.ll_content);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600);
@@ -72,15 +82,60 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         params.rightMargin = 20;
         flexBoxLayout.setRadius(true, 80);
         flexBoxLayout.setBorderWidth(10);
+
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
+//        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
+//        roundImageDrawable.setRound(80);
+//        flexBoxLayout.setBackground(roundImageDrawable);
+        RoundColorDrawable roundColorDrawable = new RoundColorDrawable(Color.YELLOW);
+        roundColorDrawable.setRound(80);
+        flexBoxLayout.setBackground(roundColorDrawable);
+
         llRootView.addView(flexBoxLayout, params);
     }
 
-    private void createImageView(){
+    private void createImageView() {
         String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
         ZiRuImageView ziRuImageView = (ZiRuImageView) findViewById(R.id.img_ziru);
-        ziRuImageView.setRadius(true,10);
+        ziRuImageView.setRadius(true, 10);
         ziRuImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
+        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
+        roundImageDrawable.setRound(10);
+        ziRuImageView.setBackground(roundImageDrawable);
         ziRuImageView.setImageResource(url);
+//        ziRuImageView.setOutlineProvider(new CustomOutlineProvider());
+//        ziRuImageView.setClipToOutline(true);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public class CustomOutlineProvider extends ViewOutlineProvider {
+        private static final String TAG = "CustomOutlineProvider";
+
+        @Override
+        public void getOutline(View view, Outline outline) {
+            Rect rect = new Rect();
+            view.getGlobalVisibleRect(rect);
+            int leftMargin = 0;
+            int topMargin = 0;
+            Rect selfRect = new Rect(leftMargin, topMargin, rect.right - rect.left - leftMargin, rect.bottom - rect.top - topMargin);
+            int width = view.getWidth();
+            int height = view.getHeight();
+            Log.e(TAG, "getOutline: " + width + " " + height);
+            outline.setRoundRect(selfRect, width / 2);
+        }
+    }
+
+    private void clipBackGround(ImageView imageView) {
+        Rect originRect = new Rect();
+        //getGlobalVisibleRect()相对与父布局的rect
+        imageView.getGlobalVisibleRect(originRect);
+        int centerX = (originRect.right - originRect.left) / 2;
+        int centerY = (originRect.bottom - originRect.top) / 2;
+        //设置View的显示区域，坐标是自身
+        Rect tmp = new Rect(centerX - 150, centerY - 150, centerX + 150, centerY + 150);
+        imageView.setClipBounds(tmp);
+    }
+
 
 }

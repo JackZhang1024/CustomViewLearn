@@ -1,18 +1,29 @@
 package com.lucky.customviewlearn.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 
+import com.google.android.exoplayer.util.NalUnitUtil;
 import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.utils.PicassoUtils;
+import com.squareup.picasso.Picasso;
 
 public class ZiRuImageView extends AppCompatImageView {
     private static final String TAG = "ZiRuImageView";
@@ -22,6 +33,7 @@ public class ZiRuImageView extends AppCompatImageView {
     private float mRadius = 137;
     private boolean mSetRadius;
     private float[] radiis = new float[8];
+    private PaintFlagsDrawFilter paintFlagsDrawFilter;
 
     public ZiRuImageView(Context context) {
         this(context, null);
@@ -37,6 +49,8 @@ public class ZiRuImageView extends AppCompatImageView {
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(10);
         mPaint.setStyle(Paint.Style.STROKE);
+        paintFlagsDrawFilter = new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+        setLayerType(View.LAYER_TYPE_HARDWARE, null);
     }
 
     public void setImageResource(String url) {
@@ -51,14 +65,16 @@ public class ZiRuImageView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        int width = getWidth();
+        int height = getHeight();
+        Path path = new Path();
+        RectF rectF = new RectF(0, 0, width, height);
+        //裁切路径
         if (mSetRadius) {
-            int width = getWidth();
-            int height = getHeight();
-            Path path = new Path();
-            RectF rectF = new RectF(0, 0, width, height);
             mRadius = Math.min(width, height) / 2;
             setAllRadius();
             path.addRoundRect(rectF, radiis, Path.Direction.CW);
+            canvas.setDrawFilter(paintFlagsDrawFilter);
             canvas.clipPath(path);
         }
         super.onDraw(canvas);
@@ -78,5 +94,7 @@ public class ZiRuImageView extends AppCompatImageView {
             radiis[index] = mRadius;
         }
     }
+
+
 
 }
