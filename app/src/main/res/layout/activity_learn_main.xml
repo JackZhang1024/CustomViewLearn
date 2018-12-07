@@ -96,6 +96,12 @@
             android:layout_height="wrap_content"
             android:text="@string/yoga_layout" />
 
+        <Button
+            android:id="@+id/btn_relative_flex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/relative_flex" />
+
     </LinearLayout>
 
 </ScrollView>

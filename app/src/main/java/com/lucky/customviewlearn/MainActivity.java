@@ -37,6 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_security_check).setOnClickListener(this);
         findViewById(R.id.btn_ziru_flexbox_layout).setOnClickListener(this);
         findViewById(R.id.btn_ziru_yoga_layout).setOnClickListener(this);
+        findViewById(R.id.btn_relative_flex).setOnClickListener(this);
     }
 
 
@@ -79,6 +80,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_ziru_yoga_layout:
                 intent.setClass(this, YogaLayoutActivity.class);
+                break;
+            case R.id.btn_relative_flex:
+                intent.setClass(this, RelativeFlexBoxActivity.class);
                 break;
         }
         startActivity(intent);

@@ -1,27 +1,29 @@
 package com.lucky.customviewlearn.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import com.google.android.flexbox.FlexboxLayout;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
-public class ZiRuFlexBoxLayout extends FlexboxLayout {
+public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
     private static final String TAG = "ZiRuFlexBoxLayout";
     private Rect mRectF;
-    private int mWidth, mHeight;
     private float mRadius = 4;
     private Paint mPaint;
     private float[] radiis = new float[8];
     private boolean mSetRadius, mSetBorder;
-    private int mStrokeWidth;
+    private int mStrokeWidth = 1;
 
     public ZiRuFlexBoxLayout(Context context) {
         this(context, null);
@@ -37,15 +39,15 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout {
         mPaint = new Paint();
         mPaint.setColor(Color.GRAY);
         mPaint.setAntiAlias(true);
-        mPaint.setStrokeWidth(1);
+        mPaint.setStrokeWidth(mStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mWidth = w;
-        mHeight = h;
+        int mWidth = w;
+        int mHeight = h;
         mRectF.left = 0;
         mRectF.top = 0;
         mRectF.right = mWidth;
@@ -59,17 +61,22 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        Path path = new Path();
         int width = getWidth();
         int height = getHeight();
-        int halfStrokeWidth = (int) (mStrokeWidth / 2 + 0.5f);
-        RectF rectFF = new RectF(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
-        canvas.drawRoundRect(rectFF, mRadius, mRadius, mPaint);
-        RectF rectF = new RectF(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
         if (mSetRadius) {
+            Path path = new Path();
+            int halfStrokeWidth = (int) (mStrokeWidth / 2 + 0.5f);
+            RectF rectFF = new RectF(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
+            canvas.drawRoundRect(rectFF, mRadius, mRadius, mPaint);
+            RectF rectF = new RectF(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
             setAllRadius();
             path.addRoundRect(rectF, radiis, Path.Direction.CW);
             canvas.clipPath(path);
+        }
+        if (mSetBorder) {
+            int halfStrokeWidth = (int) (mStrokeWidth / 2 + 0.5f);
+            RectF rectFF = new RectF(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
+            canvas.drawRoundRect(rectFF, mRadius, mRadius, mPaint);
         }
         super.dispatchDraw(canvas);
     }
@@ -89,9 +96,30 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout {
         }
     }
 
-    public void setBorderWidth(int borderWidth) {
-        mStrokeWidth = borderWidth;
+    public void setBorder(int strokeWidth, int color) {
+        mStrokeWidth = strokeWidth;
         mSetBorder = true;
-        mPaint.setStrokeWidth(borderWidth);
+        mPaint.setStrokeWidth(strokeWidth);
+        mPaint.setColor(color);
+    }
+
+    @Override
+    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+        setBackgroundDrawable(bitmapDrawable);
+        if (mSetRadius) {
+            RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
+            setBackgroundDrawable(roundImageDrawable);
+        }
+    }
+
+    @Override
+    public void onBitmapFailed(Drawable errorDrawable) {
+
+    }
+
+    @Override
+    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
     }
 }

@@ -17,6 +17,7 @@ package com.lucky.customviewlearn.material.behavior.adapter;
 
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ import java.util.List;
  * @author Yan Zhenjie.
  */
 public class ListRecyclerAdapter extends Adapter<ListRecyclerAdapter.DefineViewHolder> {
-
+    private static final String TAG = "ListRecyclerAdapter";
     private List<String> list;
 
     public ListRecyclerAdapter(List<String> list) {
@@ -50,6 +51,7 @@ public class ListRecyclerAdapter extends Adapter<ListRecyclerAdapter.DefineViewH
 
     @Override
     public DefineViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.e(TAG, "onCreateViewHolder: ");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item, parent, false);
         return new DefineViewHolder(view);

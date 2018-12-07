@@ -22,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -38,7 +39,7 @@ import java.util.List;
  * @author Yan Zhenjie.
  */
 public class BackTopActivity extends AppCompatActivity {
-
+    private static final String TAG = "BackTopActivity";
     private FloatingActionButton FAB;
 
     private RecyclerView recyclerView;
@@ -57,11 +58,12 @@ public class BackTopActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 2; i++) {
             list.add("我是第" + i + "个");
         }
         linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setSmoothScrollbarEnabled(true);
+        //linearLayoutManager = new SyLinearLayoutManager(this);
+        //linearLayoutManager.setSmoothScrollbarEnabled(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         ListRecyclerAdapter adapter = new ListRecyclerAdapter(list);
         recyclerView.setAdapter(adapter);
@@ -115,5 +117,25 @@ public class BackTopActivity extends AppCompatActivity {
             finish();
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int width = recyclerView.getWidth();
+                int height = recyclerView.getHeight();
+                int range = recyclerView.computeVerticalScrollRange();
+                int extent = recyclerView.computeVerticalScrollExtent();
+                int offset = recyclerView.computeVerticalScrollOffset();
+                int ww = recyclerView.getChildAt(0).getWidth();
+                int hh = recyclerView.getChildAt(0).getHeight();
+                Log.e(TAG, "run: "+recyclerView.getMeasuredWidth()+" "+recyclerView.getChildCount()+" "+ww+"  "+hh);
+                Log.e(TAG, "onResume: width "+width+ "height "+height+"  "+range+"  "+extent+" "+offset);
+            }
+        }, 1000);
+
     }
 }

@@ -50,4 +50,5 @@
     <string name="security_check">安全信息检查</string>
     <string name="flexbox_layout">FlexBoxLayout</string>
     <string name="yoga_layout">YogaLayout</string>
+    <string name="relative_flex">RelativeFlex</string>
 </resources>

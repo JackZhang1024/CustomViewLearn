@@ -279,6 +279,11 @@
             android:label="@string/yoga_layout"
             />
 
+        <activity android:name=".RelativeFlexBoxActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/relative_flex"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"

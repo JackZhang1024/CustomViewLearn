@@ -81,7 +81,7 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         params.leftMargin = 20;
         params.rightMargin = 20;
         flexBoxLayout.setRadius(true, 80);
-        flexBoxLayout.setBorderWidth(10);
+        //flexBoxLayout.setBorderWidth(10);
 
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
 //        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);

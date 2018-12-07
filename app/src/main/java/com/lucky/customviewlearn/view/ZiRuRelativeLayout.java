@@ -6,10 +6,11 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.support.percent.PercentRelativeLayout;
 import android.util.AttributeSet;
+import android.widget.RelativeLayout;
 
 import com.lucky.customviewlearn.view.style.BorderStyle;
 
-public class ZiRuRelativeLayout extends PercentRelativeLayout {
+public class ZiRuRelativeLayout extends RelativeLayout {
     private static final String TAG = "ZiRuRelativeLayout";
     private Rect mRectF;
     private int mWidth, mHeight;
