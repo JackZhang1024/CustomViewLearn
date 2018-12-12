@@ -51,4 +51,5 @@
     <string name="flexbox_layout">FlexBoxLayout</string>
     <string name="yoga_layout">YogaLayout</string>
     <string name="relative_flex">RelativeFlex</string>
+    <string name="dynamic_view_insert">动态插入视图</string>
 </resources>

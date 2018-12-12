@@ -284,6 +284,11 @@
             android:label="@string/relative_flex"
             />
 
+        <activity android:name=".view.DynamicViewInsertActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/dynamic_view_insert"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"

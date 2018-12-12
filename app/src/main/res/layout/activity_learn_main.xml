@@ -102,6 +102,12 @@
             android:layout_height="wrap_content"
             android:text="@string/relative_flex" />
 
+        <Button
+            android:id="@+id/btn_dynamic_insert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dynamic_view_insert" />
+
     </LinearLayout>
 
 </ScrollView>

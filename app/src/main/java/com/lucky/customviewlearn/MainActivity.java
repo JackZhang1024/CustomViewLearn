@@ -13,8 +13,11 @@ import com.lucky.customviewlearn.path.ui.PathViewActivity;
 import com.lucky.customviewlearn.resource.ResourcesActivity;
 import com.lucky.customviewlearn.scroller.ScrollerMainActivity;
 import com.lucky.customviewlearn.securitycheck.SecurityCheckActivity;
+import com.lucky.customviewlearn.view.DynamicViewInsertActivity;
 import com.lucky.customviewlearn.view.FlexLayoutActivity;
 import com.lucky.customviewlearn.view.ZiRuLinearLayoutActivity;
+
+import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -38,6 +41,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_ziru_flexbox_layout).setOnClickListener(this);
         findViewById(R.id.btn_ziru_yoga_layout).setOnClickListener(this);
         findViewById(R.id.btn_relative_flex).setOnClickListener(this);
+        findViewById(R.id.btn_dynamic_insert).setOnClickListener(this);
     }
 
 
@@ -83,6 +87,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_relative_flex:
                 intent.setClass(this, RelativeFlexBoxActivity.class);
+                break;
+            case R.id.btn_dynamic_insert:
+                intent.setClass(this, DynamicViewInsertActivity.class);
                 break;
         }
         startActivity(intent);

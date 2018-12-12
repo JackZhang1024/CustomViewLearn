@@ -1,27 +1,24 @@
 package com.lucky.customviewlearn.view;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ColorDrawable;
 
-public class RoundImageDrawable extends Drawable {
+public class RoundCornerColorDrawable extends ColorDrawable {
+    private static final String TAG = "RoundCornerColor";
     private Paint mPaint;
-    private Bitmap mBitmap;
     private RectF mRectF;
     private int mRound;
+    private boolean mSetBorder;
+    private boolean mSetBackground;
 
-    public RoundImageDrawable(Bitmap bitmap) {
-        this.mBitmap = bitmap;
+    public RoundCornerColorDrawable(int color) {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        BitmapShader shader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        mPaint.setShader(shader);
+        mPaint.setColor(color);
     }
 
     /**
@@ -38,29 +35,37 @@ public class RoundImageDrawable extends Drawable {
      */
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawRoundRect(mRectF, mRound, mRound, mPaint);
+        if (mSetBackground) {
+            canvas.drawRoundRect(mRectF, mRound, mRound, mPaint);
+        }
+        if (mSetBorder) {
+            canvas.drawRect(mRectF, mPaint);
+        }
+
     }
 
     /**
      * 暴露给外面设置圆角的大小
+     *
      * @param round
      */
     public void setRound(int round) {
-        this.mRound = round;
+        mSetBackground = true;
+        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mRound = round;
     }
 
-    /**
-     * getIntrinsicWidth、getIntrinsicHeight主要是为了在View使用wrap_content的时候，
-     * 提供一下尺寸，默认为-1可不是我们希望的
-     */
-    @Override
-    public int getIntrinsicHeight() {
-        return mBitmap.getHeight();
+    public void setBorder(int strokeWidth, int color) {
+        mSetBorder = true;
+        mPaint.setStrokeWidth(strokeWidth);
+        mPaint.setColor(color);
+        mPaint.setStyle(Paint.Style.STROKE);
     }
 
-    @Override
-    public int getIntrinsicWidth() {
-        return mBitmap.getWidth();
+    public void setBackground(int color) {
+        mSetBackground = true;
+        mPaint.setColor(color);
+        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
     }
 
     /**
@@ -83,5 +88,6 @@ public class RoundImageDrawable extends Drawable {
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;
     }
+
 
 }
