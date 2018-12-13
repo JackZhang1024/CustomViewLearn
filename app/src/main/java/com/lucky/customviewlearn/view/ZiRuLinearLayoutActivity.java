@@ -22,10 +22,10 @@ import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.lucky.customviewlearn.R;
-import com.lucky.customviewlearn.view.style.BorderStyle;
 
 import java.util.ArrayList;
 
+//https://blog.csdn.net/CSDN_LQR/article/details/79581190
 public class ZiRuLinearLayoutActivity extends AppCompatActivity {
 
     private ZiRuLinearLayout mZiRuLinearlayout;
@@ -80,18 +80,23 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600);
         params.leftMargin = 20;
         params.rightMargin = 20;
-        flexBoxLayout.setRadius(true, 80);
-        //flexBoxLayout.setBorderWidth(10);
+        flexBoxLayout.setCornerRadius(true, 0,100, 50, 0);
+        flexBoxLayout.setBorder(20, Color.YELLOW);
+        int backgroundColor = Color.parseColor("#fff000");
+        //flexBoxLayout.setBackgroundColor(backgroundColor);
+        flexBoxLayout.setBackgroundBitmap(R.drawable.bg_scenary);
 
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
 //        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
 //        roundImageDrawable.setRound(80);
 //        flexBoxLayout.setBackground(roundImageDrawable);
-        RoundColorDrawable roundColorDrawable = new RoundColorDrawable(Color.YELLOW);
-        roundColorDrawable.setRound(80);
-        flexBoxLayout.setBackground(roundColorDrawable);
+
+//        RoundColorDrawable roundColorDrawable = new RoundColorDrawable(Color.YELLOW);
+//        roundColorDrawable.setRound(80);
+//        flexBoxLayout.setBackground(roundColorDrawable);
 
         llRootView.addView(flexBoxLayout, params);
+
     }
 
     private void createImageView() {
@@ -136,6 +141,10 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         Rect tmp = new Rect(centerX - 150, centerY - 150, centerX + 150, centerY + 150);
         imageView.setClipBounds(tmp);
     }
+
+    // 圆角支持 四个圆角都支持 [0.2rem, 0.2rem , 0.2rem, 0.2rem]
+
+
 
 
 }

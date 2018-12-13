@@ -21,22 +21,41 @@ logonSquare json解析快到爆炸
 // LoganSquare https://blog.csdn.net/u2014_lyy/article/details/51130546
 // https://www.jianshu.com/p/055839b1566a
 
+Path和Paint的介绍
+https://blog.csdn.net/mingmingaid/article/details/52461043
+
+// 圆角矩形绘制的时候 边角比较粗的解决方法
+// https://blog.csdn.net/kuaiguixs/article/details/78753149
 
 Drawable drawable = getDrawable();
 if(drawable==null || getWidth()==0 || getHeight()==0) {			return;		}
 Bitmap b = ((BitmapDrawable)drawable).getBitmap();		canvas.drawBitmap(getRoundedBitmap(b), 0, 0, null);	}
- public static Bitmap getRoundedBitmap(Bitmap bitmap){
- Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
-  Canvas canvas = new Canvas(output);	   final Paint paint = new Paint();
-  paint.setAntiAlias(true);
-   paint.setFilterBitmap(true);
-    paint.setDither(true);
-    final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-    canvas.drawARGB(0, 0, 0, 0);	   canvas.drawCircle(bitmap.getWidth()/2, bitmap.getHeight()/2, bitmap.getHeight()/2, paint);
-    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));	   canvas.drawBitmap(bitmap, rect, rect, paint);
-    return output;   }
----------------------
-作者：浪人风子
-来源：CSDN
-原文：https://blog.csdn.net/langrenfengzi/article/details/32324569
-版权声明：本文为博主原创文章，转载请附上博文链接！
+public static Bitmap getRoundedBitmap(Bitmap bitmap){
+Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
+Canvas canvas = new Canvas(output);
+final Paint paint = new Paint();
+paint.setAntiAlias(true);
+paint.setFilterBitmap(true);
+paint.setDither(true);
+final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+canvas.drawARGB(0, 0, 0, 0);
+canvas.drawCircle(bitmap.getWidth()/2, bitmap.getHeight()/2, bitmap.getHeight()/2, paint);
+paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+canvas.drawBitmap(bitmap, rect, rect, paint);
+return output;
+}
+
+Path path = new Path();
+path.moveTo(0, mTopLeftRadius);
+// 圆内切
+path.arcTo(new RectF(0, 0, mTopLeftRadius * 2, mTopLeftRadius * 2), -180, 90);
+        path.lineTo(width - mTopRightRadius, 0);
+        path.arcTo(new RectF(width - 2 * mTopRightRadius, 0, width, mTopRightRadius * 2), -90, 90);
+
+//        path.lineTo(width, height - mBottomRightRadius);
+//        path.arcTo(new RectF(width - 2 * mBottomRightRadius, height - 2 * mBottomRightRadius, width, height), 0, 90);
+
+//        path.lineTo(mBottomLeftRadius, height);
+//        path.arcTo(new RectF(0, height - 2 * mBottomLeftRadius, mBottomLeftRadius * 2, height), 90, 90);
+
+        //path.close();

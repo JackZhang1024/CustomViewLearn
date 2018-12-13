@@ -15,6 +15,8 @@ import com.lucky.customviewlearn.path.BezierPathView;
 
 /**
  * Created by zfz on 2017/7/5.
+ * Path的使用学习
+ * https://www.cnblogs.com/wust221/p/5824982.html
  */
 
 public class PathViewActivity extends AppCompatActivity implements View.OnClickListener{

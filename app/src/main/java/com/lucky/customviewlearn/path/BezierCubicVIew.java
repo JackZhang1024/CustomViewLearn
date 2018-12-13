@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
+ * 贝塞尔曲线绘制
+ * https://www.jianshu.com/p/b1579e8c09ec
  * Created by zfz on 2017/7/6.
  * 三次贝塞尔曲线
  */

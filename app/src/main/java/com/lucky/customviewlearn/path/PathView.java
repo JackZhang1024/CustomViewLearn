@@ -55,7 +55,8 @@ public class PathView extends View {
         // drawRectangle(canvas);
         // drawPerson(canvas);
         // drawOffSetPath(canvas);
-        drawAddArc(canvas);
+        //drawAddArc(canvas);
+        drawSingleRoundCornerPath(canvas);
     }
 
     private void drawRectangle(Canvas canvas){
@@ -103,6 +104,18 @@ public class PathView extends View {
 
         mPaint.setColor(Color.RED);
         canvas.drawPath(dst, mPaint);
+    }
+
+    // 绘制单圆角矩形
+    private void drawSingleRoundCornerPath(Canvas canvas){
+        Path path = new Path();
+        //path.addRect(new RectF(-200,-200, 200, 200), Path.Direction.CW);  // 顺时针绘制
+        path.addRect(-200,-200, 200, 200, Path.Direction.CW);  // 顺时针绘制
+        //path.addRect(-200,-200, 200, 200, Path.Direction.CCW); // 逆时针绘制
+        //path.setLastPoint(-100, 100);
+        RectF rectF = new RectF(-200, -200, -100, -100);
+        path.addRoundRect(rectF, 20, 20, Path.Direction.CW);
+        canvas.drawPath(path, mPaint);
     }
 
 }
