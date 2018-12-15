@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.lucky.customviewlearn.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.squareup.picasso.Transformation;
 
 /**
@@ -40,6 +41,8 @@ import com.squareup.picasso.Transformation;
  compile 'com.squareup.okhttp:okhttp:2.4.0'
  compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
  compile 'com.squareup.picasso:picasso:2.4.0'
+
+ http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/0731/1639.html
 
  */
 public class PicassoUtils {
@@ -148,6 +151,15 @@ public class PicassoUtils {
             Picasso.with(context).load(path).resize(targetWidth, targetHeight).centerCrop().into(imageView);
         }
     }
+
+    public void loadImageBitmap(Context context, String path, Target target){
+        Picasso.with(context).load(path).into(target);
+    }
+
+    public void loadImageBitmap(Context context, int path, Target target){
+        Picasso.with(context).load(path).into(target);
+    }
+
     //--------------------------------------------------
     /**
      *设置圆形头像

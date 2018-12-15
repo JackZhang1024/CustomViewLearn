@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.lucky.customviewlearn.R;
+import com.lucky.customviewlearn.utils.PicassoUtils;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
@@ -84,7 +87,13 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         flexBoxLayout.setBorder(20, Color.YELLOW);
         int backgroundColor = Color.parseColor("#fff000");
         //flexBoxLayout.setBackgroundColor(backgroundColor);
-        flexBoxLayout.setBackgroundBitmap(R.drawable.bg_scenary);
+        //flexBoxLayout.setBackgroundBitmap(R.drawable.bg_scenary);
+
+        if (!TextUtils.isEmpty(url)) {
+            PicassoUtils.getinstance().loadImageBitmap(this, url, flexBoxLayout);
+        }
+
+
 
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
 //        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);

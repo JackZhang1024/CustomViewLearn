@@ -17,6 +17,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.flexbox.FlexboxLayout;
@@ -52,8 +53,6 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
         mPaint.setColor(Color.GRAY);
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(mStrokeWidth);
-        mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStyle(Paint.Style.STROKE);
         mBorderColor = Color.GRAY;
         //抗锯齿
@@ -89,34 +88,27 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
             setAllRadius();
             path.addRoundRect(rectF, radiis, Path.Direction.CW);
             canvas.setDrawFilter(paintFlagsDrawFilter);
-            canvas.save();
             canvas.clipPath(path);
+        }
+        if (mBackgroundColor != -1) {
+            // 绘制纯背景色
+            int a = Color.alpha(mBackgroundColor);
+            int r = Color.red(mBackgroundColor);
+            int g = Color.green(mBackgroundColor);
+            int b = Color.blue(mBackgroundColor);
+            canvas.drawARGB(a, r, g, b);
         }
         if (mBackgroundBitmap != null) {
             // 绘制背景图片
             canvas.drawBitmap(mBackgroundBitmap, 0, 0, mPaint);
         }
-//        if (mBackgroundColor != -1) {
-//            // 绘制纯背景色
-//            int a = Color.alpha(mBackgroundColor);
-//            int r = Color.red(mBackgroundColor);
-//            int g = Color.green(mBackgroundColor);
-//            int b = Color.blue(mBackgroundColor);
-//            canvas.drawARGB(a, r, g, b);
-//        }
         if (mSetBorder) {
-            // 绘制单圆角边框
-            Rect rect = new Rect(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
-            //setSingleCornerBorder(canvas, rect);
-
             setBorderTop(width, height, halfStrokeWidth, canvas, mPaint);
             setBorderBottom(width, height, halfStrokeWidth, canvas, mPaint);
             setBorderLeft(width, height, halfStrokeWidth, canvas, mPaint);
-            //setBorderRight(width, height, halfStrokeWidth, canvas, mPaint);
+            setBorderRight(width, height, halfStrokeWidth, canvas, mPaint);
         }
-
         super.dispatchDraw(canvas);
-        //canvas.restore();
     }
 
     public void setCornerRadius(boolean setCornerRadius, float rightTop, float rightBottom, float leftBottom, float leftTop) {
@@ -138,19 +130,21 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
     public void setBackgroundBitmap(@DrawableRes int resourceId) {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resourceId);
         mBackgroundBitmap = bitmap;
-        //invalidate();
     }
 
     public void setBackgroundColor(@ColorRes int colorResourceId) {
         mBackgroundColor = colorResourceId;
     }
 
-    private void setSingleCornerBorder(Canvas canvas, Rect rect) {
+    // 绘制单圆角边框
+    private void setSingleCornerBorder(Canvas canvas, int width, int height, int halfStrokeWidth) {
+        Rect rect = new Rect(halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, height - halfStrokeWidth);
         ShapeDrawable shapeDrawable = new ShapeDrawable(new RoundRectShape(radiis, null, null));
         Paint paint = shapeDrawable.getPaint();
         paint.setColor(mBorderColor);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(mStrokeWidth);
+        //RoundRectShape绘制的边界
         shapeDrawable.setBounds(rect);
         shapeDrawable.draw(canvas);
     }
@@ -168,12 +162,8 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
 
     @Override
     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-        BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
-        setBackgroundDrawable(bitmapDrawable);
-        if (mSetRadius) {
-            RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
-            setBackgroundDrawable(roundImageDrawable);
-        }
+        mBackgroundBitmap = bitmap;
+        invalidate();
     }
 
     @Override
