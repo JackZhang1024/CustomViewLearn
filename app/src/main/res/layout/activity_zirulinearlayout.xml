@@ -11,6 +11,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.lucky.customviewlearn.view.ZiRuImageView
+            android:id="@+id/img_ziru_display"
+            android:layout_width="48px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
         <Button
             android:id="@+id/btn_expand"
             android:layout_width="match_parent"

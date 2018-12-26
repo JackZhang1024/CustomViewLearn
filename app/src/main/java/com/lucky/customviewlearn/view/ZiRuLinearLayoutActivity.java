@@ -45,8 +45,15 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zirulinearlayout);
+        //displayImageView();
         createImageView();
-        roundCorner();
+        //roundCorner();
+    }
+
+    private void displayImageView(){
+         ZiRuImageView imageView = (ZiRuImageView) findViewById(R.id.img_ziru_display);
+         imageView.setImageResource("http://img.dafy.com/mobile/img3.0/dianhua.png");
+         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
 
@@ -70,6 +77,9 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         llRootView.addView(mZiRuRecycleView, params);
     }
 
+    //12-21 14:00:16.609 13228-13228/com.ziru.host E/ZiRuImageView: onBitmapLoaded: 17 22 100021 0 0
+    //12-21 14:00:16.665 13228-13228/com.ziru.host E/ZiRuImageView: onDraw: 48 62 100021
+    //http://img.dafy.com/mobile/img3.0/dianhua.png
     private void roundCorner() {
         String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
         ZiRuFlexBoxLayout flexBoxLayout = new ZiRuFlexBoxLayout(this);

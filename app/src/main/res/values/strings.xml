@@ -52,4 +52,5 @@
     <string name="yoga_layout">YogaLayout</string>
     <string name="relative_flex">RelativeFlex</string>
     <string name="dynamic_view_insert">动态插入视图</string>
+    <string name="dynamic_view_change">更新ZiRuImageView</string>
 </resources>

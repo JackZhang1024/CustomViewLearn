@@ -289,6 +289,11 @@
             android:label="@string/dynamic_view_insert"
             />
 
+        <activity android:name=".view.ZiRuImageViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/dynamic_view_change"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"

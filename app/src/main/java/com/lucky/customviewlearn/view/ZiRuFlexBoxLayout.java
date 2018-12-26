@@ -37,6 +37,8 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
     private Bitmap mBackgroundBitmap;
     private int mBackgroundColor;
     private float mTopRightRadius, mBottomRightRadius, mBottomLeftRadius, mTopLeftRadius;
+    private int mTopBorderWidth, mRightBorderWidth, mBottomBorderWidth, mLeftBorderWidth;
+    private int mTopBorderColor, mRightBorderColor, mBottomBorderColor, mLeftBorderColor;
 
     public ZiRuFlexBoxLayout(Context context) {
         this(context, null);
@@ -103,10 +105,22 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
             canvas.drawBitmap(mBackgroundBitmap, 0, 0, mPaint);
         }
         if (mSetBorder) {
-            setBorderTop(width, height, halfStrokeWidth, canvas, mPaint);
-            setBorderBottom(width, height, halfStrokeWidth, canvas, mPaint);
-            setBorderLeft(width, height, halfStrokeWidth, canvas, mPaint);
-            setBorderRight(width, height, halfStrokeWidth, canvas, mPaint);
+            if (mTopBorderWidth > 0) {
+                mPaint.setColor(mTopBorderColor);
+                setBorderTop(width, height, halfStrokeWidth, canvas, mPaint);
+            }
+            if (mRightBorderWidth > 0) {
+                mPaint.setColor(mRightBorderColor);
+                setBorderRight(width, height, halfStrokeWidth, canvas, mPaint);
+            }
+            if (mBottomBorderWidth > 0) {
+                mPaint.setColor(mBottomBorderColor);
+                setBorderBottom(width, height, halfStrokeWidth, canvas, mPaint);
+            }
+            if (mLeftBorderWidth > 0) {
+                mPaint.setColor(mLeftBorderColor);
+                setBorderLeft(width, height, halfStrokeWidth, canvas, mPaint);
+            }
         }
         super.dispatchDraw(canvas);
     }
@@ -125,6 +139,21 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
         mBorderColor = color;
         mPaint.setStrokeWidth(strokeWidth);
         mPaint.setColor(color);
+    }
+
+    public void setAllBorders(int topBorderWidth, int rightBorderWidth, int bottomBorderWidth, int leftBorderWidth) {
+        mSetBorder = true;
+        mTopBorderWidth = topBorderWidth;
+        mRightBorderWidth = rightBorderWidth;
+        mBottomBorderWidth = bottomBorderWidth;
+        mLeftBorderWidth = leftBorderWidth;
+    }
+
+    public void setAllBorderColors(String topBorderColor, String rightBorderColor, String bottomBorderColor, String leftBorderColor) {
+        mTopBorderColor = Color.parseColor(Colors.getHexColor(topBorderColor));
+        mRightBorderColor = Color.parseColor(Colors.getHexColor(rightBorderColor));
+        mBottomBorderColor = Color.parseColor(Colors.getHexColor(bottomBorderColor));
+        mLeftBorderColor = Color.parseColor(Colors.getHexColor(leftBorderColor));
     }
 
     public void setBackgroundBitmap(@DrawableRes int resourceId) {
@@ -229,7 +258,7 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
     // 右边边框
     public void setBorderRight(int width, int height, int halfStrokeWidth, Canvas canvas, Paint paint) {
         Path path = new Path();
-        path.moveTo(width - mTopRightRadius-halfStrokeWidth, 0);
+        path.moveTo(width - mTopRightRadius - halfStrokeWidth, 0);
         // 圆内切
         if (mTopRightRadius > 0) {
             path.arcTo(new RectF(width - 2 * mTopRightRadius + halfStrokeWidth, halfStrokeWidth, width - halfStrokeWidth, mTopRightRadius * 2 - halfStrokeWidth),
