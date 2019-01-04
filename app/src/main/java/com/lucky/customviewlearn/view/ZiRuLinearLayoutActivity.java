@@ -14,6 +14,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -46,14 +47,15 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zirulinearlayout);
         //displayImageView();
-        createImageView();
+        //createImageView();
         //roundCorner();
+        createRoundTextView();
     }
 
-    private void displayImageView(){
-         ZiRuImageView imageView = (ZiRuImageView) findViewById(R.id.img_ziru_display);
-         imageView.setImageResource("http://img.dafy.com/mobile/img3.0/dianhua.png");
-         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    private void displayImageView() {
+        ZiRuImageView imageView = (ZiRuImageView) findViewById(R.id.img_ziru_display);
+        imageView.setImageResource("http://img.dafy.com/mobile/img3.0/dianhua.png");
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
 
@@ -81,7 +83,10 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     //12-21 14:00:16.665 13228-13228/com.ziru.host E/ZiRuImageView: onDraw: 48 62 100021
     //http://img.dafy.com/mobile/img3.0/dianhua.png
     private void roundCorner() {
+        // http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg
+        // http://img.dafy.com/mobile/img3.0/incomeBg.png
         String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
+
         ZiRuFlexBoxLayout flexBoxLayout = new ZiRuFlexBoxLayout(this);
         ZiRuImageView imageView = new ZiRuImageView(this);
         imageView.setImageResource(url);
@@ -93,8 +98,10 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600);
         params.leftMargin = 20;
         params.rightMargin = 20;
-        flexBoxLayout.setCornerRadius(true, 0,100, 50, 0);
-        flexBoxLayout.setBorder(20, Color.YELLOW);
+        flexBoxLayout.setCornerRadius(true, 0, 0, 60, 60);
+        //flexBoxLayout.setBorder(20, Color.RED);
+        flexBoxLayout.setAllBorders(20, 20, 20, 20);
+        flexBoxLayout.setAllBorderColors("red", "red", "red", "red");
         int backgroundColor = Color.parseColor("#fff000");
         //flexBoxLayout.setBackgroundColor(backgroundColor);
         //flexBoxLayout.setBackgroundBitmap(R.drawable.bg_scenary);
@@ -102,8 +109,6 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(url)) {
             PicassoUtils.getinstance().loadImageBitmap(this, url, flexBoxLayout);
         }
-
-
 
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
 //        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
@@ -162,8 +167,21 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     }
 
     // 圆角支持 四个圆角都支持 [0.2rem, 0.2rem , 0.2rem, 0.2rem]
-
-
+    private void createRoundTextView() {
+        ZiRuTextView textView = new ZiRuTextView(this);
+        LinearLayout llRootView = (LinearLayout) findViewById(R.id.ll_content);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
+        params.leftMargin  = 20;
+        params.rightMargin = 20;
+        textView.setAllBorders(3, 3, 3, 3);
+        textView.setAllBorderColors("red", "red", "red", "red");
+        textView.setCornerRadius(true, 20, 20, 10, 10);
+        textView.setBackgroundColor(Color.YELLOW);
+        textView.setTextColor(Color.RED);
+        llRootView.addView(textView, params);
+        textView.setText("Hello World!");
+        textView.setGravity(Gravity.CENTER);
+    }
 
 
 }

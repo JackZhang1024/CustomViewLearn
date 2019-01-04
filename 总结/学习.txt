@@ -27,6 +27,12 @@ https://blog.csdn.net/mingmingaid/article/details/52461043
 // 圆角矩形绘制的时候 边角比较粗的解决方法
 // https://blog.csdn.net/kuaiguixs/article/details/78753149
 
+//自定义View教程
+
+// 去掉TextView默认字体的padding
+// https://blog.csdn.net/ccpat/article/details/45226951
+
+
 Drawable drawable = getDrawable();
 if(drawable==null || getWidth()==0 || getHeight()==0) {			return;		}
 Bitmap b = ((BitmapDrawable)drawable).getBitmap();		canvas.drawBitmap(getRoundedBitmap(b), 0, 0, null);	}
