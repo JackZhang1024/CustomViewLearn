@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
@@ -18,6 +17,10 @@ import com.lucky.customviewlearn.utils.PicassoUtils;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+
+/*
+ * http://img.dafy.com/mobile/img3.0/dianhua.png
+ * */
 public class ZiRuImageView extends AppCompatImageView implements Target {
     private static final String TAG = "ZiRuImageView";
     private Paint mPaint;
@@ -26,6 +29,11 @@ public class ZiRuImageView extends AppCompatImageView implements Target {
     private float mRadius = 0;
     private boolean mSetRadius;
     private float[] radiis = new float[8];
+    private Path mPath;
+    private RectF mRectF;
+    private Bitmap mBackgroundBitmap;
+    private boolean mAutoWidth, mAutoHeight;
+    private Matrix matrix = null;
 
     public ZiRuImageView(Context context) {
         this(context, null);
@@ -41,33 +49,58 @@ public class ZiRuImageView extends AppCompatImageView implements Target {
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(1);
         mPaint.setStyle(Paint.Style.STROKE);
+        mPath = new Path();
     }
 
     public void setImageResource(String url) {
-        //ImageLoader.getInstance(getContext()).loadImage(url, this);
+        PicassoUtils.getinstance().loadImageBitmap(getContext(), url, this);
+    }
+
+    public void setImageResource(String url, boolean autoWidth, boolean autoHeight) {
+        mAutoWidth = autoWidth;
+        mAutoHeight = autoHeight;
         PicassoUtils.getinstance().loadImageBitmap(getContext(), url, this);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        Log.e(TAG, "onSizeChanged: w " + w + " h " + h);
         mWidth = w;
         mHeight = h;
+        mRectF = new RectF(0, 0, w, h);
+        matrix = new Matrix();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Log.e(TAG, "onDraw: " + getWidth() + " " + getHeight() + " " + getId());
+        int width = getWidth();
+        int height = getHeight();
         if (mSetRadius) {
-            int width = getWidth();
-            int height = getHeight();
-            Path path = new Path();
-            RectF rectF = new RectF(0, 0, width, height);
             //mRadius = Math.min(width, height) / 2;
             setAllRadius();
-            path.addRoundRect(rectF, radiis, Path.Direction.CW);
-            canvas.clipPath(path);
+            mPath.addRoundRect(mRectF, radiis, Path.Direction.CW);
+            canvas.clipPath(mPath);
+        }
+        Log.e(TAG, "onDraw: width " + width + "  height " + height);
+        if (mBackgroundBitmap != null) {
+            // 绘制背景图片
+            // 计算收缩比例
+            float bmpWidth = mBackgroundBitmap.getWidth();
+            float bmpHeight = mBackgroundBitmap.getHeight();
+            float xScale = width / bmpWidth;
+            float yScale = height / bmpHeight;
+            if (yScale == 0 && xScale == 0) {
+                matrix.postScale(1, 1);
+            } else if (xScale == 0) {
+                matrix.postScale(yScale, yScale);
+            } else if (yScale == 0) {
+                matrix.postScale(xScale, xScale);
+            } else {
+                matrix.postScale(xScale, yScale);
+            }
+            Log.e(TAG, "onDraw: x " + xScale + "  yScale " + yScale);
+            Bitmap desiredBitmap = Bitmap.createBitmap(mBackgroundBitmap, 0, 0, mBackgroundBitmap.getWidth(), mBackgroundBitmap.getHeight(), matrix, true);
+            canvas.drawBitmap(desiredBitmap, 0, 0, mPaint);
         }
         super.onDraw(canvas);
     }
@@ -88,13 +121,30 @@ public class ZiRuImageView extends AppCompatImageView implements Target {
     }
 
     @Override
-    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) { // 100021
-        //onBitmapLoaded: 17 22 2131296478 48 0
-        int bmpWidth = bitmap.getWidth();
-        int bmpHeight = bitmap.getHeight();
-        setImageBitmap(bitmap);
-//        getLayoutParams().width = bmpWidth;
-//        getLayoutParams().height = bmpHeight;
+    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+        mBackgroundBitmap = bitmap;
+        invalidate();
+
+//        if (getWidth() == 0 || getHeight() == 0) {
+//            int bmpWidth = bitmap.getWidth();
+//            int bmpHeight = bitmap.getHeight();
+//            float scale = getContext().getResources().getDisplayMetrics().density;
+//            int layoutWidth = (int) (Math.ceil(bmpWidth * scale));
+//            int layoutHeight = (int) (Math.ceil(bmpHeight * scale));
+//            if (getParent() instanceof YogaLayout) {
+//                YogaLayout yogaLayout = (YogaLayout) getParent();
+//                final YogaNode imageNode = yogaLayout.getYogaNodeForView(this);
+//                if (mAutoHeight) {
+//                    imageNode.setHeight(layoutHeight);
+//                }
+//                if (mAutoWidth) {
+//                    imageNode.setWidth(layoutWidth);
+//                }
+//            }
+//            setImageBitmap(bitmap);
+//            return;
+//        }
+//        setImageBitmap(bitmap);
     }
 
     @Override
@@ -105,20 +155,5 @@ public class ZiRuImageView extends AppCompatImageView implements Target {
     @Override
     public void onBitmapFailed(Drawable errorDrawable) {
 
-    }
-
-    public static Bitmap getScaledBitmap(Bitmap bitmap, float scale) {
-        float scaledWidth = 1;
-        float scaledHeight = 1;
-        int bmpWidth = bitmap.getWidth();
-        int bmpHeight = bitmap.getHeight();
-        //计算出此次要缩小的比例
-        scaledWidth = (float) (scaledWidth * scale);
-        scaledHeight = (float) (scaledHeight * scale);
-        //生成缩放之后的Bitmap对象
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaledWidth, scaledHeight);
-        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bmpWidth, bmpHeight, matrix, true);
-        return bitmap;
     }
 }
