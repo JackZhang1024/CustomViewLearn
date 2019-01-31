@@ -20,14 +20,14 @@ public class ZiRuImageViewActivity extends AppCompatActivity {
 
     private void createImageView() {
         String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
-        ZiRuImageView ziRuImageView = (ZiRuImageView) findViewById(R.id.img_display);
-        ziRuImageView.setRadius(true, 10);
-        ziRuImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        ZiRuImageViewOld ziRuImageViewOld = (ZiRuImageViewOld) findViewById(R.id.img_display);
+        ziRuImageViewOld.setRadius(true, 10);
+        ziRuImageViewOld.setScaleType(ImageView.ScaleType.FIT_XY);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
         RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
         roundImageDrawable.setRound(10);
-        ziRuImageView.setBackground(roundImageDrawable);
-        ziRuImageView.setImageResource(url);
+        ziRuImageViewOld.setBackground(roundImageDrawable);
+        ziRuImageViewOld.setImageResource(url);
 //        ziRuImageView.setOutlineProvider(new CustomOutlineProvider());
 //        ziRuImageView.setClipToOutline(true);
     }

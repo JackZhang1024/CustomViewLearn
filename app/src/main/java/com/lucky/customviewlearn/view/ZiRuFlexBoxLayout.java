@@ -17,12 +17,10 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.lucky.customviewlearn.utils.PicassoUtils;
-import com.mopub.volley.toolbox.ImageLoader;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -306,7 +304,7 @@ public class ZiRuFlexBoxLayout extends FlexboxLayout implements Target {
     }
 
     public void setImageResource(String url) {
-        PicassoUtils.getinstance().loadImageBitmap(getContext(), url, this);
+        PicassoUtils.getInstance().loadImageBitmap(getContext(), url, this);
     }
 
 

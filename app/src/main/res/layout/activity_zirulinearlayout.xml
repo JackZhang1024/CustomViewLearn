@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.lucky.customviewlearn.view.ZiRuImageView
+        <com.lucky.customviewlearn.view.ZiRuImageViewOld
             android:id="@+id/img_ziru_display"
             android:layout_width="48px"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="扩大" />
 
-        <com.lucky.customviewlearn.view.ZiRuImageView
+        <com.lucky.customviewlearn.view.ZiRuImageViewOld
             android:id="@+id/img_ziru"
             android:layout_width="100dp"
             android:layout_height="100dp"
