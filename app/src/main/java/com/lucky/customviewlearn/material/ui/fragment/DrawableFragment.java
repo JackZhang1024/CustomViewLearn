@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.lucky.customviewlearn.R;
 
 public class DrawableFragment extends BaseFragment {
+
+    @Override
     protected View initView() {
         View view = View.inflate(getActivity(), R.layout.fragment_drawable, null);
 

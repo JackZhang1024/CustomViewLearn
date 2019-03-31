@@ -7,6 +7,8 @@ import android.webkit.WebView;
 import android.widget.Toast;
 import com.lucky.customviewlearn.R;
 
+import butterknife.OnClick;
+
 public abstract class BaseFragment extends Fragment {
 
 	protected View mRootView;
@@ -14,6 +16,7 @@ public abstract class BaseFragment extends Fragment {
 	protected WebView mWebView;
 	protected boolean isDemoShow = true;
 
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if (mRootView == null) {
 			mRootView = initView();
@@ -34,6 +37,7 @@ public abstract class BaseFragment extends Fragment {
 		mWebView.setVisibility(isDemoShow ? View.INVISIBLE : View.VISIBLE);
 	}
 
+	@Override
 	public boolean onOptionsItemSelected(MenuItem menu) {
 		if (menu.getItemId() == R.id.action_example) {
 			isDemoShow = !isDemoShow;
