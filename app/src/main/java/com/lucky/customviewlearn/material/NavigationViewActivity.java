@@ -32,7 +32,7 @@ public class NavigationViewActivity extends BaseActivity implements NavigationVi
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private String[] titles = new String[]{"实事", "娱乐", "体育", "视频"};
+    private String[] titles = new String[]{"实事", "娱乐", "体育", "视频", "视频", "视频", "视频"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +48,9 @@ public class NavigationViewActivity extends BaseActivity implements NavigationVi
         tabLayout.addTab(tabLayout.newTab().setText("娱乐"), 1);
         tabLayout.addTab(tabLayout.newTab().setText("体育"), 2);
         tabLayout.addTab(tabLayout.newTab().setText("视频"), 3);
+        tabLayout.addTab(tabLayout.newTab().setText("视频"), 4);
+        tabLayout.addTab(tabLayout.newTab().setText("视频"), 5);
+        tabLayout.addTab(tabLayout.newTab().setText("视频"), 6);
         viewPager.setAdapter(new TabViewPagerAdapter<LinearLayout>(createTabContents(), Arrays.asList(titles)));
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -88,14 +91,20 @@ public class NavigationViewActivity extends BaseActivity implements NavigationVi
 
     private List<LinearLayout> createTabContents() {
         List<LinearLayout> tabContents = new ArrayList<>();
-        TabContentLayout shishi  = new TabContentLayout.Builder(this).setTabContentText("实事").build();
-        TabContentLayout yule    = new TabContentLayout.Builder(this).setTabContentText("娱乐").build();
-        TabContentLayout tiyu    = new TabContentLayout.Builder(this).setTabContentText("体育").build();
+        TabContentLayout shishi = new TabContentLayout.Builder(this).setTabContentText("实事").build();
+        TabContentLayout yule = new TabContentLayout.Builder(this).setTabContentText("娱乐").build();
+        TabContentLayout tiyu = new TabContentLayout.Builder(this).setTabContentText("体育").build();
         TabContentLayout shiping = new TabContentLayout.Builder(this).setTabContentText("视频").build();
+        TabContentLayout shiping1 = new TabContentLayout.Builder(this).setTabContentText("视频").build();
+        TabContentLayout shiping2 = new TabContentLayout.Builder(this).setTabContentText("视频").build();
+        TabContentLayout shiping3 = new TabContentLayout.Builder(this).setTabContentText("视频").build();
         tabContents.add(shishi);
         tabContents.add(yule);
         tabContents.add(tiyu);
         tabContents.add(shiping);
+        tabContents.add(shiping1);
+        tabContents.add(shiping2);
+        tabContents.add(shiping3);
         return tabContents;
     }
 }

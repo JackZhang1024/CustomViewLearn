@@ -14,6 +14,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -24,7 +25,6 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
 import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.utils.PicassoUtils;
-import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     private ZiRuLinearLayout mZiRuLinearlayout;
     private ZiRuLinearLayoutNew mZiRuLinearLayoutNewOutter;
     private ZiRuLinearLayoutNew mZiRuLinearLayoutInner;
-    private ZiRuImageView mZiruImageView;
+    private ZiRuImageViewOld mZiruImageViewOld;
     private ZiRuImageTextView mZiruImageTextView;
     private ZiRuRelativeLayout mZiRuRelativeLayout;
     private ZiRuOuterRelativeLayout mZiRuRelativeParent;
@@ -46,14 +46,16 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zirulinearlayout);
         //displayImageView();
-        createImageView();
+        //createImageView();
         //roundCorner();
+        //createRoundTextView();
+        createNewImageView();
     }
 
-    private void displayImageView(){
-         ZiRuImageView imageView = (ZiRuImageView) findViewById(R.id.img_ziru_display);
-         imageView.setImageResource("http://img.dafy.com/mobile/img3.0/dianhua.png");
-         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    private void displayImageView() {
+        ZiRuImageViewOld imageView = (ZiRuImageViewOld) findViewById(R.id.img_ziru_display);
+        imageView.setImageResource("http://img.dafy.com/mobile/img3.0/dianhua.png");
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
 
@@ -81,9 +83,12 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     //12-21 14:00:16.665 13228-13228/com.ziru.host E/ZiRuImageView: onDraw: 48 62 100021
     //http://img.dafy.com/mobile/img3.0/dianhua.png
     private void roundCorner() {
+        // http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg
+        // http://img.dafy.com/mobile/img3.0/incomeBg.png
         String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
+
         ZiRuFlexBoxLayout flexBoxLayout = new ZiRuFlexBoxLayout(this);
-        ZiRuImageView imageView = new ZiRuImageView(this);
+        ZiRuImageViewOld imageView = new ZiRuImageViewOld(this);
         imageView.setImageResource(url);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         FlexboxLayout.LayoutParams imageParams = new FlexboxLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
@@ -93,17 +98,17 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600);
         params.leftMargin = 20;
         params.rightMargin = 20;
-        flexBoxLayout.setCornerRadius(true, 0,100, 50, 0);
-        flexBoxLayout.setBorder(20, Color.YELLOW);
+        flexBoxLayout.setCornerRadius(true, 0, 0, 60, 60);
+        //flexBoxLayout.setBorder(20, Color.RED);
+        flexBoxLayout.setAllBorders(20, 20, 20, 20);
+        flexBoxLayout.setAllBorderColors("red", "red", "red", "red");
         int backgroundColor = Color.parseColor("#fff000");
         //flexBoxLayout.setBackgroundColor(backgroundColor);
         //flexBoxLayout.setBackgroundBitmap(R.drawable.bg_scenary);
 
         if (!TextUtils.isEmpty(url)) {
-            PicassoUtils.getinstance().loadImageBitmap(this, url, flexBoxLayout);
+            PicassoUtils.getInstance().loadImageBitmap(this, url, flexBoxLayout);
         }
-
-
 
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
 //        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
@@ -120,14 +125,14 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
 
     private void createImageView() {
         String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
-        ZiRuImageView ziRuImageView = (ZiRuImageView) findViewById(R.id.img_ziru);
-        ziRuImageView.setRadius(true, 10);
-        ziRuImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        ZiRuImageViewOld ziRuImageViewOld = (ZiRuImageViewOld) findViewById(R.id.img_ziru);
+        ziRuImageViewOld.setRadius(true, 10);
+        ziRuImageViewOld.setScaleType(ImageView.ScaleType.FIT_XY);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
         RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
         roundImageDrawable.setRound(10);
-        ziRuImageView.setBackground(roundImageDrawable);
-        ziRuImageView.setImageResource(url);
+        ziRuImageViewOld.setBackground(roundImageDrawable);
+        ziRuImageViewOld.setImageResource(url);
 //        ziRuImageView.setOutlineProvider(new CustomOutlineProvider());
 //        ziRuImageView.setClipToOutline(true);
     }
@@ -162,8 +167,43 @@ public class ZiRuLinearLayoutActivity extends AppCompatActivity {
     }
 
     // 圆角支持 四个圆角都支持 [0.2rem, 0.2rem , 0.2rem, 0.2rem]
+    private void createRoundTextView() {
+        ZiRuTextView textView = new ZiRuTextView(this);
+        LinearLayout llRootView = (LinearLayout) findViewById(R.id.ll_content);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
+        params.leftMargin  = 20;
+        params.rightMargin = 20;
+        textView.setAllBorders(3, 3, 3, 3);
+        textView.setAllBorderColors("red", "red", "red", "red");
+        textView.setCornerRadius(true, 20, 20, 10, 10);
+        textView.setBackgroundColor(Color.YELLOW);
+        textView.setTextColor(Color.RED);
+        llRootView.addView(textView, params);
+        textView.setText("Hello World!");
+        textView.setGravity(Gravity.CENTER);
+    }
 
 
-
+    private void createNewImageView() {
+        LinearLayout llContentView = (LinearLayout) findViewById(R.id.ll_content);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
+        params.leftMargin  = 20;
+        params.rightMargin = 20;
+        String url = "http://pic14.nipic.com/20110605/1369025_165540642000_2.jpg";
+        ZiRuImageView ziRuImageView = new ZiRuImageView(this);
+        ziRuImageView.setRadius(true, 0, 0, 0, 0);
+        ziRuImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_scenary);
+//        RoundImageDrawable roundImageDrawable = new RoundImageDrawable(bitmap);
+//        roundImageDrawable.setRound(10);
+//        ziRuImageView.setBackground(roundImageDrawable);
+//        ziRuImageView.setImageResource(url);
+        ziRuImageView.setBackgroundColors(Color.parseColor("#0000ff"));
+        ziRuImageView.setAllBorders(0, 10, 0, 10);
+        ziRuImageView.setAllBorderColors("yellow", "yellow", "yellow", "yellow");
+//        ziRuImageView.setOutlineProvider(new CustomOutlineProvider());
+//        ziRuImageView.setClipToOutline(true);
+        llContentView.addView(ziRuImageView, params);
+    }
 
 }
