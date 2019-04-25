@@ -294,6 +294,11 @@
             android:label="@string/dynamic_view_change"
             />
 
+        <activity android:name="com.lucky.androidlearn.socket.SocketIPClientActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/socket_ipc_client"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"
