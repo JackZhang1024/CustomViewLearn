@@ -54,4 +54,5 @@
     <string name="dynamic_view_insert">动态插入视图</string>
     <string name="dynamic_view_change">更新ZiRuImageView</string>
     <string name="socket_ipc_client">SocketIPC_Client</string>
+    <string name="ruler_view">自定义尺子</string>
 </resources>

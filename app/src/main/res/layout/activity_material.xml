@@ -70,4 +70,15 @@
         android:layout_height="wrap_content"
         android:text="材料设计学习" />
 
+    <Button
+        android:id="@+id/btn_coordinator_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部面板显示或隐藏一" />
+
+    <Button
+        android:id="@+id/btn_coordinator_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部面板显示或隐藏二" />
 </LinearLayout>

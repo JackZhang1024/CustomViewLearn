@@ -3,8 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CustomViewLearn.iml" filepath="$PROJECT_DIR$/CustomViewLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/CustomViewLearn-app.iml" filepath="$PROJECT_DIR$/app/CustomViewLearn-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repository/CustomViewLearn-repository.iml" filepath="$PROJECT_DIR$/repository/CustomViewLearn-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GitHub-CustomViewLearn.iml" filepath="$PROJECT_DIR$/GitHub-CustomViewLearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/repository/repository.iml" filepath="$PROJECT_DIR$/repository/repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repository/yoga/repository-yoga.iml" filepath="$PROJECT_DIR$/repository/yoga/repository-yoga.iml" />
       <module fileurl="file://$PROJECT_DIR$/repository/yoga/yoga.iml" filepath="$PROJECT_DIR$/repository/yoga/yoga.iml" />
     </modules>
   </component>

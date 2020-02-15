@@ -274,11 +274,6 @@
             android:label="@string/flexbox_layout"
             />
 
-        <activity android:name=".YogaLayoutActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/yoga_layout"
-            />
-
         <activity android:name=".RelativeFlexBoxActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/relative_flex"
@@ -297,6 +292,16 @@
         <activity android:name="com.lucky.androidlearn.socket.SocketIPClientActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/socket_ipc_client"
+            />
+
+        <activity android:name=".scroller.RulerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/rule_view"
+            />
+
+        <activity android:name=".material.BottomPanelShowHideOneActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="底部面板显示或隐藏"
             />
 
         <!-- Scheme协议跳转 -->

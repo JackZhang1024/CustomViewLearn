@@ -2,7 +2,6 @@ package com.lucky.customviewlearn;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.lucky.androidlearn.aidl.BookManagerActivity;
 import com.lucky.androidlearn.socket.SocketIPClientActivity;
@@ -12,14 +11,13 @@ import com.lucky.customviewlearn.material.ui.MaterialDesignActivity;
 import com.lucky.customviewlearn.path.ui.HeartBezierActivity;
 import com.lucky.customviewlearn.path.ui.PathViewActivity;
 import com.lucky.customviewlearn.resource.ResourcesActivity;
+import com.lucky.customviewlearn.scroller.RulerActivity;
 import com.lucky.customviewlearn.scroller.ScrollerMainActivity;
 import com.lucky.customviewlearn.securitycheck.SecurityCheckActivity;
 import com.lucky.customviewlearn.view.DynamicViewInsertActivity;
 import com.lucky.customviewlearn.view.FlexLayoutActivity;
 import com.lucky.customviewlearn.view.ZiRuImageViewActivity;
 import com.lucky.customviewlearn.view.ZiRuLinearLayoutActivity;
-
-import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -120,9 +118,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.btn_ziru_yoga_layout)
     public void onZiRuYogaLayoutClick() {
-        Intent intent = new Intent();
-        intent.setClass(this, YogaLayoutActivity.class);
-        startActivity(intent);
+
     }
 
     @OnClick(R.id.btn_relative_flex)
@@ -152,5 +148,14 @@ public class MainActivity extends BaseActivity {
         intent.setClass(this, SocketIPClientActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.btn_ruler_view)
+    public void onRulerViewClick(){
+       Intent intent =  new Intent();
+       intent.setClass(this, RulerActivity.class);
+       startActivity(intent);
+    }
+
+
 
 }

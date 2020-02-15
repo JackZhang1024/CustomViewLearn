@@ -8,6 +8,7 @@ import android.view.View;
 import com.lucky.customviewlearn.BaseActivity;
 import com.lucky.customviewlearn.R;
 import com.lucky.customviewlearn.material.BehaviorsActivity;
+import com.lucky.customviewlearn.material.BottomPanelShowHideOneActivity;
 import com.lucky.customviewlearn.material.CollapsingLayoutActivity;
 import com.lucky.customviewlearn.material.CoordinatorViewActivity;
 import com.lucky.customviewlearn.material.MaterialThemeActivity;
@@ -35,6 +36,7 @@ public class MaterialDesignActivity extends BaseActivity implements View.OnClick
         findViewById(R.id.btn_behaviors).setOnClickListener(this);
         findViewById(R.id.btn_material_theme).setOnClickListener(this);
         findViewById(R.id.btn_material_learn).setOnClickListener(this);
+        findViewById(R.id.btn_coordinator_one).setOnClickListener(this);
     }
 
 
@@ -74,6 +76,9 @@ public class MaterialDesignActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.btn_material_learn:
                 intent.setClass(this, MaterialMainActivity.class);
+                break;
+            case R.id.btn_coordinator_one:
+                intent.setClass(this, BottomPanelShowHideOneActivity.class);
                 break;
         }
         startActivity(intent);
