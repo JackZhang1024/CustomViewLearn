@@ -156,4 +156,5 @@
     <color name="mttBlindTimeColor">#64d0fa</color>
     <color name="colorGrey">@color/gray</color>
     <color name="colorBlack">@color/black</color>
+    <color name="divider_line">#44999999</color>
 </resources>

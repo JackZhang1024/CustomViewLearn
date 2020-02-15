@@ -304,6 +304,11 @@
             android:label="底部面板显示或隐藏"
             />
 
+        <activity android:name=".view.nestedviewpager.NestedViewPagerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="内嵌ViewPager"
+            />
+
         <!-- Scheme协议跳转 -->
         <activity
             android:name=".CustomViewActivity"

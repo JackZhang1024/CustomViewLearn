@@ -124,6 +124,12 @@
             android:layout_height="wrap_content"
             android:text="@string/dynamic_view_change" />
 
+        <Button
+            android:id="@+id/btn_nested_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内嵌ViewPager"
+            />
 
     </LinearLayout>
 

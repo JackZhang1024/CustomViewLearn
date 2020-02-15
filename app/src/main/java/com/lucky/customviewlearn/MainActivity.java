@@ -18,6 +18,7 @@ import com.lucky.customviewlearn.view.DynamicViewInsertActivity;
 import com.lucky.customviewlearn.view.FlexLayoutActivity;
 import com.lucky.customviewlearn.view.ZiRuImageViewActivity;
 import com.lucky.customviewlearn.view.ZiRuLinearLayoutActivity;
+import com.lucky.customviewlearn.view.nestedviewpager.NestedViewPagerActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -154,6 +155,13 @@ public class MainActivity extends BaseActivity {
        Intent intent =  new Intent();
        intent.setClass(this, RulerActivity.class);
        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_nested_viewpager)
+    public void onNestedViewPagerClick(){
+        Intent intent =  new Intent();
+        intent.setClass(this, NestedViewPagerActivity.class);
+        startActivity(intent);
     }
 
 
