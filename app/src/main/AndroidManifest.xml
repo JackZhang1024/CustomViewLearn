@@ -3,8 +3,8 @@
     package="com.lucky.customviewlearn">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".CustomApplication"
@@ -259,55 +259,96 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/signature_pad_view" />
 
-        <activity android:name=".view.ZiRuLinearLayoutActivity"
+        <activity
+            android:name=".view.ZiRuLinearLayoutActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/border_linearlayout"
-            />
+            android:label="@string/border_linearlayout" />
 
-        <activity android:name=".securitycheck.SecurityCheckActivity"
+        <activity
+            android:name=".securitycheck.SecurityCheckActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/security_check"
-            />
+            android:label="@string/security_check" />
 
-        <activity android:name=".view.FlexLayoutActivity"
+        <activity
+            android:name=".view.FlexLayoutActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/flexbox_layout"
-            />
+            android:label="@string/flexbox_layout" />
 
-        <activity android:name=".RelativeFlexBoxActivity"
+        <activity
+            android:name=".RelativeFlexBoxActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/relative_flex"
-            />
+            android:label="@string/relative_flex" />
 
-        <activity android:name=".view.DynamicViewInsertActivity"
+        <activity
+            android:name=".view.DynamicViewInsertActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/dynamic_view_insert"
-            />
+            android:label="@string/dynamic_view_insert" />
 
-        <activity android:name=".view.ZiRuImageViewActivity"
+        <activity
+            android:name=".view.ZiRuImageViewActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/dynamic_view_change"
-            />
+            android:label="@string/dynamic_view_change" />
 
-        <activity android:name="com.lucky.androidlearn.socket.SocketIPClientActivity"
+        <activity
+            android:name="com.lucky.androidlearn.socket.SocketIPClientActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/socket_ipc_client"
-            />
+            android:label="@string/socket_ipc_client" />
 
-        <activity android:name=".scroller.RulerActivity"
+        <activity
+            android:name=".scroller.RulerActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/rule_view"
-            />
+            android:label="@string/rule_view" />
 
-        <activity android:name=".material.BottomPanelShowHideOneActivity"
+        <activity
+            android:name=".material.BottomPanelShowHideOneActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="底部面板显示或隐藏"
-            />
+            android:label="底部面板显示或隐藏" />
 
-        <activity android:name=".view.nestedviewpager.NestedViewPagerActivity"
+        <activity
+            android:name=".view.nestedviewpager.NestedViewPagerActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="内嵌ViewPager"
-            />
+            android:label="内嵌ViewPager" />
+
+        <activity
+            android:name=".conclude.ViewConcludeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="自定义View的总结" />
+
+        <activity
+            android:name=".conclude.CustomCircleActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="自定义View的总结" />
+
+        <activity
+            android:name=".conclude.CustomViewGroupActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="自定义ViewGroup的总结" />
+
+        <activity
+            android:name=".scroller.widget.SimpleRefreshLayoutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="下拉刷新上拉加载总结1" />
+
+        <activity
+            android:name=".scroller.widget.SimpleRefreshLayoutTwoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="下拉刷新上拉加载过程中的滑动冲突解决" />
+
+
+        <activity
+            android:name=".scroller.widget.ListViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="ListView滚动到顶部或者底部" />
+
+        <activity
+            android:name=".scroller.widget.RecyclerViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="RecyclerView滚动到顶部或者底部" />
+
+        <activity
+            android:name=".scroller.widget.ScrollViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="ScrollView滚动到顶部或者底部" />
 
         <!-- Scheme协议跳转 -->
         <activity
@@ -326,13 +367,14 @@
             android:name=".AppLinkTargetActivity"
             android:label="AppLinkTarget">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="aragoncs"
                     android:host="scan"
-                    />
+                    android:scheme="aragoncs" />
             </intent-filter>
         </activity>
 

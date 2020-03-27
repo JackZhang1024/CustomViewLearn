@@ -94,4 +94,10 @@
     </declare-styleable>
 
 
+    <declare-styleable name="CustomCircleView">
+        <attr name="fillColor" format="color"/>
+    </declare-styleable>
+
+
+
 </resources>

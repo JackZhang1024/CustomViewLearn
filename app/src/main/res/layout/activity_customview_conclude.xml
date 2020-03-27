@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_customcircle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义Circle" />
+
+    <Button
+        android:id="@+id/btn_custom_viewgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义线性布局" />
+
+    <Button
+        android:id="@+id/btn_simple_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="简单下拉刷新" />
+
+    <Button
+        android:id="@+id/btn_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ListView是否到最顶或到最低部" />
+
+    <Button
+        android:id="@+id/btn_recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RecycleView是否到最顶或到最低部" />
+
+    <Button
+        android:id="@+id/btn_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ScrollView是否到最顶或到最低部" />
+
+    <Button
+        android:id="@+id/btn_scroll_conflict_resolve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下拉刷新上拉加载过程中的滑动冲突解决" />
+
+</LinearLayout>

@@ -131,6 +131,12 @@
             android:text="内嵌ViewPager"
             />
 
+        <Button
+            android:id="@+id/btn_custom_conclude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义控件总结"
+            />
     </LinearLayout>
 
 </ScrollView>

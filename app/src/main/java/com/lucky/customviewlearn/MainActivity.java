@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.lucky.androidlearn.aidl.BookManagerActivity;
 import com.lucky.androidlearn.socket.SocketIPClientActivity;
 import com.lucky.customviewlearn.canvas.ui.CanvasActivity;
+import com.lucky.customviewlearn.conclude.ViewConcludeActivity;
 import com.lucky.customviewlearn.eventdispatch.EventDispatchActivity;
 import com.lucky.customviewlearn.material.ui.MaterialDesignActivity;
 import com.lucky.customviewlearn.path.ui.HeartBezierActivity;
@@ -164,6 +165,12 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.btn_custom_conclude)
+    public void onViewConcludeClick(){
+        Intent intent =  new Intent();
+        intent.setClass(this, ViewConcludeActivity.class);
+        startActivity(intent);
+    }
 
 
 }
